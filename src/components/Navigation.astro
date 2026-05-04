@@ -1,0 +1,180 @@
+---
+
+---
+
+<header class="header">
+  <nav class="nav">
+    <div class="logo">
+      <a href="/"> busy being well </a>
+    </div>
+
+    <button class="burger" onclick="openNav()" aria-label="Menu">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </button>
+
+    <div class="menu" id="menu">
+      <ul>
+        <li><a href="/ommig">Om mig</a></li>
+        <li><a href="/podcasts">Podcasts</a></li>
+        <li><a href="/læsestof">Læsestof</a></li>
+        <li><a href="/shop">Shop</a></li>
+      </ul>
+    </div>
+  </nav>
+</header>
+
+<div id="myNav" class="overlay">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+  <div class="overlay-content">
+    <a href="/ommig">Om mig</a>
+    <a href="/podcasts">Podcasts</a>
+    <a href="/læsestof">Læsestof</a>
+    <a href="/shop">Shop</a>
+  </div>
+</div>
+
+<script is:inline>
+  function openNav() {
+    document.getElementById("myNav").style.width = "100%";
+  }
+
+  function closeNav() {
+    document.getElementById("myNav").style.width = "0%";
+  }
+</script>
+
+<style>
+  .nav {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 0.9rem;
+  }
+
+  .header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 2;
+  }
+
+  .menu {
+    display: none;
+  }
+
+  .logo a {
+    padding: 20px;
+    text-decoration: none;
+    font-size: 1.6rem;
+    font-weight: 400;
+    color: var(--cream);
+  }
+
+  .burger {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 11;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+  }
+
+  .burger .bar {
+    width: 25px;
+    height: 3px;
+    background-color: var(--cream);
+    transition: 0.3s;
+  }
+
+  .overlay {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: var(--cream);
+    overflow-x: hidden;
+    transition: width 0.5s ease;
+    z-index: 10;
+  }
+
+  .closebtn {
+    position: absolute;
+    top: 20px;
+    left: 35px;
+    font-size: 60px;
+    text-decoration: none;
+    color: var(--black);
+    cursor: pointer;
+  }
+
+  .overlay-content {
+    position: relative;
+    top: 30%;
+    width: 100%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .overlay-content a {
+    font-size: 2rem;
+    color: var(--black);
+    text-decoration: none;
+    font-weight: 400;
+    text-transform: uppercase;
+    transition: 0.3s;
+  }
+
+  .overlay-content a:hover {
+    color: var(--citat);
+    text-decoration: underline;
+  }
+
+  @media screen and (min-width: 768px) {
+    .burger {
+      display: none;
+    }
+    .menu {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+    }
+
+    .menu ul {
+      display: flex;
+      list-style: none;
+      gap: 2.7rem;
+      margin: 0;
+      padding: 0 2rem;
+    }
+
+    .menu ul li a {
+      font-family: "Work Sans", sans-serif;
+      font-size: 1rem;
+      text-decoration: none;
+      color: var(--white);
+      text-transform: uppercase;
+      font-weight: 400;
+      transition: color 0.2s ease;
+    }
+    .menu ul li a:hover {
+      text-decoration: underline;
+    }
+
+    .overlay {
+      display: none;
+    }
+
+    .logo a {
+      color: var(--cream);
+    }
+  }
+</style>

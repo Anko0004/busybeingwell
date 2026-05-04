@@ -1,0 +1,49 @@
+---
+
+---
+
+<section class="hero-wrapper">
+  <video class="hero-video" src="herovideo_bbw.mp4" autoplay muted loop playsinline></video>
+
+  <div class="hero-text">
+    <h1>busy being well</h1>
+  </div>
+</section>
+
+<style>
+  .hero-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    margin-bottom: 3rem;
+  }
+
+  .hero-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+  }
+
+  .hero-text {
+    position: absolute;
+    z-index: 10;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: var(--cream);
+    padding: 0 1rem;
+  }
+
+  .hero-text h1 {
+    color: var(--cream);
+    font-size: clamp(2rem, 15vw, 6rem);
+    font-weight: 150;
+    margin: 0;
+  }
+</style>

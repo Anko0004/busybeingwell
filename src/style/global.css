@@ -1,0 +1,138 @@
+/* colors */
+:root {
+  --cream: #fffdf2;
+  --blue: #617c8d;
+  --white: #ffffff;
+  --black: #000000;
+  --citat: #7a7a7a;
+  --footer: #d6d2ca;
+  --burned_orange: #a8622a;
+  --dark_green: #262c1b;
+  --light_green: #6d8150;
+  --brown: #3d2c25;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+img {
+  width: 100%;
+}
+
+body {
+  background-color: var(--cream);
+}
+
+/* fonts  */
+logo {
+  color: var(--cream);
+  font-size: 2rem;
+}
+
+@font-face {
+  font-family: "Unica";
+  src: url("/fonts/NeueHaasUnicaPro-Light.woff2") format("woff2");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Unica";
+  src: url("/fonts/NeueHaasUnicaPro-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Unica";
+  src: url("/fonts/NeueHaasUnicaPro-Medium.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Unica";
+  src: url("/fonts/NeueHaasUnicaPro-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Unica";
+  src: url("/fonts/NeueHaasUnicaPro-ThinItalic.woff2") format("woff2");
+  font-weight: 100;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Serious Sans";
+  src: url("/fonts/SeriousSansRegular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Serious Sans";
+  src: url("/fonts/SeriousSansBold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+h1 {
+  font-family: "Serious Sans", sans-serif;
+  color: var(--cream);
+  font-size: 2rem;
+  text-align: center;
+  margin-bottom: 4rem;
+  margin-top: 3.5rem;
+}
+
+h2 {
+  font-family: "Playfair Display SC", serif;
+  color: var(--overskrift);
+  font-size: 1.7rem;
+  font-weight: 210;
+  margin-bottom: 1rem;
+}
+
+h3 {
+  font-family: "Unica", sans-serif;
+  color: var(--black);
+  font-weight: 500;
+  font-size: 17px;
+  line-height: 1.8rem;
+  margin-top: 1rem;
+}
+
+p {
+  font-family: "Unica", sans-serif;
+  color: var(--black);
+  font-weight: 300;
+  font-size: 17px;
+  line-height: 1.8rem;
+  padding-bottom: 1rem;
+}
+
+a {
+  font-family: "Unica", sans-serif;
+  color: var(--black);
+  font-weight: 300;
+  font-size: 15px;
+  line-height: 1.6rem;
+}
+
+.logo a {
+  font-family: "Serious Sans", sans-serif;
+  color: var(--black);
+  font-weight: 50;
+  font-size: 15px;
+  line-height: 1.6rem;
+}

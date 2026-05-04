@@ -1,0 +1,35 @@
+---
+const { text = "Klik her", href = "#", variant = "default" } = Astro.props;
+---
+
+{
+  href ? (
+    <a href={href} class={`knap ${variant}`}>
+      {text}
+    </a>
+  ) : (
+    <button type="button" class={`knap ${variant}`}>
+      {text}
+    </button>
+  )
+}
+
+<style>
+  .knap {
+    font-family: "Unica", sans-serif;
+    font-size: 1rem;
+    color: var(--black);
+    text-decoration: underline;
+    text-underline-offset: 4px; /* lidt luft under teksten */
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    transition: color 0.3s ease;
+  }
+
+  /* Fælles hover for default */
+  .knap.default:hover {
+    color: var(--citat);
+  }
+</style>
