@@ -1,0 +1,95 @@
+---
+import ForsideLayout from "../layouts/ForsideLayout.astro";
+import Footer from "../components/Footer.astro";
+import PodcastsCard from "../components/PodcastCard.astro";
+import Knap from "../components/Knap.astro";
+import H2 from "../components/H2.astro";
+
+const url = "https://ovfqkqxmthqfabnvnndq.supabase.co/rest/v1/byhaven?id=in.(1,2,3,4)&select=*";
+const key = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im92ZnFrcXhtdGhxZmFibnZubmRxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDY2OTQwNjAsImV4cCI6MjA2MjI3MDA2MH0.QGBHGl0rC79t_ySosixZ13L1Ukt5i3JvPwZaUEnMVvM";
+---
+
+<ForsideLayout>
+  <section class="section ommig">
+    <div class="image">
+      <img src="ommig_billede1.png" alt="Cilia laver mad" />
+    </div>
+
+    <div class="text1">
+      <h2 class="ommig">Hvem er jeg?</h2>
+      <p>Byhaven er en oase i hjertet af det travle København. Hver sommer genåbner vi Byhaven fra april-september. Her kan du nyde Byhaven fra kl 15 til sent – og der er altid fri entré.</p>
+    </div>
+
+    <div class="text2">
+      <p>Byhaven er en oase i hjertet af det travle København. Hver sommer genåbner vi Byhaven fra april-september. Her kan du nyde Byhaven fra kl 15 til sent – og der er altid fri entré.</p>
+    </div>
+
+    <Knap text="LÆS MERE" href="/omos" variant="default" />
+  </section>
+
+  <section class="citat">
+    <div class="citat">
+      <h2>“Busy Being Well er en podcast og et univers dedikeret til at udforske veje til mere velvære. Et sted med inspiration, nysgerrighed og perspektiv. Vi dykker ned i de ting der betyder noget, for at have det godt i en moderne travl hverdag.”</h2>
+    </div>
+  </section>
+</ForsideLayout>
+
+<style>
+  @media (min-width: 900px) {
+    .section {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      align-items: end;
+      gap: 3rem;
+      margin-bottom: 3rem;
+    }
+
+    .image img {
+      width: 100%;
+      height: auto;
+    }
+    .mobile-only {
+      display: none;
+    }
+
+    .desktop-only {
+      display: block;
+    }
+
+    /* om mig  */
+    .text1 .ommig {
+      margin-bottom: 0;
+    }
+
+    .text1 {
+      grid-column: 2;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .text2 {
+      grid-column: 3;
+    }
+
+    .ommig p {
+      padding-bottom: 0;
+    }
+
+    .ommig .image {
+      grid-column: 1;
+    }
+  }
+  /* citat  */
+  .citat {
+    margin-top: 3rem;
+    color: var(--citat);
+  }
+  @media (min-width: 900px) {
+    .citat {
+      margin-left: 5%;
+      margin-right: 5%;
+    }
+  }
+</style>
