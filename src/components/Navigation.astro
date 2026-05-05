@@ -1,11 +1,11 @@
 ---
-
+const { variant = "dark" } = Astro.props;
 ---
 
 <header class="header">
-  <nav class="nav">
+  <nav class={`nav nav--${variant}`}>
     <div class="logo">
-      <a href="/"> busy being well </a>
+      <a href="/">busy being well</a>
     </div>
 
     <button class="burger" onclick="openNav()" aria-label="Menu">
@@ -27,6 +27,7 @@
 
 <div id="myNav" class="overlay">
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+
   <div class="overlay-content">
     <a href="/ommig">Om mig</a>
     <a href="/podcasts">Podcasts</a>
@@ -46,18 +47,18 @@
 </script>
 
 <style>
-  .nav {
-    display: flex;
-    justify-content: space-between;
-    padding-top: 0.9rem;
-  }
-
   .header {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     z-index: 2;
+  }
+
+  .nav {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 0.9rem;
   }
 
   .menu {
@@ -69,7 +70,6 @@
     text-decoration: none;
     font-size: 1.6rem;
     font-weight: 400;
-    color: var(--cream);
   }
 
   .burger {
@@ -88,8 +88,25 @@
   .burger .bar {
     width: 25px;
     height: 3px;
-    background-color: var(--cream);
     transition: 0.3s;
+  }
+
+  .nav--light .logo a,
+  .nav--light .menu ul li a {
+    color: var(--cream);
+  }
+
+  .nav--dark .logo a,
+  .nav--dark .menu ul li a {
+    color: var(--black);
+  }
+
+  .nav--light .burger .bar {
+    background-color: var(--cream);
+  }
+
+  .nav--dark .burger .bar {
+    background-color: var(--black);
   }
 
   .overlay {
@@ -142,6 +159,7 @@
     .burger {
       display: none;
     }
+
     .menu {
       display: flex;
       justify-content: flex-end;
@@ -160,21 +178,17 @@
       font-family: "Work Sans", sans-serif;
       font-size: 1rem;
       text-decoration: none;
-      color: var(--white);
       text-transform: uppercase;
       font-weight: 400;
       transition: color 0.2s ease;
     }
+
     .menu ul li a:hover {
       text-decoration: underline;
     }
 
     .overlay {
       display: none;
-    }
-
-    .logo a {
-      color: var(--cream);
     }
   }
 </style>
