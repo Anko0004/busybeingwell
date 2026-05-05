@@ -1,6 +1,8 @@
 /* colors */
 :root {
   --cream: #fffdf2;
+  --lysere_cream: #fffffd;
+  --cream_test: #f7f6f0;
   --blue: #617c8d;
   --white: #ffffff;
   --black: #000000;
@@ -21,7 +23,7 @@ img {
 }
 
 body {
-  background-color: var(--cream);
+  background-color: var(--lysere_cream);
 }
 
 /* fonts  */
@@ -97,7 +99,7 @@ h1 {
 
 h2 {
   font-family: "Playfair Display SC", serif;
-  color: var(--overskrift);
+  color: var(--black);
   font-size: 1.7rem;
   font-weight: 210;
   margin-bottom: 1rem;
@@ -112,12 +114,20 @@ h3 {
   margin-top: 1rem;
 }
 
+h4 {
+  font-family: "Playfair Display SC", serif;
+  color: var(--citat);
+  font-size: 1rem;
+  font-weight: 210;
+  margin-bottom: 1rem;
+}
+
 p {
   font-family: "Unica", sans-serif;
   color: var(--black);
   font-weight: 300;
-  font-size: 17px;
-  line-height: 1.8rem;
+  font-size: 15px;
+  line-height: 1.6rem;
   padding-bottom: 1rem;
 }
 

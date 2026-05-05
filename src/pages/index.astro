@@ -16,20 +16,54 @@ const key = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZi
     </div>
 
     <div class="text1">
-      <h2 class="ommig">Hvem er jeg?</h2>
-      <p>Byhaven er en oase i hjertet af det travle København. Hver sommer genåbner vi Byhaven fra april-september. Her kan du nyde Byhaven fra kl 15 til sent – og der er altid fri entré.</p>
+      <div class="overskrifter">
+        <h2 class="ommig">Mød Cilia Trappaud</h2>
+        <h4>Stifter af BBW</h4>
+      </div>
+
+      <p>Busy Being Well er en podcast og et univers dedikeret til at udforske veje til mere velvære. Et sted med inspiration, nysgerrighed og perspektiv. Vi dykker ned i de ting der betyder noget, for at have det godt i en moderne travl hverdag.</p>
     </div>
 
     <div class="text2">
-      <p>Byhaven er en oase i hjertet af det travle København. Hver sommer genåbner vi Byhaven fra april-september. Her kan du nyde Byhaven fra kl 15 til sent – og der er altid fri entré.</p>
+      <p>Indblik i personlige historier, erfaringer, viden og praktiske indsigter du kan implementere, samt en påmindelse om at din velvære er unik for dig. Her er plads til både det gode og det svære - intet pres om perfektion.</p>
     </div>
-
-    <Knap text="LÆS MERE" href="/omos" variant="default" />
   </section>
 
   <section class="citat">
-    <div class="citat">
+    <div class="citat-content">
       <h2>“Busy Being Well er en podcast og et univers dedikeret til at udforske veje til mere velvære. Et sted med inspiration, nysgerrighed og perspektiv. Vi dykker ned i de ting der betyder noget, for at have det godt i en moderne travl hverdag.”</h2>
+    </div>
+
+    <div class="knap-wrapper">
+      <Knap text="LÆS MERE" href="/omos" variant="default" />
+    </div>
+  </section>
+
+  <section class="podcast-section">
+    <h2 class="podcast-heading">Podcasts</h2>
+
+    <div class="podcast-content">
+      <!-- Her kan dine API-cards komme ind senere -->
+    </div>
+
+    <div class="instagram-header">
+      <h2 class="instagram-heading">Følg med på Instagram</h2>
+    </div>
+  </section>
+
+  <section class="instagram-section">
+    <div class="instagram-content">
+      <img src="insta_billede1.png" alt="insta billede 1" />
+      <img src="insta_billede2.png" alt="insta billede 2" />
+      <img src="insta_billede3.png" alt="insta billede 3" />
+    </div>
+  </section>
+
+  <section class="shop-section">
+    <h2>Bliv en del af familien</h2>
+
+    <div class="shop-content">
+      <!-- Her kan dine API-cards komme ind senere -->
     </div>
   </section>
 </ForsideLayout>
@@ -43,53 +77,194 @@ const key = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZi
       gap: 3rem;
       margin-bottom: 3rem;
     }
+  }
+  .image img {
+    width: 100%;
+    height: auto;
+  }
+  .mobile-only {
+    display: none;
+  }
 
-    .image img {
-      width: 100%;
-      height: auto;
-    }
-    .mobile-only {
-      display: none;
-    }
+  .desktop-only {
+    display: block;
+  }
 
-    .desktop-only {
-      display: block;
-    }
+  /* om mig  */
+  .text1 .ommig {
+    margin-bottom: 0;
+  }
 
-    /* om mig  */
-    .text1 .ommig {
-      margin-bottom: 0;
-    }
+  .text1 {
+    grid-column: 2;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
 
-    .text1 {
-      grid-column: 2;
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
+  .text2 {
+    grid-column: 3;
+  }
 
-    .text2 {
-      grid-column: 3;
-    }
+  .ommig p {
+    padding-bottom: 0;
+  }
 
-    .ommig p {
-      padding-bottom: 0;
-    }
+  .ommig .image {
+    grid-column: 1;
+    margin-left: -1rem;
+  }
 
+  @media (min-width: 600px) {
     .ommig .image {
-      grid-column: 1;
+      margin-left: -2rem;
     }
   }
+
   /* citat  */
-  .citat {
-    margin-top: 3rem;
+  .citat h2 {
+    margin-top: 5rem;
     color: var(--citat);
   }
+
   @media (min-width: 900px) {
     .citat {
-      margin-left: 5%;
-      margin-right: 5%;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 3rem;
+    }
+
+    .citat-content {
+      grid-column: 1 / 3;
+    }
+  }
+
+  /* knap  */
+  .knap-wrapper {
+    grid-column: 3;
+    justify-self: end;
+    align-self: end;
+  }
+
+  /* Podcast sectionen  */
+  .podcast-section {
+    background-color: var(--cream_test);
+    min-height: 50rem;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: start;
+    margin-top: 3rem;
+    margin-left: -1rem;
+    margin-right: -1rem;
+  }
+
+  .podcast-heading {
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    color: var(--black);
+    margin: 0;
+    text-transform: uppercase;
+  }
+
+  .podcast-content {
+    min-height: 12rem;
+  }
+
+  @media (min-width: 600px) {
+    .podcast-section {
+      margin-left: -2rem;
+      margin-right: -2rem;
+      padding-left: 2rem;
+      padding-right: 2rem;
+    }
+  }
+
+  @media (min-width: 900px) {
+    .podcast-section {
+      padding-top: 4rem;
+      grid-template-columns: 2rem 1fr;
+    }
+  }
+  /* instagram header  */
+  .instagram-header {
+    grid-column: 1 / -1;
+  }
+
+  .instagram-heading {
+    color: var(--black);
+    margin-top: 30rem;
+    text-transform: uppercase;
+  }
+
+  /* instagram billeder */
+  .instagram-section {
+    margin-left: -1rem;
+    margin-right: -1rem;
+  }
+
+  .instagram-content {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .instagram-content img {
+    width: 100%;
+    height: 40rem;
+    object-fit: cover;
+    display: block;
+  }
+
+  @media (min-width: 600px) {
+    .instagram-section {
+      margin-left: -2rem;
+      margin-right: -2rem;
+    }
+  }
+
+  @media (min-width: 900px) {
+    .instagram-content {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  /* shop sectionen  */
+  .shop-section {
+    background-color: var(--burned_orange);
+    min-height: 30rem;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: center;
+    margin-left: -1rem;
+    margin-right: -1rem;
+  }
+
+  .shop-section h2 {
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    color: var(--cream);
+    margin: 0;
+    text-transform: uppercase;
+  }
+
+  .shop-content {
+    min-height: 12rem;
+  }
+
+  @media (min-width: 600px) {
+    .shop-section {
+      margin-left: -2rem;
+      margin-right: -2rem;
+      padding-left: 2rem;
+      padding-right: 2rem;
+    }
+  }
+
+  @media (min-width: 900px) {
+    .shop-section {
+      padding-top: 4rem;
+      padding-bottom: 4rem;
+      grid-template-columns: 2rem 1fr;
     }
   }
 </style>
