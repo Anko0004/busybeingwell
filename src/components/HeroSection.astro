@@ -39,11 +39,16 @@
     color: var(--cream);
     padding: 0 1rem;
   }
-
   .hero-text h1 {
     color: var(--cream);
-    font-size: clamp(2rem, 15vw, 6rem);
+    font-size: 2.9rem;
     font-weight: 150;
     margin: 0;
+  }
+
+  @media (min-width: 600px) {
+    .hero-text h1 {
+      font-size: clamp(3rem, 10vw, 6rem);
+    }
   }
 </style>

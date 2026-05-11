@@ -1,0 +1,25 @@
+---
+import Layout from "../layouts/Layout.astro";
+import H2 from "../components/H2.astro";
+---
+
+<Layout navVariant="light" pageColor="orange">
+    <section class="shop-hero">
+        <H2 title="Shop vores merch" />
+
+        <p>Find produkter skabt med omtanke for velvære, hverdagsrutiner og små øjeblikke af ro.</p>
+    </section>
+</Layout>
+
+<style>
+    .shop-hero :global(h2),
+    .shop-hero p {
+        color: var(--cream);
+    }
+
+    .shop-hero p {
+        max-width: 620px;
+        margin-top: 1rem;
+        line-height: 1.5;
+    }
+</style>
