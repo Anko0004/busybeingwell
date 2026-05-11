@@ -21,11 +21,11 @@ const key = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZi
         <h4>Stifter af BBW</h4>
       </div>
 
-      <p>Busy Being Well er en podcast og et univers dedikeret til at udforske veje til mere velvære. Et sted med inspiration, nysgerrighed og perspektiv. Vi dykker ned i de ting der betyder noget, for at have det godt i en moderne travl hverdag.</p>
+      <p>Busy Being Well er skabt af Cilia Trappaud som et personligt univers med fokus på velvære, refleksion og moderne hverdagsliv. Gennem podcasten inviteres du ind i ærlige samtaler, inspirerende perspektiver og historier, der giver plads til både nysgerrighed, nærvær og eftertanke.</p>
     </div>
 
     <div class="text2">
-      <p>Indblik i personlige historier, erfaringer, viden og praktiske indsigter du kan implementere, samt en påmindelse om at din velvære er unik for dig. Her er plads til både det gode og det svære - intet pres om perfektion.</p>
+      <p>Her møder du mennesker, erfaringer og små indsigter, du kan tage med dig videre i din egen hverdag. Et univers der minder om, at velvære ser forskelligt ud for alle — og at der ikke findes én rigtig måde at have det godt på. Med plads til både det inspirerende, det ærlige og alt det midt imellem.</p>
     </div>
   </section>
 
@@ -43,7 +43,14 @@ const key = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZi
     <h2 class="podcast-heading">Podcasts</h2>
 
     <div class="podcast-content">
-      <!-- Her kan dine API-cards komme ind senere -->
+      <img src="podcast1.png" alt="podcast billede 1" />
+      <img src="podcast2.png" alt="podcast billede 2" />
+      <img src="podcast3.png" alt="podcast billede 3" />
+      <img src="podcast4.png" alt="podcast billede 4" />
+    </div>
+
+    <div class="podcast-knap-wrapper">
+      <Knap text="SE ALLE PODCASTS" href="/podcasts" variant="default" />
     </div>
 
     <div class="instagram-header">
@@ -74,8 +81,12 @@ const key = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZi
       display: grid;
       grid-template-columns: 1fr 1fr 1fr;
       align-items: end;
-      gap: 3rem;
+      gap: 2rem;
       margin-bottom: 3rem;
+    }
+
+    .text2 {
+      margin-top: 0;
     }
   }
   .image img {
@@ -105,58 +116,90 @@ const key = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZi
 
   .text2 {
     grid-column: 3;
+    margin-top: 1rem;
   }
 
+  .text1,
+  .text2 {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
   .ommig p {
     padding-bottom: 0;
   }
 
   .ommig .image {
     grid-column: 1;
-    margin-left: -1rem;
+    width: 85%;
+    margin-left: -2rem;
+    margin-bottom: 0.7rem;
+  }
+
+  .knap-wrapper {
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 0.4rem;
   }
 
   @media (min-width: 600px) {
     .ommig .image {
+      width: 100%;
       margin-left: -2rem;
     }
   }
 
-  /* citat  */
+  .citat {
+    margin-top: 2rem;
+    margin-bottom: 3rem;
+    align-self: end;
+  }
+
   .citat h2 {
-    margin-top: 5rem;
     color: var(--citat);
+    margin: 0 0 0 0.5rem;
+    font-size: 1.5rem;
   }
 
   @media (min-width: 900px) {
     .citat {
       display: grid;
       grid-template-columns: 1fr 1fr 1fr;
-      gap: 3rem;
+      gap: 2rem;
+      align-items: end;
+      margin-top: 5rem;
+      margin-bottom: 3rem;
     }
 
     .citat-content {
       grid-column: 1 / 3;
     }
-  }
 
-  /* knap  */
-  .knap-wrapper {
-    grid-column: 3;
-    justify-self: end;
-    align-self: end;
+    .citat h2 {
+      margin: 0;
+    }
+
+    .knap-wrapper {
+      display: block;
+      grid-column: 3;
+      justify-self: end;
+      align-self: end;
+      margin-bottom: 0.15rem;
+      margin-right: 1.5rem;
+    }
   }
 
   /* Podcast sectionen  */
   .podcast-section {
     background-color: var(--cream_test);
-    min-height: 50rem;
-    display: grid;
-    grid-template-columns: auto 1fr;
-    align-items: start;
     margin-top: 3rem;
-    margin-left: -1rem;
-    margin-right: -1rem;
+    margin-left: -1.5rem;
+    margin-right: -1.5rem;
+    padding: 4rem 1.5rem;
+    display: grid;
+    grid-template-columns: 2rem 1fr;
+    column-gap: 2rem;
+    row-gap: 3rem;
+    overflow-x: hidden;
   }
 
   .podcast-heading {
@@ -165,10 +208,24 @@ const key = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZi
     color: var(--black);
     margin: 0;
     text-transform: uppercase;
+    align-self: start;
   }
 
   .podcast-content {
-    min-height: 12rem;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .podcast-content img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  .podcast-knap-wrapper {
+    grid-column: 2;
+    justify-self: end;
+    align-self: start;
   }
 
   @media (min-width: 600px) {
@@ -181,11 +238,31 @@ const key = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZi
   }
 
   @media (min-width: 900px) {
-    .podcast-section {
-      padding-top: 4rem;
-      grid-template-columns: 2rem 1fr;
+    .podcast-content {
+      grid-column: 2;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+    }
+    .podcast-knap-wrapper {
+      grid-column: 2;
+      grid-row: 2;
+      justify-self: end;
+      align-self: start;
+      margin-top: 6rem;
+    }
+
+    .instagram-header {
+      grid-column: 1 / 4;
+      grid-row: 2;
+      align-self: start;
+      margin-top: 6rem;
+    }
+
+    .instagram-heading {
+      margin: 0;
     }
   }
+
   /* instagram header  */
   .instagram-header {
     grid-column: 1 / -1;
@@ -193,14 +270,14 @@ const key = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZi
 
   .instagram-heading {
     color: var(--black);
-    margin-top: 30rem;
     text-transform: uppercase;
+    margin: 0;
   }
 
   /* instagram billeder */
   .instagram-section {
-    margin-left: -1rem;
-    margin-right: -1rem;
+    margin-left: -1.5rem;
+    margin-right: -1.5rem;
   }
 
   .instagram-content {
@@ -210,7 +287,7 @@ const key = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZi
 
   .instagram-content img {
     width: 100%;
-    height: 40rem;
+    height: 30rem;
     object-fit: cover;
     display: block;
   }
@@ -226,6 +303,25 @@ const key = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZi
     .instagram-content {
       grid-template-columns: repeat(3, 1fr);
     }
+
+    .podcast-knap-wrapper {
+      grid-column: 2;
+      grid-row: 2;
+      justify-self: end;
+      align-self: start;
+      margin-top: 6rem;
+    }
+
+    .instagram-header {
+      grid-column: 1/4;
+      grid-row: 2;
+      align-self: start;
+      margin-top: 6rem;
+    }
+
+    .instagram-heading {
+      margin: 0;
+    }
   }
 
   /* shop sectionen  */
@@ -233,10 +329,11 @@ const key = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZi
     background-color: var(--burned_orange);
     min-height: 30rem;
     display: grid;
-    grid-template-columns: auto 1fr;
-    align-items: center;
-    margin-left: -1rem;
-    margin-right: -1rem;
+    grid-template-columns: 2rem 1fr;
+    align-items: start;
+    margin-left: -1.5rem;
+    margin-right: -1.5rem;
+    padding: 4rem 1.5rem;
   }
 
   .shop-section h2 {
@@ -245,6 +342,7 @@ const key = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZi
     color: var(--cream);
     margin: 0;
     text-transform: uppercase;
+    align-self: start;
   }
 
   .shop-content {
@@ -262,6 +360,7 @@ const key = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZi
 
   @media (min-width: 900px) {
     .shop-section {
+      column-gap: 2rem;
       padding-top: 4rem;
       padding-bottom: 4rem;
       grid-template-columns: 2rem 1fr;
