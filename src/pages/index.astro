@@ -60,9 +60,25 @@ const key = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZi
 
   <section class="instagram-section">
     <div class="instagram-content">
-      <img src="insta_billede1.png" alt="insta billede 1" />
-      <img src="insta_billede2.png" alt="insta billede 2" />
-      <img src="insta_billede3.png" alt="insta billede 3" />
+      <a class="instagram-card" href="https://www.instagram.com/" target="_blank">
+        <img src="insta_billede1.png" alt="insta billede 1" />
+        <span>GÅ TIL INSTAGRAM</span>
+      </a>
+
+      <a class="instagram-card" href="https://www.instagram.com/" target="_blank">
+        <img src="insta_billede2.png" alt="insta billede 2" />
+        <span>GÅ TIL INSTAGRAM</span>
+      </a>
+
+      <a class="instagram-card" href="https://www.instagram.com/" target="_blank">
+        <img src="insta_billede3.png" alt="insta billede 3" />
+        <span>GÅ TIL INSTAGRAM</span>
+      </a>
+
+      <a class="instagram-card" href="https://www.instagram.com/" target="_blank">
+        <img src="insta_billede4.png" alt="insta billede 3" />
+        <span>GÅ TIL INSTAGRAM</span>
+      </a>
     </div>
   </section>
 
@@ -76,32 +92,12 @@ const key = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZi
 </ForsideLayout>
 
 <style>
-  @media (min-width: 900px) {
-    .section {
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      align-items: end;
-      gap: 2rem;
-      margin-bottom: 3rem;
-    }
-
-    .text2 {
-      margin-top: 0;
-    }
-  }
   .image img {
     width: 100%;
     height: auto;
   }
-  .mobile-only {
-    display: none;
-  }
 
-  .desktop-only {
-    display: block;
-  }
-
-  /* om mig  */
+  /* om mig */
   .text1 .ommig {
     margin-bottom: 0;
   }
@@ -124,6 +120,7 @@ const key = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZi
     padding-left: 1rem;
     padding-right: 1rem;
   }
+
   .ommig p {
     padding-bottom: 0;
   }
@@ -132,13 +129,6 @@ const key = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZi
     grid-column: 1;
     width: 85%;
     margin-left: -2rem;
-    margin-bottom: 0.7rem;
-  }
-
-  .knap-wrapper {
-    display: flex;
-    justify-content: flex-end;
-    margin-right: 0.4rem;
   }
 
   @media (min-width: 600px) {
@@ -148,6 +138,39 @@ const key = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZi
     }
   }
 
+  @media (min-width: 900px) {
+    .section {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      align-items: end;
+      gap: 2rem;
+      margin-bottom: 3rem;
+    }
+
+    .text2 {
+      margin-top: 0;
+    }
+  }
+
+  /* knap */
+  .knap-wrapper {
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 0.4rem;
+  }
+
+  @media (min-width: 900px) {
+    .knap-wrapper {
+      display: block;
+      grid-column: 3;
+      justify-self: end;
+      align-self: end;
+      margin-bottom: 0.15rem;
+      margin-right: 1.5rem;
+    }
+  }
+
+  /* citat */
   .citat {
     margin-top: 2rem;
     margin-bottom: 3rem;
@@ -166,8 +189,8 @@ const key = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZi
       grid-template-columns: 1fr 1fr 1fr;
       gap: 2rem;
       align-items: end;
-      margin-top: 5rem;
-      margin-bottom: 3rem;
+      margin-top: 7rem;
+      margin-bottom: 8rem;
     }
 
     .citat-content {
@@ -177,29 +200,28 @@ const key = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZi
     .citat h2 {
       margin: 0;
     }
-
-    .knap-wrapper {
-      display: block;
-      grid-column: 3;
-      justify-self: end;
-      align-self: end;
-      margin-bottom: 0.15rem;
-      margin-right: 1.5rem;
-    }
   }
 
-  /* Podcast sectionen  */
+  /* podcast sectionen */
   .podcast-section {
     background-color: var(--cream_test);
     margin-top: 3rem;
-    margin-left: -1.5rem;
-    margin-right: -1.5rem;
-    padding: 4rem 1.5rem;
+    margin-left: -1rem;
+    margin-right: -1rem;
+    padding: 2rem 1rem;
     display: grid;
     grid-template-columns: 2rem 1fr;
     column-gap: 2rem;
-    row-gap: 3rem;
     overflow-x: hidden;
+  }
+
+  @media (min-width: 600px) {
+    .podcast-section {
+      margin-left: -2rem;
+      margin-right: -2rem;
+      padding-left: 2rem;
+      padding-right: 2rem;
+    }
   }
 
   .podcast-heading {
@@ -222,19 +244,11 @@ const key = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZi
     height: auto;
     display: block;
   }
+
   .podcast-knap-wrapper {
     grid-column: 2;
     justify-self: end;
     align-self: start;
-  }
-
-  @media (min-width: 600px) {
-    .podcast-section {
-      margin-left: -2rem;
-      margin-right: -2rem;
-      padding-left: 2rem;
-      padding-right: 2rem;
-    }
   }
 
   @media (min-width: 900px) {
@@ -243,29 +257,18 @@ const key = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZi
       grid-template-columns: repeat(4, 1fr);
       gap: 1.5rem;
     }
+
     .podcast-knap-wrapper {
-      grid-column: 2;
       grid-row: 2;
-      justify-self: end;
-      align-self: start;
-      margin-top: 6rem;
-    }
-
-    .instagram-header {
-      grid-column: 1 / 4;
-      grid-row: 2;
-      align-self: start;
-      margin-top: 6rem;
-    }
-
-    .instagram-heading {
-      margin: 0;
+      margin-top: 2rem;
+      margin-bottom: 6rem;
     }
   }
 
-  /* instagram header  */
+  /* instagram header */
   .instagram-header {
     grid-column: 1 / -1;
+    margin-top: 6rem;
   }
 
   .instagram-heading {
@@ -276,8 +279,8 @@ const key = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZi
 
   /* instagram billeder */
   .instagram-section {
-    margin-left: -1.5rem;
-    margin-right: -1.5rem;
+    margin-left: -1rem;
+    margin-right: -1rem;
   }
 
   .instagram-content {
@@ -285,11 +288,37 @@ const key = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZi
     grid-template-columns: 1fr;
   }
 
-  .instagram-content img {
+  .instagram-card {
+    position: relative;
+    display: block;
+    overflow: hidden;
+  }
+
+  .instagram-card img {
     width: 100%;
     height: 30rem;
     object-fit: cover;
     display: block;
+    filter: brightness(65%);
+    transition: filter 0.3s ease;
+  }
+
+  .instagram-card span {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: var(--white);
+    font-family: "Unica", sans-serif;
+    font-size: 1rem;
+    text-transform: uppercase;
+    text-decoration: underline;
+    z-index: 2;
+    pointer-events: none;
+  }
+
+  .instagram-card:hover img {
+    filter: brightness(100%);
   }
 
   @media (min-width: 600px) {
@@ -301,33 +330,14 @@ const key = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZi
 
   @media (min-width: 900px) {
     .instagram-content {
-      grid-template-columns: repeat(3, 1fr);
-    }
-
-    .podcast-knap-wrapper {
-      grid-column: 2;
-      grid-row: 2;
-      justify-self: end;
-      align-self: start;
-      margin-top: 6rem;
-    }
-
-    .instagram-header {
-      grid-column: 1/4;
-      grid-row: 2;
-      align-self: start;
-      margin-top: 6rem;
-    }
-
-    .instagram-heading {
-      margin: 0;
+      grid-template-columns: repeat(4, 1fr);
     }
   }
 
-  /* shop sectionen  */
+  /* shop sectionen */
   .shop-section {
     background-color: var(--burned_orange);
-    min-height: 30rem;
+    min-height: 60rem;
     display: grid;
     grid-template-columns: 2rem 1fr;
     align-items: start;
@@ -361,9 +371,6 @@ const key = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZi
   @media (min-width: 900px) {
     .shop-section {
       column-gap: 2rem;
-      padding-top: 4rem;
-      padding-bottom: 4rem;
-      grid-template-columns: 2rem 1fr;
     }
   }
 </style>
