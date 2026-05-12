@@ -1,0 +1,137 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout>
+  <section class="section ommig">
+    <div class="image">
+      <img src="ommig_billede1.png" alt="Cilia laver mad" />
+    </div>
+
+    <div class="text1">
+      <div class="overskrifter">
+        <h2 class="ommig">Mød Cilia Trappaud</h2>
+        <h4>Stifter af BBW</h4>
+      </div>
+
+      <p>Busy Being Well er skabt af Cilia Trappaud som et personligt univers med fokus på velvære, refleksion og moderne hverdagsliv. Gennem podcasten inviteres du ind i ærlige samtaler, inspirerende perspektiver og historier, der giver plads til både nysgerrighed, nærvær og eftertanke.</p>
+    </div>
+
+    <div class="text2">
+      <p>Her møder du mennesker, erfaringer og små indsigter, du kan tage med dig videre i din egen hverdag. Et univers der minder om, at velvære ser forskelligt ud for alle — og at der ikke findes én rigtig måde at have det godt på. Med plads til både det inspirerende, det ærlige og alt det midt imellem.</p>
+    </div>
+  </section>
+
+  <section class="image-row">
+    <img src="/ommig_billede2.png" alt="Cilia sidder på gulvet" />
+    <img src="/ommig_billede3.png" alt="Cilia strækker ryggen" />
+  </section>
+</Layout>
+
+<style>
+  .image img {
+    width: 100%;
+    height: auto;
+  }
+
+  /* om mig - mobil */
+  .section.ommig {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .text1 {
+    order: 1;
+    padding-top: 1rem;
+    padding-right: 0;
+    padding-bottom: 2rem;
+    padding-left: 0;
+  }
+
+  .text1 .ommig {
+    margin-bottom: 0;
+  }
+
+  .text2 {
+    order: 3;
+    padding-top: 1.5rem;
+    padding-right: 0;
+    padding-bottom: 2rem;
+    padding-left: 0;
+  }
+
+  .ommig p {
+    padding-bottom: 0;
+  }
+
+  .ommig .image {
+    order: 2;
+    width: auto;
+    margin-left: -1.5rem;
+    margin-right: -1.5rem;
+  }
+
+  @media (min-width: 900px) {
+    .section.ommig {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      align-items: end;
+      gap: 2rem;
+      margin-bottom: 3rem;
+      margin-right: -2rem;
+      margin-left: -1rem;
+    }
+
+    .ommig .image {
+      grid-column: 3;
+      grid-row: 1;
+      width: 100%;
+      margin-left: 0;
+      margin-right: -2rem;
+    }
+
+    .text1 {
+      grid-column: 1;
+      grid-row: 1;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 0 1rem;
+    }
+
+    .text2 {
+      grid-column: 2;
+      grid-row: 1;
+      padding: 0 1rem;
+      margin-top: 0;
+      align-self: end;
+    }
+  }
+
+  /* billede-række - mobil */
+  .image-row {
+    margin-left: -1.5rem;
+    margin-right: -1.5rem;
+  }
+
+  .image-row img {
+    height: auto;
+  }
+
+  /* billede-række - desktop */
+  @media (min-width: 900px) {
+    .image-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      margin-left: -2rem;
+      margin-right: -2rem;
+      margin-bottom: 5rem;
+    }
+
+    .image-row img {
+      height: 34rem;
+      object-fit: cover;
+    }
+  }
+</style>
