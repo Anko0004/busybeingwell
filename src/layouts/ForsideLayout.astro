@@ -19,9 +19,9 @@ import HeroSection from "../components/HeroSection.astro";
   </head>
 
   <body>
-    <header>
-      <HeroSection />
+    <header class="site-header">
       <Navigation variant="light" />
+      <HeroSection />
     </header>
 
     <div class="slot_container">
@@ -53,6 +53,10 @@ import HeroSection from "../components/HeroSection.astro";
         margin-right: 2rem;
         margin-bottom: 5rem;
       }
+    }
+
+    .site-header {
+      position: relative;
     }
   </style>
 </html>

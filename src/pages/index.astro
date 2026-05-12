@@ -46,39 +46,10 @@ const key = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZi
       <img src="podcast1.png" alt="podcast billede 1" />
       <img src="podcast2.png" alt="podcast billede 2" />
       <img src="podcast3.png" alt="podcast billede 3" />
-      <img src="podcast4.png" alt="podcast billede 4" />
     </div>
 
     <div class="podcast-knap-wrapper">
       <Knap text="SE ALLE PODCASTS" href="/podcasts" variant="default" />
-    </div>
-
-    <div class="instagram-header">
-      <h2 class="instagram-heading">Følg med på Instagram</h2>
-    </div>
-  </section>
-
-  <section class="instagram-section">
-    <div class="instagram-content">
-      <a class="instagram-card" href="https://www.instagram.com/" target="_blank">
-        <img src="insta_billede1.png" alt="insta billede 1" />
-        <span>GÅ TIL INSTAGRAM</span>
-      </a>
-
-      <a class="instagram-card" href="https://www.instagram.com/" target="_blank">
-        <img src="insta_billede2.png" alt="insta billede 2" />
-        <span>GÅ TIL INSTAGRAM</span>
-      </a>
-
-      <a class="instagram-card" href="https://www.instagram.com/" target="_blank">
-        <img src="insta_billede3.png" alt="insta billede 3" />
-        <span>GÅ TIL INSTAGRAM</span>
-      </a>
-
-      <a class="instagram-card" href="https://www.instagram.com/" target="_blank">
-        <img src="insta_billede4.png" alt="insta billede 3" />
-        <span>GÅ TIL INSTAGRAM</span>
-      </a>
     </div>
   </section>
 
@@ -87,6 +58,44 @@ const key = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZi
 
     <div class="shop-content">
       <!-- Her kan dine API-cards komme ind senere -->
+    </div>
+
+    <div class="shop-knap-wrapper">
+      <Knap text="GÅ TIL SHOP" href="/shop" variant="light" />
+    </div>
+  </section>
+
+  <section class="instagram-section">
+    <div class="instagram-header">
+      <h2 class="instagram-heading">Gå til Instagram</h2>
+    </div>
+
+    <div class="instagram-layout">
+      <p class="instagram-side-text">For inspiration, anbefalinger</p>
+
+      <div class="instagram-content">
+        <a class="instagram-card" href="https://www.instagram.com/" target="_blank">
+          <img src="insta_billede1.png" alt="insta billede 1" />
+          <span>Hvilke vitaminpiller tager jeg?</span>
+        </a>
+
+        <a class="instagram-card" href="https://www.instagram.com/" target="_blank">
+          <img src="insta_billede2.png" alt="insta billede 2" />
+          <span>Min hudpleje rutine</span>
+        </a>
+
+        <a class="instagram-card" href="https://www.instagram.com/" target="_blank">
+          <img src="insta_billede3.png" alt="insta billede 3" />
+          <span>Mit ugentlige indkøb</span>
+        </a>
+
+        <a class="instagram-card" href="https://www.instagram.com/" target="_blank">
+          <img src="insta_billede4.png" alt="insta billede 4" />
+          <span>Opskrift på aftensmad</span>
+        </a>
+      </div>
+
+      <p class="instagram-side-text">og mine velvære rutiner</p>
     </div>
   </section>
 </ForsideLayout>
@@ -97,28 +106,30 @@ const key = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZi
     height: auto;
   }
 
-  /* om mig */
+  /* om mig - mobil */
+  .section.ommig {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .text1 {
+    order: 1;
+    padding-top: 1rem;
+    padding-right: 0;
+    padding-bottom: 2rem;
+    padding-left: 0;
+  }
+
   .text1 .ommig {
     margin-bottom: 0;
   }
 
-  .text1 {
-    grid-column: 2;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-  }
-
   .text2 {
-    grid-column: 3;
-    margin-top: 1rem;
-  }
-
-  .text1,
-  .text2 {
-    padding-left: 1rem;
-    padding-right: 1rem;
+    order: 3;
+    padding-top: 1.5rem;
+    padding-right: 0;
+    padding-bottom: 2rem;
+    padding-left: 0;
   }
 
   .ommig p {
@@ -126,30 +137,10 @@ const key = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZi
   }
 
   .ommig .image {
-    grid-column: 1;
-    width: 85%;
-    margin-left: -2rem;
-  }
-
-  @media (min-width: 600px) {
-    .ommig .image {
-      width: 100%;
-      margin-left: -2rem;
-    }
-  }
-
-  @media (min-width: 900px) {
-    .section {
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      align-items: end;
-      gap: 2rem;
-      margin-bottom: 3rem;
-    }
-
-    .text2 {
-      margin-top: 0;
-    }
+    order: 2;
+    width: auto;
+    margin-left: -1.5rem;
+    margin-right: -1.5rem;
   }
 
   /* knap */
@@ -157,22 +148,13 @@ const key = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZi
     display: flex;
     justify-content: flex-end;
     margin-right: 0.4rem;
-  }
-
-  @media (min-width: 900px) {
-    .knap-wrapper {
-      display: block;
-      grid-column: 3;
-      justify-self: end;
-      align-self: end;
-      margin-bottom: 0.15rem;
-      margin-right: 1.5rem;
-    }
-  }
-
-  /* citat */
-  .citat {
     margin-top: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  /* citat - mobil */
+  .citat {
+    margin-top: 1rem;
     margin-bottom: 3rem;
     align-self: end;
   }
@@ -183,14 +165,72 @@ const key = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZi
     font-size: 1.5rem;
   }
 
+  @media (min-width: 600px) {
+    .ommig .image {
+      margin-left: -2rem;
+      margin-right: -2rem;
+    }
+  }
+
   @media (min-width: 900px) {
+    /* om mig - desktop */
+    .section.ommig {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      align-items: end;
+      gap: 2rem;
+      margin-bottom: 3rem;
+    }
+
+    .text1 {
+      order: initial;
+      grid-column: 2;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding-left: 1rem;
+      padding-right: 1rem;
+      padding-top: 0;
+      padding-bottom: 0;
+    }
+
+    .text2 {
+      order: initial;
+      grid-column: 3;
+      padding-left: 1rem;
+      padding-right: 1rem;
+      padding-top: 0;
+      padding-bottom: 0;
+      margin-top: 0;
+    }
+
+    .ommig .image {
+      order: initial;
+      grid-column: 1;
+      width: 100%;
+      margin-left: -2rem;
+      margin-right: 0;
+    }
+
+    /* knap - desktop */
+    .knap-wrapper {
+      display: block;
+      grid-column: 3;
+      justify-self: end;
+      align-self: end;
+      margin-bottom: 0.15rem;
+      margin-right: 1.5rem;
+    }
+
+    /* citat - desktop */
     .citat {
       display: grid;
       grid-template-columns: 1fr 1fr 1fr;
       gap: 2rem;
       align-items: end;
-      margin-top: 7rem;
-      margin-bottom: 8rem;
+      margin-top: 5rem;
+      margin-bottom: 5rem;
     }
 
     .citat-content {
@@ -206,8 +246,8 @@ const key = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZi
   .podcast-section {
     background-color: var(--cream_test);
     margin-top: 3rem;
-    margin-left: -1rem;
-    margin-right: -1rem;
+    margin-left: -1.5rem;
+    margin-right: -1.5rem;
     padding: 2rem 1rem;
     display: grid;
     grid-template-columns: 2rem 1fr;
@@ -236,13 +276,19 @@ const key = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZi
   .podcast-content {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 2rem;
+    gap: 1.5rem;
+    max-width: 42rem;
   }
 
   .podcast-content img {
     width: 100%;
-    height: auto;
+    height: 24rem;
+    object-fit: cover;
     display: block;
+  }
+
+  .podcast-content img:first-child {
+    object-position: center 18%;
   }
 
   .podcast-knap-wrapper {
@@ -256,81 +302,17 @@ const key = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZi
       grid-column: 2;
       grid-template-columns: repeat(4, 1fr);
       gap: 1.5rem;
+      max-width: none;
+    }
+
+    .podcast-content img:first-child {
+      grid-column: span 2;
     }
 
     .podcast-knap-wrapper {
       grid-row: 2;
       margin-top: 2rem;
       margin-bottom: 6rem;
-    }
-  }
-
-  /* instagram header */
-  .instagram-header {
-    grid-column: 1 / -1;
-    margin-top: 6rem;
-  }
-
-  .instagram-heading {
-    color: var(--black);
-    text-transform: uppercase;
-    margin: 0;
-  }
-
-  /* instagram billeder */
-  .instagram-section {
-    margin-left: -1rem;
-    margin-right: -1rem;
-  }
-
-  .instagram-content {
-    display: grid;
-    grid-template-columns: 1fr;
-  }
-
-  .instagram-card {
-    position: relative;
-    display: block;
-    overflow: hidden;
-  }
-
-  .instagram-card img {
-    width: 100%;
-    height: 30rem;
-    object-fit: cover;
-    display: block;
-    filter: brightness(65%);
-    transition: filter 0.3s ease;
-  }
-
-  .instagram-card span {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    color: var(--white);
-    font-family: "Unica", sans-serif;
-    font-size: 1rem;
-    text-transform: uppercase;
-    text-decoration: underline;
-    z-index: 2;
-    pointer-events: none;
-  }
-
-  .instagram-card:hover img {
-    filter: brightness(100%);
-  }
-
-  @media (min-width: 600px) {
-    .instagram-section {
-      margin-left: -2rem;
-      margin-right: -2rem;
-    }
-  }
-
-  @media (min-width: 900px) {
-    .instagram-content {
-      grid-template-columns: repeat(4, 1fr);
     }
   }
 
@@ -359,6 +341,13 @@ const key = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZi
     min-height: 12rem;
   }
 
+  .shop-knap-wrapper {
+    grid-column: 2;
+    justify-self: end;
+    align-self: end;
+    margin-top: 2rem;
+  }
+
   @media (min-width: 600px) {
     .shop-section {
       margin-left: -2rem;
@@ -371,6 +360,124 @@ const key = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZi
   @media (min-width: 900px) {
     .shop-section {
       column-gap: 2rem;
+    }
+  }
+
+  /* instagram section */
+  .instagram-section {
+    margin-left: -1.5rem;
+    margin-right: -1.5rem;
+  }
+
+  .instagram-header {
+    padding-top: 2rem;
+    padding-right: 1rem;
+    padding-bottom: 1.5rem;
+    padding-left: 1rem;
+  }
+
+  .instagram-heading {
+    color: var(--black);
+    margin: 0;
+  }
+
+  .instagram-layout {
+    display: block;
+  }
+
+  .instagram-side-text {
+    display: none;
+  }
+
+  .instagram-content {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .instagram-card {
+    position: relative;
+    display: block;
+    overflow: hidden;
+  }
+
+  .instagram-card img {
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+    display: block;
+    filter: brightness(87%);
+    transition: filter 0.3s ease;
+  }
+
+  .instagram-card span {
+    position: absolute;
+    left: 0.5rem;
+    right: 0.5rem;
+    bottom: 0.5rem;
+    color: var(--white);
+    font-family: "Unica", sans-serif;
+    font-size: 0.8rem;
+    font-weight: 300;
+    z-index: 2;
+    pointer-events: none;
+  }
+
+  .instagram-card:hover img {
+    filter: brightness(100%);
+  }
+
+  @media (min-width: 600px) {
+    .instagram-section {
+      margin-left: -2rem;
+      margin-right: -2rem;
+      padding-left: 2rem;
+      padding-right: 2rem;
+    }
+  }
+
+  @media (min-width: 900px) {
+    .instagram-section {
+      padding-top: 2rem;
+      padding-bottom: 6rem;
+    }
+
+    .instagram-header {
+      padding-left: 0;
+      padding-right: 0;
+    }
+
+    .instagram-layout {
+      display: grid;
+      grid-template-columns: 1fr minmax(28rem, 34rem) 1fr;
+      align-items: center;
+      gap: 3rem;
+    }
+
+    .instagram-content {
+      grid-column: 2;
+      max-width: 34rem;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .instagram-side-text {
+      display: block;
+      color: var(--citat);
+      margin: 0;
+      padding-bottom: 0;
+      align-self: center;
+    }
+
+    .instagram-side-text:first-child {
+      justify-self: start;
+    }
+
+    .instagram-side-text:last-child {
+      justify-self: end;
+    }
+
+    .instagram-card span {
+      font-size: 0.7rem;
     }
   }
 </style>
