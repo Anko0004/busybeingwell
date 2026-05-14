@@ -1,0 +1,218 @@
+<footer class="footer">
+  <div class="footer-inner">
+    <a class="footer-logo" href="/">busy being well</a>
+
+    <div class="footer-grid">
+      <div class="footer-box about">
+        <h3>OM OS</h3>
+        <p>Få inspiration til sæsonens grøntsager og små tips, der gør det nemmere at spise grønt.</p>
+      </div>
+
+      <div class="footer-box follow">
+        <h3>FØLG MED</h3>
+        <a href="https://www.instagram.com/busybeingwelll/" target="_blank" rel="noopener noreferrer">Instagram</a>
+        <a href="https://www.tiktok.com/@busybeingwelll" target="_blank" rel="noopener noreferrer">TikTok</a>
+        <a href="https://open.spotify.com/show/5r1ec3iXWGTemUGaLslGfo" target="_blank" rel="noopener noreferrer">Spotify</a>
+      </div>
+
+      <div class="footer-box contact">
+        <h3>KONTAKT</h3>
+        <a href="mailto:hello@busybeingwell.com">hello@busybeingwell.com</a>
+      </div>
+
+      <div class="footer-box newsletter">
+        <h3>TILMELD DIG VORES NYHEDSBREV</h3>
+        <p>Skriv dig op til vores nyhedsbrev og få lorem ipsum</p>
+
+        <form class="newsletter-form">
+          <label for="email" class="sr-only">E-mail</label>
+          <input id="email" type="email" placeholder="Skriv din e-mail her" />
+          <button type="submit">Tilmeld</button>
+        </form>
+      </div>
+    </div>
+
+    <p class="credits">
+      WEBSITE BY<br />
+      SOFIE UTKE & ANNA PRI
+    </p>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    background-color: var(--lysere_cream);
+    padding: 4rem 1.5rem 2rem;
+  }
+
+  .footer-inner {
+    display: flex;
+    flex-direction: column;
+    margin-left: 1rem;
+    margin-right: 1rem;
+  }
+
+  .footer-logo {
+    order: 1;
+    display: block;
+    width: fit-content;
+    margin: 0 auto 3rem;
+    font-family: "Serious Sans", sans-serif;
+    color: var(--black);
+    font-size: 2rem;
+    line-height: 1;
+    text-decoration: none;
+  }
+
+  .footer-grid {
+    order: 2;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 4rem;
+    row-gap: 2.5rem;
+  }
+
+  .footer-box h3 {
+    margin: 0 0 0.35rem;
+    font-family: "Unica", sans-serif;
+    color: var(--citat);
+    font-size: 0.75rem;
+    font-weight: 700;
+    line-height: 1.1rem;
+  }
+
+  .footer-box p,
+  .footer-box a {
+    display: block;
+    margin: 0;
+    padding: 0;
+    font-family: "Unica", sans-serif;
+    color: var(--citat);
+    font-size: 0.75rem;
+    font-weight: 300;
+    line-height: 1.15rem;
+    text-decoration: none;
+  }
+
+  .about {
+    grid-column: 1;
+  }
+
+  .follow {
+    grid-column: 2;
+    align-items: end;
+  }
+
+  .contact,
+  .newsletter {
+    grid-column: 1 / -1;
+  }
+
+  .newsletter-form {
+    display: flex;
+    align-items: stretch;
+    max-width: 18rem;
+    margin-top: 1rem;
+  }
+
+  .newsletter-form input {
+    width: 100%;
+    height: 2rem;
+    border: 1px solid var(--footer);
+    border-right: 0;
+    background-color: transparent;
+    padding: 0 0.75rem;
+    font-family: "Unica", sans-serif;
+    color: var(--black);
+    font-size: 0.75rem;
+  }
+
+  .newsletter-form input::placeholder {
+    color: var(--citat);
+  }
+
+  .newsletter-form button {
+    height: 2rem;
+    border: 1px solid var(--footer);
+    background-color: transparent;
+    padding: 0 0.8rem;
+    font-family: "Unica", sans-serif;
+    color: var(--citat);
+    font-size: 0.75rem;
+    font-weight: 300;
+    cursor: pointer;
+  }
+
+  .newsletter-form button:hover {
+    background-color: var(--footer);
+    color: var(--black);
+  }
+
+  .credits {
+    order: 3;
+    margin-top: 4rem;
+    padding: 0;
+    color: var(--citat);
+    font-size: 0.65rem;
+    line-height: 1rem;
+    text-align: right;
+  }
+
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+  }
+
+  @media (min-width: 900px) {
+    .footer {
+      padding: 5rem 2rem 4rem;
+    }
+
+    .footer-inner {
+      display: grid;
+      grid-template-columns: 1.35fr 1fr 0.7fr 1fr;
+      column-gap: 4rem;
+      align-items: start;
+    }
+
+    .footer-logo {
+      grid-column: 1;
+      grid-row: 2;
+      margin: 3rem 0 0;
+    }
+
+    .footer-grid {
+      display: contents;
+    }
+
+    .newsletter {
+      grid-column: 1;
+      grid-row: 1;
+    }
+
+    .about {
+      grid-column: 2;
+      grid-row: 1;
+    }
+
+    .follow {
+      grid-column: 3;
+      grid-row: 1;
+    }
+
+    .contact {
+      grid-column: 4;
+      grid-row: 1;
+    }
+
+    .credits {
+      grid-column: 4;
+      grid-row: 2;
+      align-self: end;
+      margin-top: 3rem;
+    }
+  }
+</style>
