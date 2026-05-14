@@ -26,6 +26,27 @@ import Layout from "../layouts/Layout.astro";
     <img src="/ommig_billede2.png" alt="Cilia sidder på gulvet" />
     <img src="/ommig_billede3.png" alt="Cilia strækker ryggen" />
   </section>
+
+  <section class="why-bbw">
+    <div class="why-heading">
+      <h2>Hvorfor har du startet<br />Busy Being Well?</h2>
+    </div>
+
+    <div class="why-quote">
+      <h2>“Busy Being Well er en podcast og et univers dedikeret til at udforske veje til mere velvære. Et sted med inspiration, nysgerrighed og perspektiv. Vi dykker ned i de ting der betyder noget, for at have det godt i en moderne travl hverdag.”</h2>
+    </div>
+
+    <div class="why-text">
+      <h3>Lorem ipsum</h3>
+      <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+
+      <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+    </div>
+
+    <div class="why-image">
+      <img src="/ommig_billede4.png" alt="Cilia danser foran et spejl" />
+    </div>
+  </section>
 </Layout>
 
 <style>
@@ -117,6 +138,7 @@ import Layout from "../layouts/Layout.astro";
 
   .image-row img {
     height: auto;
+    display: block;
   }
 
   /* billede-række - desktop */
@@ -131,6 +153,108 @@ import Layout from "../layouts/Layout.astro";
 
     .image-row img {
       height: 34rem;
+      object-fit: cover;
+    }
+  }
+
+  /* hvorfor BBW - mobil */
+  .why-bbw {
+    margin-top: 3rem;
+    margin-bottom: 4rem;
+  }
+
+  .why-heading {
+    margin-bottom: 2rem;
+  }
+
+  .why-heading h3 {
+    margin: 0;
+  }
+
+  .why-quote {
+    margin-bottom: 3rem;
+  }
+
+  .why-quote h2 {
+    color: var(--citat);
+    font-size: 1.45rem;
+    line-height: 2rem;
+    margin: 0;
+  }
+
+  .why-text {
+    margin-bottom: 2rem;
+  }
+
+  .why-text h3 {
+    margin-bottom: 0.5rem;
+  }
+
+  .why-image {
+    margin-left: -1.5rem;
+    margin-right: -1.5rem;
+  }
+
+  .why-image img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  /* hvorfor BBW - desktop */
+  @media (min-width: 900px) {
+    .why-bbw {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 2rem;
+      align-items: start;
+      margin-top: 4rem;
+      margin-bottom: 8rem;
+    }
+
+    .why-heading {
+      grid-column: 1 / 3;
+      grid-row: 1;
+      margin-bottom: 1.5rem;
+    }
+
+    .why-quote {
+      grid-column: 1 / 3;
+      grid-row: 2 / 4;
+      margin-bottom: 0;
+      padding-right: 1rem;
+    }
+
+    .why-quote h2 {
+      color: var(--citat);
+      font-size: 1.5rem;
+      line-height: 2.55rem;
+      margin: 0;
+    }
+
+    .why-text {
+      grid-column: 3;
+      grid-row: 2;
+      margin-bottom: 2rem;
+      padding-right: 1rem;
+    }
+
+    .why-text h3 {
+      margin-bottom: 0.5rem;
+      margin-top: 0;
+    }
+
+    .why-image {
+      grid-column: 3;
+      grid-row: 3;
+      margin-left: 0;
+      margin-right: -2rem;
+    }
+
+    .why-image img {
+      display: block;
+      width: 100%;
+      height: auto;
       object-fit: cover;
     }
   }
