@@ -26,9 +26,7 @@ import "../style/global.css";
       <slot />
     </main>
 
-    <footer>
-      <Footer />
-    </footer>
+    <Footer variant={Astro.props.footerVariant} />
   </body>
 
   <style>
@@ -45,7 +43,7 @@ import "../style/global.css";
 
     .slot_container {
       flex: 1;
-      padding-top: 7rem;
+      padding-top: 6rem;
       margin-left: 1.5rem;
       margin-right: 1.5rem;
       margin-bottom: 0rem;

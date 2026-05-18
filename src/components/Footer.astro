@@ -1,4 +1,8 @@
-<footer class="footer">
+---
+const { variant = "default" } = Astro.props;
+---
+
+<footer class={`footer ${variant === "orange" ? "footer-orange" : ""}`}>
   <div class="footer-inner">
     <a class="footer-logo" href="/">busy being well</a>
 
@@ -43,6 +47,34 @@
   .footer {
     background-color: var(--lysere_cream);
     padding: 4rem 1.5rem 2rem;
+  }
+
+  .footer-orange {
+    background-color: var(--burned_orange);
+  }
+
+  .footer-orange .footer-logo,
+  .footer-orange .footer-box h3,
+  .footer-orange .footer-box p,
+  .footer-orange .footer-box a,
+  .footer-orange .credits,
+  .footer-orange .newsletter-form input,
+  .footer-orange .newsletter-form button {
+    color: var(--cream);
+  }
+
+  .footer-orange .newsletter-form input,
+  .footer-orange .newsletter-form button {
+    border-color: var(--cream);
+  }
+
+  .footer-orange .newsletter-form input::placeholder {
+    color: var(--cream);
+  }
+
+  .footer-orange .newsletter-form button:hover {
+    background-color: var(--cream);
+    color: var(--burned_orange);
   }
 
   .footer-inner {

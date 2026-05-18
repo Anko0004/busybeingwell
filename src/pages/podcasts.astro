@@ -1,20 +1,68 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import H2 from "../components/H2.astro";
+import PodcastCard from "../components/PodcastCard.astro";
+
+const url = "https://gthqpnquordprfbbxrrc.supabase.co/rest/v1/episodes?select=*&order=release_date.desc";
+
+const key = "sb_publishable_0kC09y0_QNUGVyZSy7xOWQ_itr3lxQ_";
+
+const options = {
+  headers: {
+    apikey: key,
+    Authorization: `Bearer ${key}`,
+  },
+};
+
+const res = await fetch(url, options);
+const data = await res.json();
 ---
 
 <Layout>
-    <section class="podcast-hero">
-        <H2 title="Podcasts" />
+  <section class="podcasts-intro">
+    <h2>Podcasts</h2>
+    <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ea commodo consequat.</p>
+  </section>
 
-        <p>Ærlige samtaler, inspirerende perspektiver og historier om velvære, hverdagsliv og alt det midt imellem.</p>
-    </section>
+  <section class="podcast-grid">
+    {
+      data.map((episode) => (
+        <div class="podcast-grid-item">
+          <PodcastCard data={episode} />
+        </div>
+      ))
+    }
+  </section>
 </Layout>
 
 <style>
-    .podcast-hero p {
-        max-width: 620px;
-        margin-top: 1rem;
-        line-height: 1.5;
+  .podcasts-intro {
+    margin-bottom: 3rem;
+  }
+
+  .podcasts-intro p {
+    max-width: 34rem;
+  }
+
+  .podcast-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem 1rem;
+  }
+
+  @media (min-width: 900px) {
+    .podcast-grid {
+      grid-template-columns: repeat(4, 1fr);
+      gap: 4rem 1.5rem;
     }
+
+    .podcast-grid-item:nth-child(7n + 1) {
+      grid-column: span 2;
+    }
+
+    .podcast-grid-item:nth-child(7n + 1) :global(.podcast-image) {
+      aspect-ratio: auto;
+      height: calc(((100vw - 3rem - (3 * 1.5rem)) / 4) * 1.25);
+      object-position: center 25%;
+    }
+  }
 </style>

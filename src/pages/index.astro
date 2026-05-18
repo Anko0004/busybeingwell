@@ -1,71 +1,85 @@
 ---
 import ForsideLayout from "../layouts/ForsideLayout.astro";
-import Footer from "../components/Footer.astro";
-import PodcastsCard from "../components/PodcastCard.astro";
+import PodcastCard from "../components/PodcastCard.astro";
 import Knap from "../components/Knap.astro";
-import H2 from "../components/H2.astro";
 
-const url = "https://ovfqkqxmthqfabnvnndq.supabase.co/rest/v1/byhaven?id=in.(1,2,3,4)&select=*";
-const key = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im92ZnFrcXhtdGhxZmFibnZubmRxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDY2OTQwNjAsImV4cCI6MjA2MjI3MDA2MH0.QGBHGl0rC79t_ySosixZ13L1Ukt5i3JvPwZaUEnMVvM";
+const url = "https://gthqpnquordprfbbxrrc.supabase.co/rest/v1/episodes?select=*&order=release_date.desc&limit=3";
+const key = "sb_publishable_0kC09y0_QNUGVyZSy7xOWQ_itr3lxQ_";
+
+const options = {
+  headers: {
+    apikey: key,
+    Authorization: `Bearer ${key}`,
+  },
+};
+
+const res = await fetch(url, options);
+const podcasts = await res.json();
 ---
 
 <ForsideLayout>
-  <section class="section ommig">
-    <div class="image">
-      <img src="ommig_billede1.png" alt="Cilia laver mad" />
-    </div>
-
-    <div class="text1">
-      <div class="overskrifter">
-        <h2 class="ommig">Mød Cilia Trappaud</h2>
-        <h4>Stifter af BBW</h4>
+  <section class="intro-screen snap-section">
+    <div class="section ommig">
+      <div class="image">
+        <img src="ommig_billede1.png" alt="Cilia laver mad" />
       </div>
 
-      <p>Busy Being Well er skabt af Cilia Trappaud som et personligt univers med fokus på velvære, refleksion og moderne hverdagsliv. Gennem podcasten inviteres du ind i ærlige samtaler, inspirerende perspektiver og historier, der giver plads til både nysgerrighed, nærvær og eftertanke.</p>
+      <div class="text1">
+        <div class="overskrifter">
+          <h2 class="ommig">Mød Cilia Trappaud</h2>
+          <h4>Stifter af BBW</h4>
+        </div>
+
+        <p>Busy Being Well er skabt af Cilia Trappaud som et personligt univers med fokus på velvære, refleksion og moderne hverdagsliv. Gennem podcasten inviteres du ind i ærlige samtaler, inspirerende perspektiver og historier, der giver plads til både nysgerrighed, nærvær og eftertanke.</p>
+      </div>
+
+      <div class="text2">
+        <p>Her møder du mennesker, erfaringer og små indsigter, du kan tage med dig videre i din egen hverdag. Et univers der minder om, at velvære ser forskelligt ud for alle — og at der ikke findes én rigtig måde at have det godt på. Med plads til både det inspirerende, det ærlige og alt det midt imellem.</p>
+      </div>
     </div>
 
-    <div class="text2">
-      <p>Her møder du mennesker, erfaringer og små indsigter, du kan tage med dig videre i din egen hverdag. Et univers der minder om, at velvære ser forskelligt ud for alle — og at der ikke findes én rigtig måde at have det godt på. Med plads til både det inspirerende, det ærlige og alt det midt imellem.</p>
+    <div class="citat">
+      <div class="citat-content">
+        <h2>“Busy Being Well er en podcast og et univers dedikeret til at udforske veje til mere velvære. Et sted med inspiration, nysgerrighed og perspektiv. Vi dykker ned i de ting der betyder noget, for at have det godt i en moderne travl hverdag.”</h2>
+      </div>
+
+      <div class="knap-wrapper">
+        <Knap text="LÆS MERE" href="/omos" variant="default" />
+      </div>
     </div>
   </section>
 
-  <section class="citat">
-    <div class="citat-content">
-      <h2>“Busy Being Well er en podcast og et univers dedikeret til at udforske veje til mere velvære. Et sted med inspiration, nysgerrighed og perspektiv. Vi dykker ned i de ting der betyder noget, for at have det godt i en moderne travl hverdag.”</h2>
-    </div>
-
-    <div class="knap-wrapper">
-      <Knap text="LÆS MERE" href="/omos" variant="default" />
-    </div>
-  </section>
-
-  <section class="podcast-section">
+  <section class="podcast-section snap-section">
     <h2 class="podcast-heading">Podcasts</h2>
 
     <div class="podcast-content">
-      <img src="podcast1.png" alt="podcast billede 1" />
-      <img src="podcast2.png" alt="podcast billede 2" />
-      <img src="podcast3.png" alt="podcast billede 3" />
+      {
+        podcasts.map((podcast, index) => (
+          <div class={index === 0 ? "podcast-card-wrapper featured-podcast" : "podcast-card-wrapper"}>
+            <PodcastCard data={podcast} />
+          </div>
+        ))
+      }
     </div>
 
-    <div class="podcast-knap-wrapper">
+    <div class="podcast-knap-wrapper section-knap">
       <Knap text="SE ALLE PODCASTS" href="/podcasts" variant="default" />
     </div>
   </section>
 
-  <section class="shop-section">
+  <section class="shop-section snap-section">
     <h2>Bliv en del af familien</h2>
 
     <div class="shop-content">
       <!-- Her kan dine API-cards komme ind senere -->
     </div>
 
-    <div class="shop-knap-wrapper">
+    <div class="shop-knap-wrapper section-knap">
       <Knap text="GÅ TIL SHOP" href="/shop" variant="light" />
     </div>
   </section>
 
-  <section class="instagram-section">
+  <section class="instagram-section snap-section">
     <div class="instagram-header">
       <h2 class="instagram-heading">Gå til Instagram</h2>
     </div>
@@ -101,12 +115,21 @@ const key = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZi
 </ForsideLayout>
 
 <style>
+  :root {
+    --section-top: 5rem;
+    --section-bottom: 5rem;
+    --section-gap: 5rem;
+  }
+
   .image img {
     width: 100%;
     height: auto;
   }
 
-  /* om mig - mobil */
+  .intro-screen {
+    padding-bottom: var(--section-bottom);
+  }
+
   .section.ommig {
     display: flex;
     flex-direction: column;
@@ -115,9 +138,7 @@ const key = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZi
   .text1 {
     order: 1;
     padding-top: 1rem;
-    padding-right: 0;
     padding-bottom: 2rem;
-    padding-left: 0;
   }
 
   .text1 .ommig {
@@ -127,9 +148,7 @@ const key = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZi
   .text2 {
     order: 3;
     padding-top: 1.5rem;
-    padding-right: 0;
     padding-bottom: 2rem;
-    padding-left: 0;
   }
 
   .ommig p {
@@ -143,20 +162,15 @@ const key = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZi
     margin-right: -1.5rem;
   }
 
-  /* knap */
-  .knap-wrapper {
+  .knap-wrapper,
+  .section-knap {
     display: flex;
     justify-content: flex-end;
-    margin-right: 0.4rem;
     margin-top: 2rem;
-    margin-bottom: 2rem;
   }
 
-  /* citat - mobil */
   .citat {
     margin-top: 1rem;
-    margin-bottom: 3rem;
-    align-self: end;
   }
 
   .citat h2 {
@@ -165,116 +179,45 @@ const key = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZi
     font-size: 1.5rem;
   }
 
-  @media (min-width: 600px) {
-    .ommig .image {
-      margin-left: -2rem;
-      margin-right: -2rem;
-    }
-  }
-
-  @media (min-width: 900px) {
-    /* om mig - desktop */
-    .section.ommig {
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      align-items: end;
-      gap: 2rem;
-      margin-bottom: 3rem;
-    }
-
-    .text1 {
-      order: initial;
-      grid-column: 2;
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      padding-left: 1rem;
-      padding-right: 1rem;
-      padding-top: 0;
-      padding-bottom: 0;
-    }
-
-    .text2 {
-      order: initial;
-      grid-column: 3;
-      padding-left: 1rem;
-      padding-right: 1rem;
-      padding-top: 0;
-      padding-bottom: 0;
-      margin-top: 0;
-    }
-
-    .ommig .image {
-      order: initial;
-      grid-column: 1;
-      width: 100%;
-      margin-left: -2rem;
-      margin-right: 0;
-    }
-
-    /* knap - desktop */
-    .knap-wrapper {
-      display: block;
-      grid-column: 3;
-      justify-self: end;
-      align-self: end;
-      margin-bottom: 0.15rem;
-      margin-right: 1.5rem;
-    }
-
-    /* citat - desktop */
-    .citat {
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      gap: 2rem;
-      align-items: end;
-      margin-top: 5rem;
-      margin-bottom: 5rem;
-    }
-
-    .citat-content {
-      grid-column: 1 / 3;
-    }
-
-    .citat h2 {
-      margin: 0;
-    }
-  }
-
-  /* podcast sectionen */
-  .podcast-section {
-    background-color: var(--cream_test);
-    margin-top: 3rem;
-    margin-left: -1.5rem;
-    margin-right: -1.5rem;
-    padding: 2rem 1rem;
+  .podcast-section,
+  .shop-section {
     display: grid;
     grid-template-columns: 2rem 1fr;
     column-gap: 2rem;
+    margin-left: -1.5rem;
+    margin-right: -1.5rem;
+    padding: 5rem 1rem var(--section-bottom);
+  }
+
+  .podcast-section {
+    background-color: var(--cream_test);
     overflow-x: hidden;
   }
 
-  @media (min-width: 600px) {
-    .podcast-section {
-      margin-left: -2rem;
-      margin-right: -2rem;
-      padding-left: 2rem;
-      padding-right: 2rem;
-    }
+  .shop-section {
+    background-color: var(--burned_orange);
   }
 
-  .podcast-heading {
+  .podcast-heading,
+  .shop-section h2 {
     writing-mode: vertical-rl;
     transform: rotate(180deg);
-    color: var(--black);
     margin: 0;
     text-transform: uppercase;
     align-self: start;
   }
 
+  .podcast-heading {
+    color: var(--black);
+  }
+
+  .shop-section h2 {
+    color: var(--cream);
+  }
+
   .podcast-content {
     display: grid;
+    grid-column: 2;
     grid-template-columns: 1fr;
     gap: 1.5rem;
     max-width: 42rem;
@@ -291,89 +234,25 @@ const key = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZi
     object-position: center 18%;
   }
 
-  .podcast-knap-wrapper {
-    grid-column: 2;
-    justify-self: end;
-    align-self: start;
-  }
-
-  @media (min-width: 900px) {
-    .podcast-content {
-      grid-column: 2;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 1.5rem;
-      max-width: none;
-    }
-
-    .podcast-content img:first-child {
-      grid-column: span 2;
-    }
-
-    .podcast-knap-wrapper {
-      grid-row: 2;
-      margin-top: 2rem;
-      margin-bottom: 6rem;
-    }
-  }
-
-  /* shop sectionen */
-  .shop-section {
-    background-color: var(--burned_orange);
-    min-height: 60rem;
-    display: grid;
-    grid-template-columns: 2rem 1fr;
-    align-items: start;
-    margin-left: -1.5rem;
-    margin-right: -1.5rem;
-    padding: 4rem 1.5rem;
-  }
-
-  .shop-section h2 {
-    writing-mode: vertical-rl;
-    transform: rotate(180deg);
-    color: var(--cream);
-    margin: 0;
-    text-transform: uppercase;
-    align-self: start;
-  }
-
-  .shop-content {
-    min-height: 12rem;
-  }
-
+  .podcast-knap-wrapper,
   .shop-knap-wrapper {
     grid-column: 2;
     justify-self: end;
     align-self: end;
-    margin-top: 2rem;
   }
 
-  @media (min-width: 600px) {
-    .shop-section {
-      margin-left: -2rem;
-      margin-right: -2rem;
-      padding-left: 2rem;
-      padding-right: 2rem;
-    }
+  .shop-content {
+    grid-column: 2;
+    min-height: 12rem;
   }
 
-  @media (min-width: 900px) {
-    .shop-section {
-      column-gap: 2rem;
-    }
-  }
-
-  /* instagram section */
   .instagram-section {
     margin-left: -1.5rem;
     margin-right: -1.5rem;
   }
 
   .instagram-header {
-    padding-top: 2rem;
-    padding-right: 1rem;
-    padding-bottom: 1.5rem;
-    padding-left: 1rem;
+    padding: 2rem 1rem 1.5rem;
   }
 
   .instagram-heading {
@@ -427,6 +306,13 @@ const key = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZi
   }
 
   @media (min-width: 600px) {
+    .ommig .image {
+      margin-left: -2rem;
+      margin-right: -2rem;
+    }
+
+    .podcast-section,
+    .shop-section,
     .instagram-section {
       margin-left: -2rem;
       margin-right: -2rem;
@@ -436,14 +322,116 @@ const key = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZi
   }
 
   @media (min-width: 900px) {
+    .intro-screen {
+      min-height: 100svh;
+      box-sizing: border-box;
+      display: grid;
+      grid-template-rows: auto auto;
+      align-content: space-between;
+      padding-top: var(--section-top);
+      padding-bottom: var(--section-bottom);
+    }
+
+    .section.ommig {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      align-items: end;
+      gap: 2rem;
+      margin-bottom: 0;
+    }
+
+    .text1 {
+      order: initial;
+      grid-column: 2;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      padding: 0 1rem;
+    }
+
+    .text2 {
+      order: initial;
+      grid-column: 3;
+      padding: 0 1rem;
+      margin-top: 0;
+    }
+
+    .ommig .image {
+      order: initial;
+      grid-column: 1;
+      width: 100%;
+      margin-left: -2rem;
+      margin-right: 0;
+    }
+
+    .citat {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 2rem;
+      align-items: end;
+      margin-top: var(--section-gap);
+    }
+
+    .citat-content {
+      grid-column: 1 / 3;
+    }
+
+    .citat h2 {
+      margin: 0;
+    }
+
+    .knap-wrapper {
+      display: block;
+      grid-column: 3;
+      justify-self: end;
+      align-self: end;
+      margin-top: 0;
+    }
+
+    .podcast-section,
+    .shop-section {
+      min-height: 100svh;
+      box-sizing: border-box;
+      grid-template-rows: auto auto;
+      align-content: space-between;
+      padding-top: var(--section-top);
+      padding-bottom: var(--section-bottom);
+    }
+
+    .podcast-content {
+      --podcast-gap: 1.5rem;
+      container-type: inline-size;
+      grid-column: 2;
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--podcast-gap);
+      max-width: none;
+    }
+
+    .featured-podcast {
+      grid-column: span 2;
+    }
+
+    .featured-podcast :global(.podcast-image) {
+      aspect-ratio: auto;
+      height: calc(((100cqw - (3 * var(--podcast-gap))) / 4) * 1.25);
+      object-fit: cover;
+      object-position: center 18%;
+    }
+
+    .section-knap {
+      display: block;
+      margin-top: var(--section-gap);
+    }
+
     .instagram-section {
-      padding-top: 2rem;
+      min-height: 100svh;
+      box-sizing: border-box;
+      padding-top: var(--section-top);
       padding-bottom: 6rem;
     }
 
     .instagram-header {
-      padding-left: 0;
-      padding-right: 0;
+      padding: 0 0 1.5rem;
     }
 
     .instagram-layout {

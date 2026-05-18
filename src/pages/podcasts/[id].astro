@@ -1,0 +1,164 @@
+---
+// @ts-nocheck
+import Layout from "../../layouts/Layout.astro";
+
+export async function getStaticPaths() {
+  const url = "https://gthqpnquordprfbbxrrc.supabase.co/rest/v1/episodes?select=*";
+  const key = "sb_publishable_0kC09y0_QNUGVyZSy7xOWQ_itr3lxQ_";
+
+  const options = {
+    headers: {
+      apikey: key,
+      Authorization: `Bearer ${key}`,
+    },
+  };
+
+  const res = await fetch(url, options);
+  const data = await res.json();
+
+  return data.map((episode) => {
+    return {
+      params: { id: episode.id.toString() },
+      props: { episode },
+    };
+  });
+}
+
+const { episode } = Astro.props;
+
+const spotifyEmbedUrl = episode.podcast_url?.replace("https://open.spotify.com/episode/", "https://open.spotify.com/embed/episode/").split("?")[0] + "?theme=0";
+---
+
+<Layout>
+  <section class="podcast-page">
+    <a href="/podcasts" class="back-button">←</a>
+
+    <div class="podcast-layout">
+      <div class="podcast-title">
+        <h1>{episode.name}</h1>
+        <h4>{episode.role}</h4>
+      </div>
+
+      <div class="podcast-image-wrap">
+        <img src={episode.image_url} alt={`Billede af ${episode.name}`} />
+      </div>
+
+      <div class="podcast-text">
+        <p>{episode.description}</p>
+
+        {spotifyEmbedUrl && <iframe src={spotifyEmbedUrl} width="100%" height="152" frameborder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy" />}
+
+        <a href={episode.podcast_url} target="_blank" rel="noopener noreferrer" class="podcast-link"> Gå til podcast </a>
+      </div>
+    </div>
+  </section>
+
+  <style>
+    .podcast-page {
+      margin-bottom: 4rem;
+    }
+
+    .back-button {
+      display: inline-block;
+      margin-bottom: 3rem;
+      color: var(--black);
+      font-size: 2rem;
+      line-height: 1;
+      text-decoration: none;
+    }
+
+    .podcast-layout {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .podcast-title {
+      margin-bottom: 3rem;
+    }
+
+    .podcast-title h1 {
+      font-family: "Playfair Display SC", serif;
+      color: var(--black);
+      font-size: 1.8rem;
+      font-weight: 210;
+      line-height: 2rem;
+      text-align: left;
+      margin: 0;
+    }
+
+    .podcast-title h4 {
+      color: var(--citat);
+      margin: 0.2rem 0 0;
+    }
+
+    .podcast-image-wrap {
+      margin-left: -1.5rem;
+      margin-right: -1.5rem;
+    }
+
+    .podcast-image-wrap img {
+      display: block;
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      object-position: center 17%;
+    }
+
+    .podcast-text {
+      padding-top: 2rem;
+    }
+
+    .podcast-text p {
+      margin: 0;
+      padding-bottom: 2rem;
+    }
+
+    .podcast-link {
+      display: block;
+      margin-top: 1.5rem;
+      color: var(--black);
+      text-align: right;
+      text-transform: uppercase;
+      text-decoration: underline;
+    }
+
+    iframe {
+      border: 0;
+    }
+
+    @media (min-width: 600px) {
+      .podcast-image-wrap {
+        margin-left: -2rem;
+        margin-right: -2rem;
+      }
+    }
+
+    @media (min-width: 900px) {
+      .podcast-layout {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 5rem;
+        align-items: start;
+      }
+
+      .podcast-title {
+        grid-column: 1;
+        grid-row: 1;
+        margin-bottom: 0;
+      }
+
+      .podcast-text {
+        grid-column: 1;
+        grid-row: 1;
+        padding-top: 8rem;
+      }
+
+      .podcast-image-wrap {
+        grid-column: 2;
+        grid-row: 1;
+        margin-left: 0;
+        margin-right: 0;
+      }
+    }
+  </style>
+</Layout>
