@@ -1,25 +1,92 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import H2 from "../components/H2.astro";
+import ShopCard from "../components/ShopCard.astro";
+
+const url = "https://gthqpnquordprfbbxrrc.supabase.co/rest/v1/ShopCard?select=*&order=id.asc";
+const key = "sb_publishable_0kC09y0_QNUGVyZSy7xOWQ_itr3lxQ_";
+
+const options = {
+  headers: {
+    apikey: key,
+    Authorization: `Bearer ${key}`,
+  },
+};
+
+const res = await fetch(url, options);
+const products = await res.json();
 ---
 
-<Layout navVariant="light" pageColor="orange">
-    <section class="shop-hero">
-        <H2 title="Shop vores merch" />
+<Layout navVariant="light" pageColor="orange" footerVariant="orange">
+  <section class="shop-hero">
+    <H2 title="Shop" />
+    <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet.</p>
+  </section>
 
-        <p>Find produkter skabt med omtanke for velvære, hverdagsrutiner og små øjeblikke af ro.</p>
-    </section>
+  <section class="shop-grid">
+    {products.map((product) => <ShopCard data={product} />)}
+  </section>
+
+  <section class="image-row">
+    <img src="/shop_billede1.png" alt="Cilia sidder på gulvet" />
+    <img src="/shop_billede2.png" alt="Cilia strækker ryggen" />
+  </section>
 </Layout>
 
 <style>
-    .shop-hero :global(h2),
-    .shop-hero p {
-        color: var(--cream);
+  .shop-hero :global(h2),
+  .shop-hero p {
+    color: var(--white);
+  }
+
+  .shop-hero p {
+    max-width: 620px;
+    margin-top: 1rem;
+    line-height: 1.5;
+  }
+
+  .shop-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 3rem 1.5rem;
+    margin-top: 4rem;
+    margin-bottom: 4rem;
+  }
+
+  .image-row {
+    margin-left: -1.5rem;
+    margin-right: -1.5rem;
+  }
+
+  .image-row img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  @media (min-width: 900px) {
+    .shop-hero {
+      max-width: 620px;
+      margin-bottom: 2rem;
     }
 
-    .shop-hero p {
-        max-width: 620px;
-        margin-top: 1rem;
-        line-height: 1.5;
+    .shop-grid {
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+      margin-bottom: 8rem;
     }
+
+    .image-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      margin-left: -2rem;
+      margin-right: -2rem;
+      margin-bottom: 5rem;
+    }
+
+    .image-row img {
+      height: 34rem;
+      object-fit: cover;
+    }
+  }
 </style>

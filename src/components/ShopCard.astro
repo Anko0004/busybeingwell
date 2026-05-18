@@ -1,0 +1,73 @@
+---
+const { data } = Astro.props;
+---
+
+<article class="shop-card">
+  <img src={data.image_url} alt={`Billede af ${data.name}`} class="shop-image" loading="lazy" decoding="async" />
+
+  <div class="shop-meta">
+    <div>
+      <h3>{data.name}</h3>
+      <p class="shop-category">{data.category}</p>
+    </div>
+
+    <div class="shop-buy">
+      <p>{data.price} Kr.</p>
+      <a href={`/shop/${data.id}`}>Køb nu</a>
+    </div>
+  </div>
+</article>
+
+<style>
+  .shop-card {
+    color: var(--cream);
+  }
+
+  .shop-image {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: contain;
+    display: block;
+  }
+
+  .shop-meta {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-top: 0.8rem;
+  }
+
+  .shop-card h3,
+  .shop-card p,
+  .shop-card a {
+    font-family: "Unica", sans-serif;
+    color: var(--cream);
+    font-size: 0.7rem;
+    line-height: 1rem;
+    margin: 0;
+  }
+
+  .shop-card h3 {
+    text-transform: uppercase;
+  }
+
+  .shop-category::before {
+    content: "";
+    display: inline-block;
+    width: 0.45rem;
+    height: 0.45rem;
+    margin-right: 0.2rem;
+    border-radius: 50%;
+    background: var(--cream);
+  }
+
+  .shop-buy {
+    text-align: right;
+    flex: 0 0 auto;
+  }
+
+  .shop-buy a {
+    text-transform: uppercase;
+    text-decoration: underline;
+  }
+</style>
