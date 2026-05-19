@@ -26,7 +26,7 @@ const products = await shopRes.json();
   <section class="intro-screen snap-section">
     <div class="section ommig">
       <div class="image">
-        <img src="ommig_billede1.png" alt="Cilia laver mad" />
+        <img src="cilia_ommig1.webp" alt="Cilia laver mad" />
       </div>
 
       <div class="text1">
@@ -139,6 +139,7 @@ const products = await shopRes.json();
   .image img {
     width: 100%;
     height: auto;
+    display: block;
   }
 
   .knap-wrapper,
@@ -212,6 +213,12 @@ const products = await shopRes.json();
     width: auto;
     margin-left: -1.5rem;
     margin-right: -1.5rem;
+  }
+
+  .ommig .image img {
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    object-position: center;
   }
 
   .citat {
@@ -388,7 +395,7 @@ const products = await shopRes.json();
     .section.ommig {
       display: grid;
       grid-template-columns: 1fr 1fr 1fr;
-      align-items: end;
+      align-items: stretch;
       gap: 2rem;
       margin-bottom: 0;
     }
@@ -398,13 +405,17 @@ const products = await shopRes.json();
       grid-column: 2;
       display: flex;
       flex-direction: column;
-      gap: 2rem;
+      justify-content: space-between;
+      align-self: stretch;
       padding: 0 1rem;
     }
 
     .text2 {
       order: initial;
       grid-column: 3;
+      display: flex;
+      align-items: flex-end;
+      align-self: stretch;
       padding: 0 1rem;
       margin-top: 0;
     }
@@ -412,7 +423,6 @@ const products = await shopRes.json();
     .ommig .image {
       order: initial;
       grid-column: 1;
-      width: 100%;
       margin-left: -2rem;
       margin-right: 0;
     }

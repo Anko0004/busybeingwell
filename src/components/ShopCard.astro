@@ -6,12 +6,12 @@ const { data } = Astro.props;
   <img src={data.image_url} alt={`Billede af ${data.name}`} class="shop-image" loading="lazy" decoding="async" />
 
   <div class="shop-info">
-    <div class="shop-row">
-      <h3>{data.name}</h3>
-      <p>{data.price} Kr.</p>
+    <div class="shop-row shop-row-top">
+      <h2>{data.name}</h2>
+      <p class="shop-price">{data.price} Kr.</p>
     </div>
 
-    <div class="shop-row">
+    <div class="shop-row shop-row-bottom">
       <p class="shop-category">{data.category}</p>
       <a href={`/shop/${data.id}`}>Køb nu</a>
     </div>
@@ -25,41 +25,69 @@ const { data } = Astro.props;
 
   .shop-image {
     width: 100%;
-    aspect-ratio: 4/ 5;
+    aspect-ratio: 1 / 1;
     object-fit: contain;
     display: block;
   }
 
   .shop-info {
-    margin-top: 0.8rem;
+    margin-top: 0.45rem;
   }
 
   .shop-row {
-    display: flex;
-    justify-content: space-between;
-    gap: 1rem;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    column-gap: 0.5rem;
+    align-items: start;
   }
 
-  .shop-card h3,
+  .shop-row-bottom {
+    margin-top: 0.25rem;
+    align-items: center;
+  }
+
+  .shop-card h2,
   .shop-card p,
   .shop-card a {
     font-family: "Unica", sans-serif;
     color: var(--white);
-    font-size: 0.9rem;
-    line-height: 0.5rem;
     margin: 0;
+    padding: 0;
   }
 
-  .shop-card h3 {
+  .shop-card h2 {
+    font-family: "Playfair Display SC", serif;
+    font-size: 1rem;
+    line-height: 0.82;
     text-transform: uppercase;
+    max-width: 7.5rem;
+    font-weight: 520;
+  }
+
+  .shop-card p,
+  .shop-card a {
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+
+  .shop-price,
+  .shop-card a {
+    text-align: right;
+    white-space: nowrap;
+  }
+
+  .shop-category {
+    display: flex;
+    align-items: center;
+    min-width: 0;
   }
 
   .shop-category::before {
     content: "";
-    display: inline-block;
-    width: 0.45rem;
-    height: 0.45rem;
-    margin-right: 0.2rem;
+    flex: 0 0 auto;
+    width: 0.3rem;
+    height: 0.3rem;
+    margin-right: 0.18rem;
     border-radius: 50%;
     background: var(--white);
   }
@@ -67,6 +95,29 @@ const { data } = Astro.props;
   .shop-card a {
     text-transform: uppercase;
     text-decoration: underline;
-    white-space: nowrap;
+    text-underline-offset: 0.08em;
+  }
+
+  @media (min-width: 600px) {
+    .shop-info {
+      margin-top: 0.7rem;
+    }
+
+    .shop-card h2 {
+      font-size: 1.3rem;
+      line-height: 0.82;
+      max-width: 13rem;
+    }
+
+    .shop-card p,
+    .shop-card a {
+      font-size: 1rem;
+    }
+
+    .shop-category::before {
+      width: 0.42rem;
+      height: 0.42rem;
+      margin-right: 0.2rem;
+    }
   }
 </style>
