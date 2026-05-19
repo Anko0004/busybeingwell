@@ -1,0 +1,249 @@
+---
+// @ts-nocheck
+import Layout from "../../layouts/Layout.astro";
+
+export async function getStaticPaths() {
+  const url = "https://gthqpnquordprfbbxrrc.supabase.co/rest/v1/ShopCard?select=*";
+  const key = "sb_publishable_0kC09y0_QNUGVyZSy7xOWQ_itr3lxQ_";
+
+  const options = {
+    headers: {
+      apikey: key,
+      Authorization: `Bearer ${key}`,
+    },
+  };
+
+  const res = await fetch(url, options);
+  const products = await res.json();
+
+  return products.map((product) => ({
+    params: { id: product.id.toString() },
+    props: { product },
+  }));
+}
+
+const { product } = Astro.props;
+---
+
+<Layout navVariant="light" pageColor="orange" footerVariant="orange">
+  <section class="product-page">
+    <a href="/shop" class="back-button">←</a>
+
+    <div class="product-layout">
+      <div class="product-image-wrap">
+        <button class="image-arrow image-arrow-left" type="button">‹</button>
+        <img src={product.image_url} alt={`Billede af ${product.name}`} />
+        <button class="image-arrow image-arrow-right" type="button">›</button>
+      </div>
+
+      <div class="product-info">
+        <div class="product-top">
+          <div>
+            <h2>{product.name}</h2>
+            <p class="product-category">{product.category}</p>
+          </div>
+
+          <div class="product-buy">
+            <p class="product-price">KR. {product.price}</p>
+            <a href="#">Tilføj til kurv</a>
+          </div>
+        </div>
+
+        <div class="product-description">
+          <h3>Om produktet</h3>
+          <p>{product.description}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .product-page {
+    color: var(--white);
+    padding-bottom: 5rem;
+  }
+
+  .back-button {
+    display: inline-block;
+    color: var(--white);
+    font-size: 2rem;
+    z-index: 999;
+    line-height: 1;
+    text-decoration: none;
+  }
+
+  .product-layout {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .product-image-wrap {
+    position: relative;
+    margin-left: -1.5rem;
+    margin-right: -1.5rem;
+  }
+
+  .product-image-wrap img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: contain;
+  }
+
+  .image-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    border: 0;
+    background: transparent;
+    color: var(--white);
+    font-size: 4rem;
+    line-height: 1;
+    cursor: pointer;
+  }
+
+  .image-arrow-left {
+    left: 1rem;
+  }
+
+  .image-arrow-right {
+    right: 1rem;
+  }
+
+  .product-info {
+    padding-top: 1rem;
+  }
+
+  .product-top {
+    display: flex;
+    justify-content: space-between;
+    gap: 2rem;
+    margin-bottom: 3rem;
+  }
+
+  .product-info h2 {
+    color: var(--white);
+    font-size: 1.2rem;
+  }
+
+  .product-category {
+    margin: 0.5rem 0 0;
+  }
+
+  .product-category::before {
+    content: "";
+    display: inline-block;
+    width: 0.45rem;
+    height: 0.45rem;
+    margin-right: 0.2rem;
+    border-radius: 50%;
+    background: var(--white);
+  }
+
+  .product-buy {
+    flex: 0 0 auto;
+    text-align: right;
+  }
+
+  .product-price {
+    font-weight: 700;
+    white-space: nowrap;
+  }
+
+  .product-buy a {
+    color: var(--white);
+    text-transform: uppercase;
+    text-decoration: underline;
+    white-space: nowrap;
+  }
+
+  .product-description h3,
+  .product-description p,
+  .product-category,
+  .product-price,
+  .product-buy a {
+    font-family: "Unica", sans-serif;
+    color: var(--white);
+  }
+
+  .product-description h3 {
+    margin: 0 0 0.25rem;
+    font-size: 0.9rem;
+    line-height: 1.2rem;
+  }
+
+  .product-description p {
+    margin: 0;
+    font-size: 0.9rem;
+    line-height: 1.35rem;
+  }
+
+  @media (min-width: 600px) {
+    .product-image-wrap {
+      margin-left: -2rem;
+      margin-right: -2rem;
+      transform: translateY(-4rem);
+    }
+  }
+
+  @media (min-width: 900px) {
+    .product-page {
+      min-height: 70svh;
+    }
+
+    .back-button {
+      position: relative;
+      z-index: 20;
+      margin-bottom: 3rem;
+    }
+
+    .product-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+
+    .product-image-wrap {
+      margin-left: 0;
+      margin-right: 0;
+    }
+
+    .product-info {
+      padding-top: 0;
+      max-width: 30rem;
+    }
+
+    .product-info h2 {
+      font-size: 1.7rem;
+      margin-bottom: -0.5rem;
+    }
+
+    .product-top {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      column-gap: 2rem;
+      align-items: start;
+      margin-bottom: 3rem;
+    }
+
+    .product-buy {
+      display: contents;
+    }
+
+    .product-price {
+      grid-column: 2;
+      grid-row: 1;
+      margin: 0.35rem 0 0;
+      font-size: 1rem;
+      text-align: right;
+    }
+
+    .product-buy a {
+      grid-column: 1;
+      grid-row: 2;
+      width: fit-content;
+    }
+  }
+</style>
