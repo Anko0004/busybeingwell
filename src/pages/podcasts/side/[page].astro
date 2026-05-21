@@ -68,7 +68,7 @@ const data = await res.json();
     </section>
 
     <section class="podcast-grid">
-        /* Her loopes alle episoderne og laver ét card */
+    
         {
             data.map((episode, index) => (
                 <div class="podcast-grid-item">
@@ -79,7 +79,6 @@ const data = await res.json();
     </section>
 
     <nav class="pagination" aria-label="Podcast sider">
-        /* Her laves ét link til hver side */
         {
             Array.from({ length: totalPages }, (_, index) => {
                 const page = index + 1;
