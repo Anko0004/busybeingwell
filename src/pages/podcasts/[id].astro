@@ -31,7 +31,7 @@ const spotifyEmbedUrl = episode.podcast_url?.replace("https://open.spotify.com/e
 
 <Layout>
   <section class="podcast-page">
-    <a href="/podcasts" class="back-button">←</a>
+    <a href="/podcasts" class="back-button" aria-label="Tilbage"></a>
 
     <div class="podcast-layout">
       <div class="podcast-title">
@@ -60,11 +60,29 @@ const spotifyEmbedUrl = episode.podcast_url?.replace("https://open.spotify.com/e
 
     .back-button {
       display: inline-block;
+      position: relative;
+      width: 1.5rem;
+      height: 1.5rem;
       margin-bottom: 3rem;
-      color: var(--black);
-      font-size: 2rem;
-      line-height: 1;
-      text-decoration: none;
+      border: 0;
+      background: transparent;
+      cursor: pointer;
+    }
+
+    .back-button::before {
+      content: "";
+      display: block;
+      width: 1rem;
+      height: 1rem;
+      border-left: 0.18rem solid var(--black);
+      border-bottom: 0.18rem solid var(--black);
+      border-radius: 0.12rem;
+      transform: rotate(45deg);
+    }
+
+    .back-button:hover::before {
+      border-left-color: var(--citat);
+      border-bottom-color: var(--citat);
     }
 
     .podcast-layout {
