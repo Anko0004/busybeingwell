@@ -29,6 +29,9 @@ const isActive = (href) => currentPath === href || currentPath.startsWith(`${hre
         <li>
           <a href="/shop" class:list={{ active: isActive("/shop") }} aria-current={isActive("/shop") ? "page" : undefined}>Shop</a>
         </li>
+        <li>
+          <a href="#" class="cart-link">Kurv (<span data-cart-count>0</span>)</a>
+        </li>
       </ul>
     </div>
   </nav>
@@ -41,6 +44,7 @@ const isActive = (href) => currentPath === href || currentPath.startsWith(`${hre
     <a href="/ommig">Om mig</a>
     <a href="/podcasts">Podcasts</a>
     <a href="/shop">Shop</a>
+    <a href="#" class="cart-link">Kurv (<span data-cart-count>0</span>)</a>
   </div>
 </div>
 
@@ -215,3 +219,36 @@ const isActive = (href) => currentPath === href || currentPath.startsWith(`${hre
     }
   }
 </style>
+
+<script is:inline>
+  function openNav() {
+    document.getElementById("myNav").style.width = "100%";
+  }
+
+  function closeNav() {
+    document.getElementById("myNav").style.width = "0%";
+  }
+
+  function updateCartCount(count) {
+    document.querySelectorAll("[data-cart-count]").forEach((cartCount) => {
+      cartCount.textContent = count;
+    });
+  }
+
+  const savedCartCount = localStorage.getItem("cartCount") || "0";
+  updateCartCount(savedCartCount);
+
+  document.addEventListener("click", function (event) {
+    const addToCartButton = event.target.closest(".add-to-cart");
+
+    if (addToCartButton) {
+      event.preventDefault();
+
+      const currentCount = Number(localStorage.getItem("cartCount") || "0");
+      const newCount = currentCount + 1;
+
+      localStorage.setItem("cartCount", newCount);
+      updateCartCount(newCount);
+    }
+  });
+</script>
