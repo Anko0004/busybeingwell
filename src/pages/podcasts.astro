@@ -2,19 +2,27 @@
 import Layout from "../layouts/Layout.astro";
 import PodcastCard from "../components/PodcastCard.astro";
 
-const url = "https://gthqpnquordprfbbxrrc.supabase.co/rest/v1/episodes?select=*&order=release_date.desc";
+const perPage = 14;
+const currentPage = 1;
+const offset = 0;
 
 const key = "sb_publishable_0kC09y0_QNUGVyZSy7xOWQ_itr3lxQ_";
 
-const options = {
+const url = `https://gthqpnquordprfbbxrrc.supabase.co/rest/v1/episodes?select=*&order=release_date.desc&limit=${perPage}&offset=${offset}`;
+
+const res = await fetch(url, {
   headers: {
     apikey: key,
     Authorization: `Bearer ${key}`,
+    Prefer: "count=exact",
   },
-};
+});
 
-const res = await fetch(url, options);
 const data = await res.json();
+
+const contentRange = res.headers.get("content-range");
+const totalItems = contentRange ? Number(contentRange.split("/")[1]) : data.length;
+const totalPages = Math.ceil(totalItems / perPage);
 ---
 
 <Layout>
@@ -25,13 +33,28 @@ const data = await res.json();
 
   <section class="podcast-grid">
     {
-      data.map((episode) => (
+      data.map((episode, index) => (
         <div class="podcast-grid-item">
-          <PodcastCard data={episode} />
+          <PodcastCard data={episode} index={index} />
         </div>
       ))
     }
   </section>
+
+  {
+    totalPages > 1 && (
+      <nav class="pagination" aria-label="Podcast sider">
+        {Array.from({ length: totalPages }, (_, index) => {
+          const page = index + 1;
+          return (
+            <a href={page === 1 ? "/podcasts" : `/podcasts/side/${page}`} class={page === currentPage ? "active" : ""}>
+              {page}
+            </a>
+          );
+        })}
+      </nav>
+    )
+  }
 </Layout>
 
 <style>
@@ -64,5 +87,26 @@ const data = await res.json();
       height: calc(((100vw - 3rem - (3 * 1.5rem)) / 4) * 1.25);
       object-position: center 25%;
     }
+  }
+
+  .pagination {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+    margin-top: 5rem;
+    margin-bottom: 4rem;
+  }
+
+  .pagination a {
+    font-family: "Unica", sans-serif;
+    color: var(--black);
+    font-size: 1rem;
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+  }
+
+  .pagination a:hover,
+  .pagination a.active {
+    border-bottom-color: var(--black);
   }
 </style>

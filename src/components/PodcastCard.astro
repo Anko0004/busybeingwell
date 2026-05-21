@@ -1,5 +1,8 @@
 ---
-const { data } = Astro.props;
+const { data, index = 0 } = Astro.props;
+
+const isPriority = index < 3;
+const isLarge = index % 7 === 0;
 
 const date = new Date(data.release_date);
 const formattedDate = date.toLocaleDateString("da-DK", {
@@ -27,9 +30,7 @@ const formattedDate = date.toLocaleDateString("da-DK", {
 
 <style>
   .podcast-card {
-    margin-bottom: 2rem;
-    content-visibility: auto;
-    contain-intrinsic-size: 0 32rem;
+    margin-bottom: 1rem;
   }
 
   .podcast-image {
