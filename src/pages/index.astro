@@ -14,7 +14,7 @@ const options = {
 };
 
 const podcastUrl = "https://gthqpnquordprfbbxrrc.supabase.co/rest/v1/episodes?select=*&order=release_date.desc&limit=3";
-const shopUrl = "https://gthqpnquordprfbbxrrc.supabase.co/rest/v1/ShopCard?select=*&order=id.asc&limit=3";
+const shopUrl = "https://gthqpnquordprfbbxrrc.supabase.co/rest/v1/ShopCard?select=*&order=id.asc&limit=4";
 
 const [podcastRes, shopRes] = await Promise.all([fetch(podcastUrl, options), fetch(shopUrl, options)]);
 
@@ -85,7 +85,7 @@ const products = await shopRes.json();
       }
     </div>
 
-    <div class="shop-knap-wrapper section-knap">
+    <div class="shop-knap-wrapper">
       <Knap text="GÅ TIL SHOP" href="/shop" variant="light" />
     </div>
   </section>
@@ -173,6 +173,10 @@ const products = await shopRes.json();
     grid-column: 2;
     justify-self: end;
     align-self: end;
+  }
+
+  .shop-knap-wrapper {
+    margin-top: 1.5rem;
   }
 
   /* =========================
@@ -287,9 +291,7 @@ const products = await shopRes.json();
     width: 100%;
   }
 
-  /* =========================
-     Instagram
-  ========================= */
+  /* Instagram */
 
   .instagram-section {
     margin-left: -1.5rem;
@@ -451,9 +453,16 @@ const products = await shopRes.json();
       margin-top: 0;
     }
 
-    .podcast-section,
-    .shop-section {
+    .podcast-section {
       min-height: 100svh;
+      box-sizing: border-box;
+      grid-template-rows: auto auto;
+      align-content: space-between;
+      padding-top: var(--section-top);
+      padding-bottom: var(--section-bottom);
+    }
+
+    .shop-section {
       box-sizing: border-box;
       grid-template-rows: auto auto;
       align-content: space-between;
@@ -482,8 +491,7 @@ const products = await shopRes.json();
     }
 
     .shop-content {
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 6rem;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
       align-items: end;
       justify-self: center;
       width: 100%;
