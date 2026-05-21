@@ -185,7 +185,7 @@ const { variant = "default" } = Astro.props;
     margin-top: 4rem;
     padding: 0;
     color: var(--citat);
-    font-size: 0.65rem;
+    font-size: 0.85rem;
     line-height: 1rem;
     text-align: right;
   }
@@ -205,8 +205,8 @@ const { variant = "default" } = Astro.props;
 
     .footer-inner {
       display: grid;
-      grid-template-columns: 1.35fr 1fr 0.7fr 1fr;
-      column-gap: 4rem;
+      grid-template-columns: 1.25fr 0.9fr 0.75fr 0.9fr;
+      column-gap: 3rem;
       align-items: start;
     }
 
@@ -228,6 +228,10 @@ const { variant = "default" } = Astro.props;
     .about {
       grid-column: 2;
       grid-row: 1;
+    }
+
+    .about p {
+      max-width: 16rem;
     }
 
     .follow {
