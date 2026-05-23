@@ -25,6 +25,7 @@ const formattedDate = date.toLocaleDateString("da-DK", {
         {data.role.length > 28 ? `${data.role.slice(0, 25)}...` : data.role}
       </span>
       <Knap text="LÆS MERE" href={`/podcasts/${data.id}`} variant="small" />
+      <a href={`/podcasts/${data.id}`} class="site-hover">Læs mere</a>
     </div>
 
     <h2>{data.name}</h2>
@@ -113,4 +114,14 @@ const formattedDate = date.toLocaleDateString("da-DK", {
     border-radius: 50%;
     background: var(--black);
   }
+
+  /* hover effekt */
+  .podcast-meta a.site-hover {
+    transition: color 0.2s ease;
+  }
+
+  .podcast-meta a.site-hover:hover {
+    color: var(--citat);
+  }
+  /* hover effekt */
 </style>

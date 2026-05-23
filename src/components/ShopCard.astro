@@ -13,7 +13,7 @@ const { data } = Astro.props;
 
     <div class="shop-row shop-row-bottom">
       <p class="shop-category">{data.category}</p>
-      <a href={`/shop/${data.id}`}>LÆS MERE</a>
+      <a href={`/shop/${data.id}`} class="site-hover">LÆS MERE</a>
     </div>
   </div>
 </article>
@@ -106,4 +106,14 @@ const { data } = Astro.props;
     text-decoration: underline;
     text-underline-offset: 0.08em;
   }
+
+  /* hover effekt */
+  .shop-card a.site-hover {
+    transition: color 0.2s ease;
+  }
+
+  .shop-card a.site-hover:hover {
+    color: var(--citat);
+  }
+  /* hover effekt */
 </style>

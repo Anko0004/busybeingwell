@@ -163,8 +163,12 @@ const isActive = (href) => currentPath === href || currentPath.startsWith(`${hre
   }
 
   .overlay-content a:hover {
-    color: var(--citat);
     text-decoration: underline;
+  }
+
+  .nav--light .menu ul li a:hover,
+  .nav--dark .menu ul li a:hover {
+    color: var(--citat);
   }
 
   @media screen and (min-width: 768px) {
