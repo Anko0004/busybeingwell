@@ -35,7 +35,7 @@ const totalPages = Math.ceil(totalItems / perPage);
     {
       data.map((episode, index) => (
         <div class="podcast-grid-item">
-          <PodcastCard data={episode} index={index} />
+          <PodcastCard data={episode} index={index} priority={index < 3} />
         </div>
       ))
     }

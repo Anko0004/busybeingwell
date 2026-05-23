@@ -61,7 +61,7 @@ const products = await shopRes.json();
       {
         podcasts.map((podcast, index) => (
           <div class={index === 0 ? "podcast-card-wrapper featured-podcast" : "podcast-card-wrapper"}>
-            <PodcastCard data={podcast} />
+            <PodcastCard data={podcast} index={index} />
           </div>
         ))
       }
