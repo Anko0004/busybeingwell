@@ -3,6 +3,7 @@ import ForsideLayout from "../layouts/ForsideLayout.astro";
 import PodcastCard from "../components/PodcastCard.astro";
 import ShopCard from "../components/ShopCard.astro";
 import Knap from "../components/Knap.astro";
+import NewsletterPopup from "../components/NewsletterPopup.astro";
 
 const key = "sb_publishable_0kC09y0_QNUGVyZSy7xOWQ_itr3lxQ_";
 
@@ -23,6 +24,7 @@ const products = await shopRes.json();
 ---
 
 <ForsideLayout>
+  <NewsletterPopup />
   <section class="intro-screen snap-section">
     <div class="section ommig">
       <div class="image">
@@ -132,9 +134,7 @@ const products = await shopRes.json();
     --section-gap: 5rem;
   }
 
-  /* =========================
-     Global / Shared
-  ========================= */
+  /* Global / Shared */
 
   .image img {
     width: 100%;

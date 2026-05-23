@@ -4,8 +4,10 @@ const { variant = "default" } = Astro.props;
 
 <footer class={`footer ${variant === "orange" ? "footer-orange" : ""}`}>
   <div class="footer-inner">
+    <!-- Logo -->
     <a class="footer-logo" href="/">busy being well</a>
 
+    <!-- Footer indhold -->
     <div class="footer-grid">
       <div class="footer-box about">
         <h3>OM OS</h3>
@@ -26,11 +28,12 @@ const { variant = "default" } = Astro.props;
         <p>København, Danmark</p>
       </div>
 
+      <!-- Nyhedsbrev -->
       <div class="footer-box newsletter">
         <h3>TILMELD DIG VORES NYHEDSBREV</h3>
         <p class="newsletter-text">Modtag nye episoder, udvalgte fortællinger og inspiration direkte i din indbakke</p>
 
-        <form class="newsletter-form">
+        <form class="newsletter-form" id="footerNewsletterForm">
           <label for="email" class="sr-only">E-mail</label>
           <input id="email" type="email" placeholder="Skriv din e-mail her" />
           <button type="submit">Tilmeld</button>
@@ -40,6 +43,7 @@ const { variant = "default" } = Astro.props;
       </div>
     </div>
 
+    <!-- Nederste linje -->
     <div class="footer-bottom">
       <p>© 2026 Busy Being Well</p>
 
@@ -55,11 +59,13 @@ const { variant = "default" } = Astro.props;
 </footer>
 
 <style>
+  /* Footer base */
   .footer {
     background-color: var(--lysere_cream);
     padding: 4rem 1.5rem 2rem;
   }
 
+  /* Orange footer variant */
   .footer-orange {
     background-color: var(--burned_orange);
   }
@@ -90,6 +96,7 @@ const { variant = "default" } = Astro.props;
     color: var(--burned_orange);
   }
 
+  /* Mobil layout */
   .footer-inner {
     display: flex;
     flex-direction: column;
@@ -117,6 +124,7 @@ const { variant = "default" } = Astro.props;
     row-gap: 3rem;
   }
 
+  /* Tekst */
   .footer-box h3 {
     margin: 0 0 0.35rem;
     font-family: "Unica", sans-serif;
@@ -139,6 +147,7 @@ const { variant = "default" } = Astro.props;
     text-decoration: none;
   }
 
+  /* Mobil placering */
   .about {
     grid-column: 1;
   }
@@ -157,6 +166,7 @@ const { variant = "default" } = Astro.props;
     font-weight: 500;
   }
 
+  /* Nyhedsbrev form */
   .newsletter-form {
     display: flex;
     align-items: stretch;
@@ -206,6 +216,18 @@ const { variant = "default" } = Astro.props;
     font-size: 0.7rem;
   }
 
+  /* "Sendt" */
+  .newsletter-form input:disabled {
+    color: var(--citat);
+    opacity: 1;
+    cursor: default;
+  }
+
+  .newsletter-form input:disabled::placeholder {
+    color: var(--citat);
+  }
+
+  /* Nederste footer */
   .footer-bottom {
     order: 3;
     display: grid;
@@ -253,10 +275,12 @@ const { variant = "default" } = Astro.props;
     text-align: right;
     max-width: 7rem;
   }
+
   .credits span {
     font-weight: 400;
   }
 
+  /* Screenreader label */
   .sr-only {
     position: absolute;
     width: 1px;
@@ -265,6 +289,7 @@ const { variant = "default" } = Astro.props;
     clip: rect(0, 0, 0, 0);
   }
 
+  /* Desktop layout */
   @media (min-width: 900px) {
     .footer {
       padding: 4rem 2rem 2.5rem;
@@ -276,6 +301,7 @@ const { variant = "default" } = Astro.props;
       column-gap: 5.5rem;
       align-items: start;
     }
+
     .footer-logo {
       grid-column: 1;
       grid-row: 2;
@@ -343,3 +369,25 @@ const { variant = "default" } = Astro.props;
     }
   }
 </style>
+
+<script>
+  /* Nyhedsbrev: skift input til "Sendt" */
+  const footerNewsletterForm = document.getElementById("footerNewsletterForm");
+  const footerNewsletterInput = document.getElementById("email");
+  const footerNewsletterButton = footerNewsletterForm?.querySelector("button");
+
+  footerNewsletterForm?.addEventListener("submit", (event) => {
+    event.preventDefault();
+
+    if (footerNewsletterInput) {
+      footerNewsletterInput.value = "";
+      footerNewsletterInput.placeholder = "Sendt";
+      footerNewsletterInput.disabled = true;
+      footerNewsletterInput.style.borderRight = "1px solid var(--footer)";
+    }
+
+    if (footerNewsletterButton) {
+      footerNewsletterButton.style.display = "none";
+    }
+  });
+</script>
