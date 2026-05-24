@@ -33,14 +33,13 @@ import Layout from "../layouts/Layout.astro";
     </div>
 
     <div class="why-quote">
-      <h2>“Busy Being Well er en podcast og et univers dedikeret til at udforske veje til mere velvære. Et sted med inspiration, nysgerrighed og perspektiv. Vi dykker ned i de ting der betyder noget, for at have det godt i en moderne travl hverdag.”</h2>
+      <h2>“Jeg har skabt det univers, jeg selv savnede — et sted med plads til inspiration, ærlige samtaler og følelsen af, at det hele ikke behøver være perfekt. Et univers hvor vi kan spejle os i hinanden, være nysgerrige på os selv og tale mere ærligt om både velvære, balance og de perioder, hvor livet kan føles svært"</h2>
     </div>
 
     <div class="why-text">
-      <h3>Lorem ipsum</h3>
-      <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+      <p>Jeg har gennem mange år haft en stor interesse for sundhed, velvære og det at skabe gode rammer for både krop og sind. Som professionel danser har det været vigtigt for mig at passe på mig selv og give min krop de bedste forudsætninger, men jeg har samtidig også oplevet perioder, hvor tingene føltes svære, frustrerende og ude af balance. Det gjorde mig nysgerrig på, hvordan vi som mennesker egentlig kan have det godt — ikke kun fysisk, men også mentalt og følelsesmæssigt.</p>
 
-      <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+      <p>Podcastformatet blev fra start den mest naturlige måde for mig at formidle Busy Being Well på. For mig handler det om at skabe et rum med oprigtige samtaler, hvor mennesker kan dele erfaringer, perspektiver og historier uden at det virker poleret eller performativt. Jeg ønskede at skabe et univers, der er jordnært og ærligt — med plads til både inspiration, refleksion og erkendelsen af, at velvære ser forskelligt ud for alle.</p>
     </div>
 
     <div class="why-image">
@@ -101,6 +100,21 @@ import Layout from "../layouts/Layout.astro";
     margin-right: -1.5rem;
   }
 
+  .why-text p + p {
+    margin-top: 1rem;
+  }
+
+  /* billede-række - mobil */
+  .image-row {
+    margin-left: -1.5rem;
+    margin-right: -1.5rem;
+  }
+
+  .image-row img {
+    height: auto;
+    display: block;
+  }
+
   @media (min-width: 900px) {
     .section.ommig {
       display: grid;
@@ -137,21 +151,7 @@ import Layout from "../layouts/Layout.astro";
       margin-top: 0;
       align-self: end;
     }
-  }
-
-  /* billede-række - mobil */
-  .image-row {
-    margin-left: -1.5rem;
-    margin-right: -1.5rem;
-  }
-
-  .image-row img {
-    height: auto;
-    display: block;
-  }
-
-  /* billede-række - desktop */
-  @media (min-width: 900px) {
+    /* billede-række - desktop */
     .image-row {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -194,10 +194,6 @@ import Layout from "../layouts/Layout.astro";
 
   .why-text {
     margin-bottom: 2rem;
-  }
-
-  .why-text h3 {
-    margin-bottom: 0.5rem;
   }
 
   .why-image {
@@ -245,13 +241,8 @@ import Layout from "../layouts/Layout.astro";
     .why-text {
       grid-column: 3;
       grid-row: 2;
-      margin-bottom: 2rem;
+      margin-bottom: 1rem;
       padding-right: 1rem;
-    }
-
-    .why-text h3 {
-      margin-bottom: 0.5rem;
-      margin-top: 0;
     }
 
     .why-image {

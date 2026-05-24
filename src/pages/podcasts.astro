@@ -28,7 +28,7 @@ const totalPages = Math.ceil(totalItems / perPage);
 <Layout>
   <section class="podcasts-intro">
     <h2>Podcasts</h2>
-    <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ea commodo consequat.</p>
+    <p>Busy Being Well er et podcastunivers med fokus på velvære, trivsel og det moderne hverdagsliv. Gennem personlige fortællinger, ærlige refleksioner og samtaler med inspirerende mennesker udforskes alt fra sundhed og motivation til balance og de udfordringer, mange kan spejle sig i. Målet er ikke perfektion, men at skabe et autentisk rum med plads til inspiration, genkendelse og nye perspektiver.</p>
   </section>
 
   <section class="podcast-grid">
@@ -76,6 +76,10 @@ const totalPages = Math.ceil(totalItems / perPage);
     .podcast-grid {
       grid-template-columns: repeat(4, 1fr);
       gap: 4rem 1.5rem;
+    }
+
+    .podcasts-intro p {
+      max-width: 57rem;
     }
 
     .podcast-grid-item:nth-child(7n + 1) {
