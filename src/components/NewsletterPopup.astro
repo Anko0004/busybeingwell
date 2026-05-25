@@ -277,6 +277,12 @@
   const signup = document.getElementById("newsletterSignup");
   const success = document.getElementById("newsletterSuccess");
 
+  const popupDelay = 2200;
+
+  setTimeout(() => {
+    popup?.classList.remove("is-hidden");
+  }, popupDelay);
+
   closeButton?.addEventListener("click", () => {
     popup?.classList.add("is-hidden");
   });
