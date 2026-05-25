@@ -1,4 +1,4 @@
-<div class="newsletter-popup" id="newsletterPopup">
+<div class="newsletter-popup is-hidden" id="newsletterPopup">
   <div class="newsletter-popup-card">
     <button class="newsletter-popup-close" type="button" aria-label="Luk popup"> × </button>
 
@@ -298,9 +298,12 @@
   const success = document.getElementById("newsletterSuccess");
 
   const popupHasBeenSeen = localStorage.getItem("newsletterPopupSeen");
+  const popupDelay = 2200;
 
-  if (popupHasBeenSeen === "true") {
-    popup?.classList.add("is-hidden");
+  if (popupHasBeenSeen !== "true") {
+    setTimeout(() => {
+      popup?.classList.remove("is-hidden");
+    }, popupDelay);
   }
 
   closeButton?.addEventListener("click", () => {
