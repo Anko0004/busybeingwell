@@ -21,13 +21,13 @@ const isActive = (href) => currentPath === href || currentPath.startsWith(`${hre
     <div class="menu" id="menu">
       <ul>
         <li>
-          <a href="/ommig" class:list={{ active: isActive("/ommig") }} aria-current={isActive("/ommig") ? "page" : undefined}>Om mig</a>
+          <a href="/ommig" class={isActive("/ommig") ? "active" : ""} aria-current={isActive("/ommig") ? "page" : undefined}>Om mig</a>
         </li>
         <li>
-          <a href="/podcasts" class:list={{ active: isActive("/podcasts") }} aria-current={isActive("/podcasts") ? "page" : undefined}>Podcasts</a>
+          <a href="/podcasts" class={isActive("/podcasts") ? "active" : ""} aria-current={isActive("/podcasts") ? "page" : undefined}>Podcasts</a>
         </li>
         <li>
-          <a href="/shop" class:list={{ active: isActive("/shop") }} aria-current={isActive("/shop") ? "page" : undefined}>Shop</a>
+          <a href="/shop" class={isActive("/shop") ? "active" : ""} aria-current={isActive("/shop") ? "page" : undefined}>Shop</a>
         </li>
         <li>
           <a href="#" class="cart-link">Kurv (<span data-cart-count>0</span>)</a>
@@ -47,16 +47,6 @@ const isActive = (href) => currentPath === href || currentPath.startsWith(`${hre
     <a href="#" class="cart-link">Kurv (<span data-cart-count>0</span>)</a>
   </div>
 </div>
-
-<script is:inline>
-  function openNav() {
-    document.getElementById("myNav").style.width = "100%";
-  }
-
-  function closeNav() {
-    document.getElementById("myNav").style.width = "0%";
-  }
-</script>
 
 <style>
   .header {
