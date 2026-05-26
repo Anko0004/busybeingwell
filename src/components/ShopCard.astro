@@ -1,5 +1,8 @@
 ---
-const { data } = Astro.props;
+const { data, index = 0 } = Astro.props;
+
+const isVisible = index < 4;
+const isHighPriority = index < 2;
 ---
 
 <article class={`shop-card product-${data.id}`}>
@@ -149,6 +152,17 @@ const { data } = Astro.props;
 
   .shop-card a.site-hover:hover {
     color: var(--citat);
+    position: relative;
+    z-index: 2;
+    transition: color 0.2s ease;
+  }
+
+  .shop-image {
+    transition: opacity 0.2s ease;
+  }
+
+  .shop-image-link:hover .shop-image {
+    opacity: 0.55;
   }
 
   /* hover effekt */
