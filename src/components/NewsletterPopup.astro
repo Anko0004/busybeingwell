@@ -21,7 +21,10 @@
         <h2>Velkommen til familien!</h2>
       </div>
 
-      <p class="newsletter-note">Ved tilmelding accepterer du at modtage nyhedsbreve via e-mail. Afmeld når som helst. Læs vores privatlivspolitik.</p>
+      <p class="newsletter-note">
+        Ved tilmelding accepterer du at modtage nyhedsbreve via e-mail. Afmeld når som helst. Læs vores
+        <a href="/privatlivspolitik">privatlivspolitik</a>.
+      </p>
     </div>
 
     <div class="newsletter-popup-image">
@@ -39,7 +42,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 1.5rem;
+    padding: 1rem;
     pointer-events: none;
   }
 
@@ -49,8 +52,8 @@
 
   .newsletter-popup-card {
     position: relative;
-    width: min(100%, 28.5rem);
-    max-height: calc(100svh - 3rem);
+    width: min(100%, 25rem);
+    max-height: calc(100svh - 2rem);
     background: var(--white);
     display: grid;
     grid-template-columns: 1fr;
@@ -59,29 +62,29 @@
   }
 
   .newsletter-popup-content {
-    padding: 3rem 1.5rem 2rem;
+    padding: 2.4rem 1.2rem 1.5rem;
     display: flex;
     flex-direction: column;
   }
 
   .newsletter-popup-content h2 {
-    max-width: 23rem;
-    margin: 0 0 1.4rem;
+    max-width: 20rem;
+    margin: 0 0 1rem;
     font-family: "Playfair Display SC", serif;
-    font-size: 1.9rem;
-    line-height: 1.25;
+    font-size: 1.45rem;
+    line-height: 1.2;
     font-weight: 210;
     text-transform: uppercase;
     color: var(--black);
   }
 
   .newsletter-popup-content p {
-    max-width: 23rem;
-    margin: 0 0 1.6rem;
+    max-width: 20rem;
+    margin: 0 0 1.2rem;
     padding-bottom: 0;
     font-family: "Unica", sans-serif;
-    font-size: 0.78rem;
-    line-height: 1.35;
+    font-size: 0.72rem;
+    line-height: 1.3;
     font-weight: 300;
     color: var(--black);
   }
@@ -90,8 +93,8 @@
     width: 100%;
     display: flex;
     align-items: stretch;
-    margin-top: -0.4rem;
-    margin-bottom: 2rem;
+    margin-top: -0.2rem;
+    margin-bottom: 1.4rem;
   }
 
   .newsletter-popup .newsletter-form label,
@@ -107,14 +110,14 @@
   .newsletter-popup .newsletter-form input {
     flex: 1;
     min-width: 0;
-    height: 3.1rem;
+    height: 2.55rem;
     border: 1px solid rgba(0, 0, 0, 0.18);
     border-right: 0;
-    padding: 0 1rem;
+    padding: 0 0.8rem;
     background: var(--white);
     color: var(--black);
     font-family: "Unica", sans-serif;
-    font-size: 0.8rem;
+    font-size: 0.72rem;
     font-weight: 300;
   }
 
@@ -123,13 +126,13 @@
   }
 
   .newsletter-popup .newsletter-form button {
-    flex: 0 0 6.5rem;
-    height: 3.1rem;
+    flex: 0 0 5rem;
+    height: 2.55rem;
     border: 1px solid rgba(0, 0, 0, 0.18);
     background: var(--white);
     color: var(--citat);
     font-family: "Unica", sans-serif;
-    font-size: 0.8rem;
+    font-size: 0.72rem;
     font-weight: 300;
     cursor: pointer;
     transition:
@@ -148,8 +151,19 @@
     color: var(--citat);
   }
 
+  .newsletter-popup .newsletter-note a {
+    font: inherit;
+    color: inherit;
+    text-decoration: underline;
+    text-underline-offset: 0.08em;
+  }
+
+  .newsletter-popup .newsletter-note a:hover {
+    opacity: 0.85;
+  }
+
   .newsletter-popup-image {
-    min-height: 28rem;
+    min-height: 18rem;
   }
 
   .newsletter-popup-image img {
@@ -162,14 +176,14 @@
 
   .newsletter-popup-close {
     position: absolute;
-    top: 0.8rem;
-    right: 0.8rem;
+    top: 0.55rem;
+    right: 0.65rem;
     z-index: 3;
     border: 0;
     background: transparent;
     color: var(--black);
     font-family: "Unica", sans-serif;
-    font-size: 2rem;
+    font-size: 1.6rem;
     line-height: 1;
     font-weight: 300;
     cursor: pointer;
