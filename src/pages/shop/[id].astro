@@ -32,7 +32,7 @@ const { product } = Astro.props;
     <div class="product-layout">
       <div class="product-image-wrap">
         <button class="image-arrow image-arrow-left" type="button" aria-label="Forrige billede"></button>
-        <img src={product.image_url} alt={`Billede af ${product.name}`} />
+        <img id="product-image" src={product.image_url} data-image-one={product.image_url} data-image-two={product.image2_url} alt={`Billede af ${product.name}`} />
         <button class="image-arrow image-arrow-right" type="button" aria-label="Næste billede"></button>
       </div>
 
@@ -97,6 +97,7 @@ const { product } = Astro.props;
     border-left-color: var(--citat);
     border-bottom-color: var(--citat);
   }
+  /* hover på pil*/
 
   .product-layout {
     display: flex;
@@ -153,6 +154,7 @@ const { product } = Astro.props;
 
   .product-category {
     margin: 0.5rem 0 0;
+    opacity: 80%;
   }
 
   .product-category::before {
@@ -270,3 +272,23 @@ const { product } = Astro.props;
     }
   }
 </style>
+
+<script>
+  const productImage = document.querySelector("#product-image");
+  const leftArrow = document.querySelector(".image-arrow-left");
+  const rightArrow = document.querySelector(".image-arrow-right");
+
+  if (productImage && leftArrow && rightArrow) {
+    const images = [productImage.dataset.imageOne, productImage.dataset.imageTwo].filter(Boolean);
+
+    let currentImage = 0;
+
+    function changeImage(direction) {
+      currentImage = (currentImage + direction + images.length) % images.length;
+      productImage.src = images[currentImage];
+    }
+
+    leftArrow.addEventListener("click", () => changeImage(-1));
+    rightArrow.addEventListener("click", () => changeImage(1));
+  }
+</script>
