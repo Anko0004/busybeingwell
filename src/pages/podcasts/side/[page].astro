@@ -2,146 +2,114 @@
 import Layout from "../../../layouts/Layout.astro";
 import PodcastCard from "../../../components/PodcastCard.astro";
 
-/* Vis kun 14 cards per side */
 const perPage = 14;
-
-/* API-nøglen gemmes i variabel */
-const key = "sb_publishable_0kC09y0_QNUGVyZSy7xOWQ_itr3lxQ_";
-const baseUrl = "https://gthqpnquordprfbbxrrc.supabase.co/rest/v1/episodes";
-
-/* Oprettelse af dynamiske sider */
-export async function getStaticPaths() {
-    const perPage = 14;
-    const key = "sb_publishable_0kC09y0_QNUGVyZSy7xOWQ_itr3lxQ_";
-    const baseUrl = "https://gthqpnquordprfbbxrrc.supabase.co/rest/v1/episodes";
-
-    /* Henter ID med fetch */
-    const res = await fetch(`${baseUrl}?select=id`, {
-        headers: {
-            apikey: key,
-            Authorization: `Bearer ${key}`,
-            Prefer: "count=exact",
-            Range: "0-0",
-        },
-    });
-
-    /* Læser antallet af episoder */
-    const contentRange = res.headers.get("content-range");
-    const totalItems = contentRange ? Number(contentRange.split("/")[1]) : 0;
-    /* Udregning af antal sider */
-    const totalPages = Math.ceil(totalItems / perPage);
-
-    /* En liste over ekstra sider */
-    return Array.from({ length: Math.max(totalPages - 1, 0) }, (_, index) => {
-        const page = index + 2;
-
-        return {
-            params: { page: String(page) },
-            props: { currentPage: page, totalPages },
-        };
-    });
-}
-
-/* Henter værdier fra getStaticPaths() */
-const { currentPage, totalPages } = Astro.props;
-
-/* Springer de første 14 over */
+const currentPage = Number(Astro.params.page);
 const offset = (currentPage - 1) * perPage;
 
-const url = `${baseUrl}?select=*&order=release_date.desc&limit=${perPage}&offset=${offset}`;
+const key = "sb_publishable_0kC09y0_QNUGVyZSy7xOWQ_itr3lxQ_";
+
+const url = `https://gthqpnquordprfbbxrrc.supabase.co/rest/v1/episodes?select=*&order=release_date.desc&limit=${perPage}&offset=${offset}`;
 
 const res = await fetch(url, {
-    headers: {
-        apikey: key,
-        Authorization: `Bearer ${key}`,
-    },
+  headers: {
+    apikey: key,
+    Authorization: `Bearer ${key}`,
+    Prefer: "count=exact",
+  },
 });
 
-/* Dataen laves om til script */
 const data = await res.json();
+
+const contentRange = res.headers.get("content-range");
+const totalItems = contentRange ? Number(contentRange.split("/")[1]) : data.length;
+const totalPages = Math.ceil(totalItems / perPage);
 ---
 
 <Layout>
-    <section class="podcasts-intro">
-        <h2>Podcasts</h2>
-        <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ea commodo consequat.</p>
-    </section>
+  <section class="podcasts-intro">
+    <h2>Podcasts</h2>
+  </section>
 
-    <section class="podcast-grid">
-        {
-            data.map((episode, index) => (
-                <div class="podcast-grid-item">
-                    <PodcastCard data={episode} index={index} />
-                </div>
-            ))
-        }
-    </section>
+  <section class="podcast-grid">
+    {
+      data.map((episode, index) => (
+        <div class="podcast-grid-item">
+          <PodcastCard data={episode} index={index} priority={index < 3} />
+        </div>
+      ))
+    }
+  </section>
 
-    <nav class="pagination" aria-label="Podcast sider">
-        {
-            Array.from({ length: totalPages }, (_, index) => {
-                const page = index + 1;
-
-                return (
-                    <a href={page === 1 ? "/podcasts" : `/podcasts/side/${page}`} class={page === currentPage ? "active" : ""}>
-                        {page}
-                    </a>
-                );
-            })
-        }
-    </nav>
+  {
+    totalPages > 1 && (
+      <nav class="pagination" aria-label="Podcast sider">
+        {Array.from({ length: totalPages }, (_, index) => {
+          const page = index + 1;
+          return (
+            <a href={page === 1 ? "/podcasts" : `/podcasts/side/${page}`} class={page === currentPage ? "active" : ""}>
+              {page}
+            </a>
+          );
+        })}
+      </nav>
+    )
+  }
 </Layout>
 
 <style>
-    .podcasts-intro {
-        margin-bottom: 3rem;
+  .podcasts-intro {
+    margin-bottom: 3rem;
+  }
+
+  .podcasts-intro p {
+    max-width: 34rem;
+  }
+
+  .podcast-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem 1rem;
+  }
+
+  @media (min-width: 900px) {
+    .podcast-grid {
+      grid-template-columns: repeat(4, 1fr);
+      gap: 4rem 1.5rem;
     }
 
     .podcasts-intro p {
-        max-width: 34rem;
+      max-width: 57rem;
     }
 
-    .podcast-grid {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 4rem 3rem;
+    .podcast-grid-item:nth-child(7n + 1) {
+      grid-column: span 2;
     }
 
-    @media (min-width: 900px) {
-        .podcast-grid {
-            grid-template-columns: repeat(4, 1fr);
-            gap: 4rem 1.5rem;
-        }
-
-        .podcast-grid-item:nth-child(7n + 1) {
-            grid-column: span 2;
-        }
-
-        .podcast-grid-item:nth-child(7n + 1) :global(.podcast-image) {
-            aspect-ratio: auto;
-            height: calc(((100vw - 3rem - (3 * 1.5rem)) / 4) * 1.25);
-            object-position: center 25%;
-        }
+    .podcast-grid-item:nth-child(7n + 1) :global(.podcast-image) {
+      aspect-ratio: auto;
+      height: calc(((100vw - 3rem - (3 * 1.5rem)) / 4) * 1.25);
+      object-position: center 25%;
     }
+  }
 
-    .pagination {
-        display: flex;
-        justify-content: flex-end;
-        gap: 1rem;
-        margin-top: 5rem;
-        margin-bottom: 4rem;
-    }
+  .pagination {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+    margin-top: 5rem;
+    margin-bottom: 4rem;
+  }
 
-    .pagination a {
-        font-family: "Unica", sans-serif;
-        color: var(--black);
-        font-size: 1rem;
-        text-decoration: none;
-        border-bottom: 1px solid transparent;
-    }
+  .pagination a {
+    font-family: "Unica", sans-serif;
+    color: var(--black);
+    font-size: 1rem;
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+  }
 
-    .pagination a:hover,
-    .pagination a.active {
-        border-bottom-color: var(--black);
-    }
+  .pagination a:hover,
+  .pagination a.active {
+    border-bottom-color: var(--black);
+  }
 </style>
