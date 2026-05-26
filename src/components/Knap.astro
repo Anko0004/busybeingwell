@@ -48,4 +48,10 @@ const { text = "Klik her", href = "#", variant = "default" } = Astro.props;
   .knap.small:hover {
     color: var(--citat);
   }
+
+  @media (min-width: 700px) {
+    .knap.small {
+      font-size: 0.9rem;
+    }
+  }
 </style>

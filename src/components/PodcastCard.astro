@@ -130,15 +130,20 @@ const desktopName = data.name;
     display: none;
   }
 
+  .podcast-card .desktop-text {
+    display: none;
+  }
+
   @media (min-width: 500px) {
-    .mobile-text {
+    .podcast-card .mobile-text {
       display: none;
     }
 
-    .desktop-text {
+    .podcast-card .desktop-text {
       display: inline;
     }
   }
+
   /* Tekst størrelse desktop */
   @media (min-width: 900px) {
     .podcast-card h2 {
