@@ -2,6 +2,10 @@
 import Layout from "../../../layouts/Layout.astro";
 import PodcastCard from "../../../components/PodcastCard.astro";
 
+export async function getStaticPaths() {
+  return [{ params: { page: "2" } }];
+}
+
 const perPage = 14;
 const currentPage = Number(Astro.params.page);
 const offset = (currentPage - 1) * perPage;
