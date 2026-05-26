@@ -1,9 +1,14 @@
 ---
-const { data } = Astro.props;
+const { data, index = 0 } = Astro.props;
+
+const isVisible = index < 4;
+const isHighPriority = index < 2;
 ---
 
-<article class="shop-card">
-  <img src={data.image_url} alt={`Billede af ${data.name}`} class="shop-image" loading="lazy" decoding="async" />
+<article class={`shop-card product-${data.id}`}>
+  <a href={`/shop/${data.id}`} class="shop-image-link" aria-label={`Læs mere om ${data.name}`}>
+    <img src={data.image_url} alt={`Billede af ${data.name}`} class="shop-image" loading={isVisible ? "eager" : "lazy"} decoding="async" fetchpriority={isHighPriority ? "high" : "auto"} />
+  </a>
 
   <div class="shop-info">
     <div class="shop-row shop-row-top">
@@ -22,17 +27,41 @@ const { data } = Astro.props;
   .shop-card {
     color: var(--white);
     margin-bottom: 2rem;
-    content-visibility: auto;
-    contain-intrinsic-size: 0 22rem;
+  }
+
+  .shop-image-link {
+    display: block;
+    overflow: hidden;
   }
 
   .shop-image {
-    background: var(--test);
     display: block;
     width: 100%;
     aspect-ratio: 4 / 5;
     object-fit: contain;
-    padding: 0.5rem;
+    padding: 0;
+    transform: scale(1.2);
+    transition: opacity 0.2s ease;
+  }
+
+  /* Taske */
+  .product-1 .shop-image {
+    transform: scale(1.25);
+  }
+
+  /* T-shirt */
+  .product-2 .shop-image {
+    transform: scale(1.15);
+  }
+
+  /* Kasket */
+  .product-3 .shop-image {
+    transform: scale(1.02);
+  }
+
+  /* Tumbler */
+  .product-4 .shop-image {
+    transform: scale(1.55) translateY(-1rem);
   }
 
   .shop-info {
@@ -64,7 +93,7 @@ const { data } = Astro.props;
     font-family: "Playfair Display SC", serif;
     text-transform: uppercase;
     font-size: 1.2rem;
-    line-height: 1.15;
+    line-height: 1.35;
     margin-bottom: 0.1rem;
     min-width: 0;
     overflow-wrap: anywhere;
@@ -72,7 +101,7 @@ const { data } = Astro.props;
 
   .shop-card p,
   .shop-card a {
-    font-size: 1rem;
+    font-size: 0.9rem;
     line-height: 1.3rem;
   }
 
@@ -114,6 +143,16 @@ const { data } = Astro.props;
 
   .shop-card a.site-hover:hover {
     color: var(--citat);
+    position: relative;
+    z-index: 2;
+    transition: color 0.2s ease;
   }
-  /* hover effekt */
+
+  .shop-image {
+    transition: opacity 0.2s ease;
+  }
+
+  .shop-image-link:hover .shop-image {
+    opacity: 0.55;
+  }
 </style>
