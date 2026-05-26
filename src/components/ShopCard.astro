@@ -39,22 +39,22 @@ const isHighPriority = index < 2;
 
   /* Taske */
   .product-1 .shop-image {
-    transform: scale(1.15);
+    transform: scale(1.1);
   }
 
   /* T-shirt */
   .product-2 .shop-image {
-    transform: scale(1.05);
+    transform: scale(0.9);
   }
 
   /* Kasket */
   .product-3 .shop-image {
-    transform: scale(1.05);
+    transform: scale(0.9);
   }
 
-  /* Tumbler */
+  /* hoodie */
   .product-4 .shop-image {
-    transform: scale(1.55) translateY(-1.5rem);
+    transform: scale(0.9);
   }
 
   .shop-image-link {
@@ -127,6 +127,7 @@ const isHighPriority = index < 2;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+    opacity: 80%;
   }
 
   .shop-category::before {
@@ -162,7 +163,7 @@ const isHighPriority = index < 2;
   }
 
   .shop-image-link:hover .shop-image {
-    opacity: 0.55;
+    filter: brightness(1.1);
   }
 
   /* hover effekt */
@@ -193,19 +194,19 @@ const isHighPriority = index < 2;
 
     /* Desktop: lidt mindre produktbilleder */
     .product-1 .shop-image {
-      transform: scale(1.45);
+      transform: scale(1.1);
     }
 
     .product-2 .shop-image {
-      transform: scale(1.2);
+      transform: scale(0.9);
     }
 
     .product-3 .shop-image {
-      transform: scale(1.02);
+      transform: scale(0.8);
     }
 
     .product-4 .shop-image {
-      transform: scale(1.6) translateY(-1rem);
+      transform: scale(0.8);
     }
   }
 </style>

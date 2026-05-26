@@ -75,7 +75,7 @@ const products = await shopRes.json();
   </section>
 
   <section class="shop-section snap-section">
-    <h2>Bliv en del af familien</h2>
+    <h2>Shop</h2>
 
     <div class="shop-content">
       {
@@ -349,10 +349,14 @@ const products = await shopRes.json();
   /* Tablet */
 
   @media (min-width: 600px) {
+    /* Intro tablet */
+
     .ommig .image {
       margin-left: -2rem;
       margin-right: -2rem;
     }
+
+    /* Global / Shared tablet */
 
     .podcast-section,
     .shop-section,
@@ -364,14 +368,7 @@ const products = await shopRes.json();
     }
   }
 
-  @media (min-width: 700px) {
-    .shop-content {
-      grid-template-columns: repeat(3, 1fr);
-      align-items: end;
-    }
-  }
-
-  /* Desktop */
+  /* Intro desktop */
 
   @media (min-width: 900px) {
     .intro-screen {
@@ -443,16 +440,10 @@ const products = await shopRes.json();
       margin-top: 0;
     }
 
+    /* Podcasts desktop */
+
     .podcast-section {
       min-height: 100svh;
-      box-sizing: border-box;
-      grid-template-rows: auto auto;
-      align-content: space-between;
-      padding-top: var(--section-top);
-      padding-bottom: var(--section-bottom);
-    }
-
-    .shop-section {
       box-sizing: border-box;
       grid-template-rows: auto auto;
       align-content: space-between;
@@ -480,17 +471,32 @@ const products = await shopRes.json();
       object-position: center 18%;
     }
 
+    /* Shop desktop */
+
+    .shop-section {
+      box-sizing: border-box;
+      grid-template-rows: auto auto;
+      align-content: space-between;
+      padding-top: var(--section-top);
+      padding-bottom: var(--section-bottom);
+    }
+
     .shop-content {
       grid-template-columns: repeat(4, minmax(0, 1fr));
       align-items: end;
       justify-self: center;
       width: 100%;
+      gap: 4rem;
     }
+
+    /* Buttons desktop */
 
     .section-knap {
       display: block;
       margin-top: var(--section-gap);
     }
+
+    /* Instagram desktop */
 
     .instagram-section {
       min-height: 100svh;
