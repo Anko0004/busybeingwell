@@ -12,6 +12,12 @@ const formattedDate = date.toLocaleDateString("da-DK", {
   month: "long",
   year: "numeric",
 });
+
+const mobileRole = data.role.length > 18 ? `${data.role.slice(0, 15)}...` : data.role;
+const desktopRole = data.role.length > 28 ? `${data.role.slice(0, 25)}...` : data.role;
+
+const mobileName = data.name.length > 18 ? `${data.name.slice(0, 15)}...` : data.name;
+const desktopName = data.name;
 ---
 
 <article class="podcast-card">
@@ -22,12 +28,16 @@ const formattedDate = date.toLocaleDateString("da-DK", {
   <div class="podcast-content">
     <div class="podcast-meta">
       <span class="podcast-role">
-        {data.role.length > 28 ? `${data.role.slice(0, 25)}...` : data.role}
+        <span class="mobile-text">{mobileRole}</span>
+        <span class="desktop-text">{desktopRole}</span>
       </span>
       <Knap text="LÆS MERE" href={`/podcasts/${data.id}`} variant="small" />
     </div>
 
-    <h2>{data.name}</h2>
+    <h2>
+      <span class="mobile-text">{mobileName}</span>
+      <span class="desktop-text">{desktopName}</span>
+    </h2>
     <p class="podcast-description">{data.description}</p>
   </div>
 </article>
@@ -61,20 +71,21 @@ const formattedDate = date.toLocaleDateString("da-DK", {
 
   .podcast-meta {
     display: flex;
+    align-items: center;
     justify-content: space-between;
-    gap: 1rem;
+    gap: 0.5rem;
     margin-bottom: 0.4rem;
   }
 
   .podcast-meta span {
     font-family: "Unica", sans-serif;
     color: var(--black);
-    font-size: 0.85rem;
+    font-size: 0.6rem;
     line-height: 1rem;
   }
 
   .podcast-card h2 {
-    font-size: 1.3rem;
+    font-size: 1rem;
     margin-top: 0.7rem;
     margin-bottom: 0.1rem;
   }
@@ -101,8 +112,9 @@ const formattedDate = date.toLocaleDateString("da-DK", {
   .podcast-role {
     display: inline-flex;
     align-items: center;
-    gap: 0.7rem;
+    gap: 0.3rem;
     letter-spacing: 0.05em;
+    white-space: nowrap;
   }
 
   .podcast-role::before {
@@ -113,6 +125,33 @@ const formattedDate = date.toLocaleDateString("da-DK", {
     border-radius: 50%;
     background: var(--black);
   }
+
+  .desktop-text {
+    display: none;
+  }
+
+  @media (min-width: 500px) {
+    .mobile-text {
+      display: none;
+    }
+
+    .desktop-text {
+      display: inline;
+    }
+  }
+  /* Tekst størrelse desktop */
+  @media (min-width: 900px) {
+    .podcast-card h2 {
+      font-size: 1.3rem;
+      margin-top: 0.7rem;
+      margin-bottom: 0.1rem;
+    }
+
+    .podcast-meta span {
+      font-size: 0.75rem;
+    }
+  }
+  /* Tekst størrelse desktop */
 
   /* hover effekt */
   .podcast-meta a.site-hover {
