@@ -291,32 +291,6 @@
   const signup = document.getElementById("newsletterSignup");
   const success = document.getElementById("newsletterSuccess");
 
-  const popupDelay = 2200;
-
-  setTimeout(() => {
-    popup?.classList.remove("is-hidden");
-  }, popupDelay);
-
-  closeButton?.addEventListener("click", () => {
-    popup?.classList.add("is-hidden");
-  });
-
-  form?.addEventListener("submit", (event) => {
-    event.preventDefault();
-
-    signup?.classList.add("is-hidden");
-    success?.classList.add("is-visible");
-  });
-</script>
-
-<!-- ((Den her skal være den aktive, når siden er live))
-<script>
-  const popup = document.getElementById("newsletterPopup");
-  const closeButton = document.querySelector(".newsletter-popup-close");
-  const form = document.getElementById("newsletterForm");
-  const signup = document.getElementById("newsletterSignup");
-  const success = document.getElementById("newsletterSuccess");
-
   const popupHasBeenSeen = localStorage.getItem("newsletterPopupSeen");
   const popupDelay = 2200;
 
@@ -337,6 +311,32 @@
     signup?.classList.add("is-hidden");
     success?.classList.add("is-visible");
     localStorage.setItem("newsletterPopupSeen", "true");
+  });
+</script>
+
+<!-- ((Den her viser newletter pop-uppen heletiden))
+<script>
+  const popup = document.getElementById("newsletterPopup");
+  const closeButton = document.querySelector(".newsletter-popup-close");
+  const form = document.getElementById("newsletterForm");
+  const signup = document.getElementById("newsletterSignup");
+  const success = document.getElementById("newsletterSuccess");
+
+  const popupDelay = 2200;
+
+  setTimeout(() => {
+    popup?.classList.remove("is-hidden");
+  }, popupDelay);
+
+  closeButton?.addEventListener("click", () => {
+    popup?.classList.add("is-hidden");
+  });
+
+  form?.addEventListener("submit", (event) => {
+    event.preventDefault();
+
+    signup?.classList.add("is-hidden");
+    success?.classList.add("is-visible");
   });
 </script>
 -->
