@@ -23,6 +23,17 @@ export async function getStaticPaths() {
 }
 
 const { product } = Astro.props;
+
+const descriptionLines = product.description
+  ? product.description
+      .split("\n")
+      .map((line) => line.trim())
+      .filter(Boolean)
+  : [];
+
+const descriptionText = descriptionLines.filter((line) => !line.startsWith("–") && !line.startsWith("-")).join(" ");
+
+const descriptionPoints = descriptionLines.filter((line) => line.startsWith("–") || line.startsWith("-")).map((line) => line.replace(/^[-–]\s*/, ""));
 ---
 
 <Layout navVariant="light" pageColor="orange" footerVariant="orange">
@@ -51,7 +62,18 @@ const { product } = Astro.props;
 
         <div class="product-description">
           <h3>Om produktet</h3>
-          <p>{product.description}</p>
+
+          {descriptionText && <p>{descriptionText}</p>}
+
+          {
+            descriptionPoints.length > 0 && (
+              <ul>
+                {descriptionPoints.map((point) => (
+                  <li>{point}</li>
+                ))}
+              </ul>
+            )
+          }
         </div>
       </div>
     </div>
@@ -154,7 +176,7 @@ const { product } = Astro.props;
 
   .product-category {
     margin: 0.5rem 0 0;
-    opacity: 80%;
+    opacity: 70%;
   }
 
   .product-category::before {
@@ -185,6 +207,7 @@ const { product } = Astro.props;
 
   .product-description h3,
   .product-description p,
+  .product-description li,
   .product-category,
   .product-price,
   .product-buy a {
@@ -202,6 +225,24 @@ const { product } = Astro.props;
     margin: 0;
     font-size: 0.9rem;
     line-height: 1.35rem;
+  }
+
+  .product-description ul {
+    margin: 1rem 0 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .product-description li {
+    margin: 0;
+    font-family: "Unica", sans-serif;
+    color: var(--white);
+    font-size: 0.9rem;
+    line-height: 1.35rem;
+  }
+
+  .product-description li::before {
+    content: "– ";
   }
 
   @media (min-width: 600px) {
@@ -227,7 +268,7 @@ const { product } = Astro.props;
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 5rem;
-      align-items: center;
+      align-items: start;
     }
 
     .product-image-wrap {
@@ -236,7 +277,7 @@ const { product } = Astro.props;
     }
 
     .product-info {
-      padding-top: 0;
+      padding-top: 3rem;
       max-width: 30rem;
     }
 
@@ -270,6 +311,14 @@ const { product } = Astro.props;
       grid-row: 2;
       width: fit-content;
     }
+  }
+
+  .product-buy a.add-to-cart {
+    transition: color 0.2s ease;
+  }
+
+  .product-buy a.add-to-cart:hover {
+    color: var(--citat);
   }
 </style>
 
