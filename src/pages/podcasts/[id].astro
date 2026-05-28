@@ -30,153 +30,177 @@ const spotifyEmbedUrl = episode.podcast_url?.replace("https://open.spotify.com/e
 ---
 
 <Layout>
+  <!-- podcast detaljeside -->
   <section class="podcast-page">
+    <!-- tilbage pil -->
     <a href="/podcasts" class="back-button" aria-label="Tilbage"></a>
 
+    <!-- podcast layout -->
     <div class="podcast-layout">
+      <!-- podcast titel -->
       <div class="podcast-title">
         <h1>{episode.name}</h1>
         <h4>{episode.role}</h4>
       </div>
 
+      <!-- podcast billede -->
       <div class="podcast-image-wrap">
         <img src={episode.image_url} alt={`Billede af ${episode.name}`} />
       </div>
 
+      <!-- podcast tekst -->
       <div class="podcast-text">
         <p>{episode.description}</p>
 
+        <!-- spotify embed -->
         {spotifyEmbedUrl && <iframe src={spotifyEmbedUrl} width="100%" height="152" frameborder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy" />}
 
+        <!-- podcast link -->
         <a href={episode.podcast_url} target="_blank" rel="noopener noreferrer" class="podcast-link"> Gå til podcast </a>
       </div>
     </div>
   </section>
+</Layout>
 
-  <style>
-    .podcast-page {
-      margin-bottom: 4rem;
+<style>
+  /* podcast detaljeside */
+  .podcast-page {
+    margin-bottom: 4rem;
+  }
+
+  /* tilbage pil */
+  .back-button {
+    display: inline-block;
+    position: relative;
+    width: 1.5rem;
+    height: 1.5rem;
+    margin-bottom: 3rem;
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+  }
+
+  /* pilens form */
+  .back-button::before {
+    content: "";
+    display: block;
+    width: 1rem;
+    height: 1rem;
+    border-left: 0.18rem solid var(--black);
+    border-bottom: 0.18rem solid var(--black);
+    border-radius: 0.12rem;
+    transform: rotate(45deg);
+  }
+
+  /* hover på tilbage pil */
+  .back-button:hover::before {
+    border-left-color: var(--citat);
+    border-bottom-color: var(--citat);
+  }
+
+  /* podcast layout */
+  .podcast-layout {
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* podcast titel */
+  .podcast-title {
+    margin-bottom: 3rem;
+  }
+
+  /* podcast overskrift */
+  .podcast-title h1 {
+    font-family: "Playfair Display SC", serif;
+    color: var(--black);
+    font-size: 1.8rem;
+    font-weight: 210;
+    line-height: 2rem;
+    text-align: left;
+    margin: 0;
+  }
+
+  /* podcast rolle */
+  .podcast-title h4 {
+    color: var(--citat);
+    margin: 0.2rem 0 0;
+  }
+
+  /* podcast billede wrapper */
+  .podcast-image-wrap {
+    margin-left: -1.5rem;
+    margin-right: -1.5rem;
+  }
+
+  /* podcast billede */
+  .podcast-image-wrap img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    object-position: center 17%;
+  }
+
+  /* podcast tekst */
+  .podcast-text {
+    padding-top: 2rem;
+  }
+
+  /* podcast beskrivelse */
+  .podcast-text p {
+    margin: 0;
+    padding-bottom: 2rem;
+  }
+
+  /* podcast link */
+  .podcast-link {
+    display: block;
+    margin-top: 1.5rem;
+    color: var(--black);
+    text-align: right;
+    text-transform: uppercase;
+    text-decoration: underline;
+  }
+
+  /* spotify iframe */
+  iframe {
+    border: 0;
+  }
+
+  /* tablet billede margin */
+  @media (min-width: 600px) {
+    .podcast-image-wrap {
+      margin-left: -2rem;
+      margin-right: -2rem;
     }
+  }
 
-    .back-button {
-      display: inline-block;
-      position: relative;
-      width: 1.5rem;
-      height: 1.5rem;
-      margin-bottom: 3rem;
-      border: 0;
-      background: transparent;
-      cursor: pointer;
-    }
-
-    .back-button::before {
-      content: "";
-      display: block;
-      width: 1rem;
-      height: 1rem;
-      border-left: 0.18rem solid var(--black);
-      border-bottom: 0.18rem solid var(--black);
-      border-radius: 0.12rem;
-      transform: rotate(45deg);
-    }
-
-    .back-button:hover::before {
-      border-left-color: var(--citat);
-      border-bottom-color: var(--citat);
-    }
-
+  /* desktop layout */
+  @media (min-width: 900px) {
     .podcast-layout {
-      display: flex;
-      flex-direction: column;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: start;
     }
 
     .podcast-title {
-      margin-bottom: 3rem;
-    }
-
-    .podcast-title h1 {
-      font-family: "Playfair Display SC", serif;
-      color: var(--black);
-      font-size: 1.8rem;
-      font-weight: 210;
-      line-height: 2rem;
-      text-align: left;
-      margin: 0;
-    }
-
-    .podcast-title h4 {
-      color: var(--citat);
-      margin: 0.2rem 0 0;
-    }
-
-    .podcast-image-wrap {
-      margin-left: -1.5rem;
-      margin-right: -1.5rem;
-    }
-
-    .podcast-image-wrap img {
-      display: block;
-      width: 100%;
-      aspect-ratio: 1 / 1;
-      object-fit: cover;
-      object-position: center 17%;
+      grid-column: 1;
+      grid-row: 1;
+      margin-bottom: 0;
     }
 
     .podcast-text {
-      padding-top: 2rem;
+      grid-column: 1;
+      grid-row: 1;
+      padding-top: 8rem;
     }
 
-    .podcast-text p {
-      margin: 0;
-      padding-bottom: 2rem;
+    .podcast-image-wrap {
+      grid-column: 2;
+      grid-row: 1;
+      margin-left: 0;
+      margin-right: 0;
     }
-
-    .podcast-link {
-      display: block;
-      margin-top: 1.5rem;
-      color: var(--black);
-      text-align: right;
-      text-transform: uppercase;
-      text-decoration: underline;
-    }
-
-    iframe {
-      border: 0;
-    }
-
-    @media (min-width: 600px) {
-      .podcast-image-wrap {
-        margin-left: -2rem;
-        margin-right: -2rem;
-      }
-    }
-
-    @media (min-width: 900px) {
-      .podcast-layout {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 5rem;
-        align-items: start;
-      }
-
-      .podcast-title {
-        grid-column: 1;
-        grid-row: 1;
-        margin-bottom: 0;
-      }
-
-      .podcast-text {
-        grid-column: 1;
-        grid-row: 1;
-        padding-top: 8rem;
-      }
-
-      .podcast-image-wrap {
-        grid-column: 2;
-        grid-row: 1;
-        margin-left: 0;
-        margin-right: 0;
-      }
-    }
-  </style>
-</Layout>
+  }
+</style>

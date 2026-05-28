@@ -20,12 +20,16 @@ const mobileName = data.name.length > 18 ? `${data.name.slice(0, 15)}...` : data
 const desktopName = data.name;
 ---
 
+<!-- podcast card -->
 <article class="podcast-card">
+  <!-- podcast billede link -->
   <a href={`/podcasts/${data.id}`} class="podcast-image-link" aria-label={`Læs mere om ${data.name}`}>
     <img src={data.image_url} alt={`Billede af ${data.name}`} class="podcast-image" loading={isPriority ? "eager" : "lazy"} decoding="async" fetchpriority={isPriority ? "high" : "auto"} sizes={isLarge ? "(min-width: 900px) 50vw, 100vw" : "(min-width: 900px) 25vw, 50vw"} />
   </a>
 
+  <!-- podcast tekstindhold -->
   <div class="podcast-content">
+    <!-- podcast meta info -->
     <div class="podcast-meta">
       <span class="podcast-role">
         <span class="mobile-text">{mobileRole}</span>
@@ -34,25 +38,32 @@ const desktopName = data.name;
       <Knap text="LÆS MERE" href={`/podcasts/${data.id}`} variant="small" />
     </div>
 
+    <!-- podcast navn -->
     <h2>
       <span class="mobile-text">{mobileName}</span>
       <span class="desktop-text">{desktopName}</span>
     </h2>
+
+    <!-- podcast beskrivelse -->
     <p class="podcast-description">{data.description}</p>
   </div>
 </article>
 
 <style>
+  /* podcast card */
   .podcast-card {
     margin-bottom: 1rem;
   }
 
+  /* podcast billede */
   .podcast-image {
     display: block;
     width: 100%;
     aspect-ratio: 4 / 5;
     object-fit: cover;
   }
+
+  /* podcast billede link */
   .podcast-image-link {
     display: block;
     color: inherit;
@@ -61,14 +72,17 @@ const desktopName = data.name;
     overflow: hidden;
   }
 
+  /* hover på podcast billede */
   .podcast-image-link:hover .podcast-image {
     opacity: 0.85;
   }
 
+  /* podcast tekstindhold */
   .podcast-content {
     padding-top: 0.5rem;
   }
 
+  /* podcast meta info */
   .podcast-meta {
     display: flex;
     align-items: center;
@@ -77,6 +91,7 @@ const desktopName = data.name;
     margin-bottom: 0.4rem;
   }
 
+  /* tekst i podcast meta */
   .podcast-meta span {
     font-family: "Unica", sans-serif;
     color: var(--black);
@@ -84,12 +99,14 @@ const desktopName = data.name;
     line-height: 1rem;
   }
 
+  /* podcast titel */
   .podcast-card h2 {
     font-size: 1rem;
     margin-top: 0.7rem;
     margin-bottom: 0.1rem;
   }
 
+  /* podcast brødtekst */
   .podcast-card p {
     margin: 0;
     padding: 0;
@@ -98,6 +115,7 @@ const desktopName = data.name;
     margin-top: 0.25rem;
   }
 
+  /* podcast beskrivelse */
   .podcast-description {
     margin: 0;
     padding: 0;
@@ -109,6 +127,7 @@ const desktopName = data.name;
     overflow: hidden;
   }
 
+  /* podcast rolle */
   .podcast-role {
     display: inline-flex;
     align-items: center;
@@ -117,6 +136,7 @@ const desktopName = data.name;
     white-space: nowrap;
   }
 
+  /* prik før rolle */
   .podcast-role::before {
     content: "";
     width: 0.55rem;
@@ -126,14 +146,17 @@ const desktopName = data.name;
     background: var(--black);
   }
 
+  /* skjuler desktop tekst som standard */
   .desktop-text {
     display: none;
   }
 
+  /* skjuler desktop tekst på podcast card */
   .podcast-card .desktop-text {
     display: none;
   }
 
+  /* skifter fra mobiltekst til desktoptekst */
   @media (min-width: 500px) {
     .podcast-card .mobile-text {
       display: none;

@@ -24,13 +24,19 @@ const products = await shopRes.json();
 ---
 
 <ForsideLayout>
+  <!-- newsletter popup -->
   <NewsletterPopup />
+
+  <!-- intro section -->
   <section class="intro-screen snap-section">
+    <!-- om mig section -->
     <div class="section ommig">
+      <!-- om mig billede -->
       <div class="image">
         <img src="cilia_ommig1.webp" alt="Cilia laver mad" />
       </div>
 
+      <!-- første tekstblok -->
       <div class="text1">
         <div class="overskrifter">
           <h2 class="ommig">Mød Cilia Trappaud</h2>
@@ -40,25 +46,30 @@ const products = await shopRes.json();
         <p>Mit navn er Cilia Trappaud, og jeg er født og opvokset i København. Som barn forelskede jeg mig i dans og musik, og det blev definerende for min barndom, ungdom og mit liv som ung voksen. Jeg kan ikke huske mit liv uden dans, og jeg har brugt utallige timer på at dygtiggøre mig indenfor faget. Jeg klarede mig fint i skolen og havde længe en interesse for at læse journalistik, retorik eller psykologi, men endte med at følge mit hjerte og satse fuldt ud på dansen.</p>
       </div>
 
+      <!-- anden tekstblok -->
       <div class="text2">
         <p>Som 25 årig flyttede jeg til Los Angeles for at forfølge mine største dansedrømme — tilpas naivt, skræmmende og spændende på samme tid. De sidste otte år har jeg arbejdet fuldtid som professionel danser på topplan, hvilket har lært mig meget om disciplin, pres og vigtigheden af at passe på både kroppen og sindet. Samtidig vækkede det en endnu større interesse for velvære og for, hvordan vi som mennesker kan have det godt i en travl og krævende hverdag.</p>
       </div>
     </div>
 
+    <!-- citat section -->
     <div class="citat">
       <div class="citat-content">
         <h2>“Hvis man endelig skal være busy med noget, så er det med fokus på at være well — for vi prøver alle at finde balancen mellem en travl virkelighed og ønsket om samtidig at passe bedre på os selv"</h2>
       </div>
 
+      <!-- læs mere knap -->
       <div class="knap-wrapper">
         <Knap text="LÆS MERE" href="/ommig" variant="default" />
       </div>
     </div>
   </section>
 
+  <!-- podcast section -->
   <section class="podcast-section snap-section">
     <h2 class="podcast-heading">Podcasts</h2>
 
+    <!-- podcast cards -->
     <div class="podcast-content">
       {
         podcasts.map((podcast, index) => (
@@ -69,14 +80,17 @@ const products = await shopRes.json();
       }
     </div>
 
+    <!-- podcast knap -->
     <div class="podcast-knap-wrapper section-knap">
       <Knap text="SE ALLE PODCASTS" href="/podcasts" variant="default" />
     </div>
   </section>
 
+  <!-- shop section -->
   <section class="shop-section snap-section">
     <h2>Shop</h2>
 
+    <!-- shop cards -->
     <div class="shop-content">
       {
         products.map((product) => (
@@ -87,11 +101,13 @@ const products = await shopRes.json();
       }
     </div>
 
+    <!-- shop knap -->
     <div class="shop-knap-wrapper">
       <Knap text="GÅ TIL SHOP" href="/shop" variant="light" />
     </div>
   </section>
 
+  <!-- instagram section -->
   <section class="instagram-section snap-section">
     <div class="instagram-header">
       <h2 class="instagram-heading">Følg med på Instagram</h2>
@@ -100,6 +116,7 @@ const products = await shopRes.json();
     <div class="instagram-layout">
       <p class="instagram-side-text">For inspiration, personlige anbefalinger</p>
 
+      <!-- instagram cards -->
       <div class="instagram-content">
         <a class="instagram-card" href="https://www.instagram.com/" target="_blank">
           <img src="insta_billede1.webp" alt="insta billede 1" />
@@ -128,6 +145,7 @@ const products = await shopRes.json();
 </ForsideLayout>
 
 <style>
+  /* section spacing variabler */
   :root {
     --section-top: 5rem;
     --section-bottom: 5rem;
@@ -136,12 +154,14 @@ const products = await shopRes.json();
 
   /* Global / Shared */
 
+  /* billeder */
   .image img {
     width: 100%;
     height: auto;
     display: block;
   }
 
+  /* knap placering */
   .knap-wrapper,
   .section-knap {
     display: flex;
@@ -149,6 +169,7 @@ const products = await shopRes.json();
     margin-top: 2rem;
   }
 
+  /* fælles layout for podcast og shop */
   .podcast-section,
   .shop-section {
     display: grid;
@@ -159,6 +180,7 @@ const products = await shopRes.json();
     padding: 5rem 1rem var(--section-bottom);
   }
 
+  /* lodrette overskrifter */
   .podcast-heading,
   .shop-section h2 {
     writing-mode: vertical-rl;
@@ -168,6 +190,7 @@ const products = await shopRes.json();
     align-self: start;
   }
 
+  /* knapper i podcast og shop */
   .podcast-knap-wrapper,
   .shop-knap-wrapper {
     grid-column: 2;
@@ -175,6 +198,7 @@ const products = await shopRes.json();
     align-self: end;
   }
 
+  /* shop knap afstand */
   .shop-knap-wrapper {
     margin-top: 1.5rem;
   }
@@ -185,31 +209,37 @@ const products = await shopRes.json();
     padding-bottom: var(--section-bottom);
   }
 
+  /* om mig layout */
   .section.ommig {
     display: flex;
     flex-direction: column;
   }
 
+  /* første tekstblok */
   .text1 {
     order: 1;
     padding-top: 1rem;
     padding-bottom: 2rem;
   }
 
+  /* om mig overskrift */
   .text1 .ommig {
     margin-bottom: 0;
   }
 
+  /* anden tekstblok */
   .text2 {
     order: 3;
     padding-top: 1.5rem;
     padding-bottom: 2rem;
   }
 
+  /* om mig tekst */
   .ommig p {
     padding-bottom: 0;
   }
 
+  /* om mig billede */
   .ommig .image {
     order: 2;
     width: auto;
@@ -217,16 +247,19 @@ const products = await shopRes.json();
     margin-right: -1.5rem;
   }
 
+  /* om mig billede styling */
   .ommig .image img {
     aspect-ratio: 1 / 1;
     object-fit: cover;
     object-position: center;
   }
 
+  /* citat */
   .citat {
     margin-top: 1rem;
   }
 
+  /* citat tekst */
   .citat h2 {
     color: var(--citat);
     margin: 0 0 0 0.5rem;
@@ -244,6 +277,7 @@ const products = await shopRes.json();
     color: var(--black);
   }
 
+  /* podcast card grid */
   .podcast-content {
     display: grid;
     grid-column: 2;
@@ -252,6 +286,7 @@ const products = await shopRes.json();
     max-width: 42rem;
   }
 
+  /* podcast billeder */
   .podcast-content img {
     width: 100%;
     height: 24rem;
@@ -259,6 +294,7 @@ const products = await shopRes.json();
     display: block;
   }
 
+  /* første podcast billede */
   .podcast-content img:first-child {
     object-position: center 18%;
   }
@@ -273,6 +309,7 @@ const products = await shopRes.json();
     color: var(--cream);
   }
 
+  /* shop card grid */
   .shop-content {
     display: grid;
     grid-column: 2;
@@ -281,6 +318,7 @@ const products = await shopRes.json();
     min-height: 12rem;
   }
 
+  /* shop card wrapper */
   .shop-card-wrapper {
     width: 100%;
   }
@@ -292,34 +330,41 @@ const products = await shopRes.json();
     margin-right: -1.5rem;
   }
 
+  /* instagram header */
   .instagram-header {
     padding: 2rem 1rem 1.5rem;
   }
 
+  /* instagram overskrift */
   .instagram-heading {
     color: var(--black);
     margin: 0;
   }
 
+  /* instagram layout */
   .instagram-layout {
     display: block;
   }
 
+  /* side tekst skjult på mobil */
   .instagram-side-text {
     display: none;
   }
 
+  /* instagram grid */
   .instagram-content {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
   }
 
+  /* instagram card */
   .instagram-card {
     position: relative;
     display: block;
     overflow: hidden;
   }
 
+  /* instagram billede */
   .instagram-card img {
     width: 100%;
     aspect-ratio: 4 / 5;
@@ -329,6 +374,7 @@ const products = await shopRes.json();
     transition: filter 0.3s ease;
   }
 
+  /* tekst på instagram card */
   .instagram-card span {
     position: absolute;
     left: 0.5rem;
@@ -342,6 +388,7 @@ const products = await shopRes.json();
     pointer-events: none;
   }
 
+  /* hover på instagram billede */
   .instagram-card:hover img {
     filter: brightness(100%);
   }
