@@ -7,17 +7,21 @@ const isActive = (href) => currentPath === href || currentPath.startsWith(`${hre
 ---
 
 <header class="header">
+  <!-- navigation -->
   <nav class={`nav nav--${variant}`}>
+    <!-- logo -->
     <div class="logo">
       <a href="/">bbw</a>
     </div>
 
+    <!-- burger menu knap -->
     <button class="burger" onclick="openNav()" aria-label="Menu">
       <span class="bar"></span>
       <span class="bar"></span>
       <span class="bar"></span>
     </button>
 
+    <!-- desktop menu -->
     <div class="menu" id="menu">
       <ul>
         <li>
@@ -37,9 +41,12 @@ const isActive = (href) => currentPath === href || currentPath.startsWith(`${hre
   </nav>
 </header>
 
+<!-- mobil overlay menu -->
 <div id="myNav" class="overlay">
+  <!-- luk menu knap -->
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
 
+  <!-- links i mobilmenu -->
   <div class="overlay-content">
     <a href="/ommig">Om mig</a>
     <a href="/podcasts">Podcasts</a>
@@ -49,6 +56,7 @@ const isActive = (href) => currentPath === href || currentPath.startsWith(`${hre
 </div>
 
 <style>
+  /* header */
   .header {
     position: absolute;
     top: 0;
@@ -57,16 +65,19 @@ const isActive = (href) => currentPath === href || currentPath.startsWith(`${hre
     z-index: 2;
   }
 
+  /* navigation */
   .nav {
     display: flex;
     justify-content: space-between;
     padding-top: 0.9rem;
   }
 
+  /* skjuler desktop menu på mobil */
   .menu {
     display: none;
   }
 
+  /* logo */
   .logo a {
     padding: 20px;
     text-decoration: none;
@@ -75,6 +86,7 @@ const isActive = (href) => currentPath === href || currentPath.startsWith(`${hre
     letter-spacing: 4%;
   }
 
+  /* burger menu */
   .burger {
     display: flex;
     flex-direction: column;
@@ -88,30 +100,36 @@ const isActive = (href) => currentPath === href || currentPath.startsWith(`${hre
     right: 20px;
   }
 
+  /* streger i burger menu */
   .burger .bar {
     width: 25px;
     height: 2px;
     transition: 0.3s;
   }
 
+  /* lys navigation */
   .nav--light .logo a,
   .nav--light .menu ul li a {
     color: var(--white);
   }
 
+  /* mørk navigation */
   .nav--dark .logo a,
   .nav--dark .menu ul li a {
     color: var(--black);
   }
 
+  /* burger farve på lys navigation */
   .nav--light .burger .bar {
     background-color: var(--lysere_cream);
   }
 
+  /* burger farve på mørk navigation */
   .nav--dark .burger .bar {
     background-color: var(--black);
   }
 
+  /* mobil overlay */
   .overlay {
     height: 100%;
     width: 0;
@@ -124,6 +142,7 @@ const isActive = (href) => currentPath === href || currentPath.startsWith(`${hre
     z-index: 10;
   }
 
+  /* luk knap i overlay */
   .closebtn {
     position: absolute;
     top: 20px;
@@ -134,6 +153,7 @@ const isActive = (href) => currentPath === href || currentPath.startsWith(`${hre
     cursor: pointer;
   }
 
+  /* indhold i overlay */
   .overlay-content {
     position: relative;
     top: 30%;
@@ -144,6 +164,7 @@ const isActive = (href) => currentPath === href || currentPath.startsWith(`${hre
     gap: 2rem;
   }
 
+  /* links i overlay */
   .overlay-content a {
     font-size: 2rem;
     color: var(--black);
@@ -153,26 +174,32 @@ const isActive = (href) => currentPath === href || currentPath.startsWith(`${hre
     transition: 0.3s;
   }
 
+  /* hover på overlay links */
   .overlay-content a:hover {
     text-decoration: underline;
   }
 
+  /* hover på desktop menu */
   .nav--light .menu ul li a:hover,
   .nav--dark .menu ul li a:hover {
     color: var(--citat);
   }
 
+  /* desktop navigation */
   @media screen and (min-width: 768px) {
+    /* skjuler burger på desktop */
     .burger {
       display: none;
     }
 
+    /* viser desktop menu */
     .menu {
       display: flex;
       justify-content: flex-end;
       align-items: center;
     }
 
+    /* liste i desktop menu */
     .menu ul {
       display: flex;
       list-style: none;
@@ -181,6 +208,7 @@ const isActive = (href) => currentPath === href || currentPath.startsWith(`${hre
       padding: 0 2rem;
     }
 
+    /* links i desktop menu */
     .menu ul li a {
       position: relative;
       font-family: "Work Sans", sans-serif;
@@ -191,6 +219,7 @@ const isActive = (href) => currentPath === href || currentPath.startsWith(`${hre
       transition: color 0.2s ease;
     }
 
+    /* underline animation */
     .menu ul li a::after {
       content: "";
       position: absolute;
@@ -204,11 +233,13 @@ const isActive = (href) => currentPath === href || currentPath.startsWith(`${hre
       transition: transform 0.2s ease;
     }
 
+    /* viser underline ved hover og aktiv side */
     .menu ul li a:hover::after,
     .menu ul li a.active::after {
       transform: scaleX(1);
     }
 
+    /* skjuler overlay på desktop */
     .overlay {
       display: none;
     }
@@ -216,33 +247,44 @@ const isActive = (href) => currentPath === href || currentPath.startsWith(`${hre
 </style>
 
 <script is:inline>
+  /* åbner mobilmenu */
   function openNav() {
     document.getElementById("myNav").style.width = "100%";
   }
 
+  /* lukker mobilmenu */
   function closeNav() {
     document.getElementById("myNav").style.width = "0%";
   }
 
+  /* opdaterer antal varer i kurv */
   function updateCartCount(count) {
     document.querySelectorAll("[data-cart-count]").forEach((cartCount) => {
       cartCount.textContent = count;
     });
   }
 
+  /* henter gemt antal varer fra localStorage */
   const savedCartCount = localStorage.getItem("cartCount") || "0";
   updateCartCount(savedCartCount);
 
+  /* lytter efter klik på tilføj til kurv */
   document.addEventListener("click", function (event) {
     const addToCartButton = event.target.closest(".add-to-cart");
 
     if (addToCartButton) {
       event.preventDefault();
 
+      /* læser nuværende antal varer */
       const currentCount = Number(localStorage.getItem("cartCount") || "0");
+
+      /* lægger en vare til */
       const newCount = currentCount + 1;
 
+      /* gemmer nyt antal varer */
       localStorage.setItem("cartCount", newCount);
+
+      /* opdaterer kurv tal i navigation */
       updateCartCount(newCount);
     }
   });

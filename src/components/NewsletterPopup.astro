@@ -1,8 +1,13 @@
+<!-- newsletter popup -->
 <div class="newsletter-popup is-hidden" id="newsletterPopup">
+  <!-- popup kort -->
   <div class="newsletter-popup-card">
+    <!-- luk knap -->
     <button class="newsletter-popup-close" type="button" aria-label="Luk popup"> × </button>
 
+    <!-- popup tekstindhold -->
     <div class="newsletter-popup-content">
+      <!-- tilmelding -->
       <div class="newsletter-signup" id="newsletterSignup">
         <h2>Bliv en del af Busy Being Well universet</h2>
 
@@ -10,6 +15,7 @@
 
         <p>Skriv dig op til vores nyhedsbrev.</p>
 
+        <!-- newsletter formular -->
         <form class="newsletter-form" id="newsletterForm">
           <label for="popup-email" class="sr-only">E-mail</label>
           <input id="popup-email" type="email" placeholder="Skriv din e-mail her" required />
@@ -17,16 +23,19 @@
         </form>
       </div>
 
+      <!-- tak skærm -->
       <div class="newsletter-success" id="newsletterSuccess" aria-live="polite">
         <h2>Velkommen til familien!</h2>
       </div>
 
+      <!-- privatlivstekst -->
       <p class="newsletter-note">
         Ved tilmelding accepterer du at modtage nyhedsbreve via e-mail. Afmeld når som helst. Læs vores
         <a href="/privatlivspolitik">privatlivspolitik</a>.
       </p>
     </div>
 
+    <!-- popup billede -->
     <div class="newsletter-popup-image">
       <img src="/cilia9.webp" alt="Cilia fra Busy Being Well" />
     </div>
@@ -34,6 +43,7 @@
 </div>
 
 <style>
+  /* newsletter popup */
   .newsletter-popup {
     position: fixed;
     inset: 0;
@@ -46,10 +56,12 @@
     pointer-events: none;
   }
 
+  /* skjuler newsletter popup */
   .newsletter-popup.is-hidden {
     display: none;
   }
 
+  /* popup kort */
   .newsletter-popup-card {
     position: relative;
     width: min(100%, 25rem);
@@ -61,12 +73,14 @@
     pointer-events: auto;
   }
 
+  /* popup tekstindhold */
   .newsletter-popup-content {
     padding: 2.4rem 1.2rem 1.5rem;
     display: flex;
     flex-direction: column;
   }
 
+  /* popup overskrift */
   .newsletter-popup-content h2 {
     max-width: 20rem;
     margin: 0 0 1rem;
@@ -78,6 +92,7 @@
     color: var(--black);
   }
 
+  /* popup brødtekst */
   .newsletter-popup-content p {
     max-width: 20rem;
     margin: 0 0 1.2rem;
@@ -89,6 +104,7 @@
     color: var(--black);
   }
 
+  /* newsletter formular */
   .newsletter-popup .newsletter-form {
     width: 100%;
     display: flex;
@@ -97,6 +113,7 @@
     margin-bottom: 1.4rem;
   }
 
+  /* skjult label til accessibility */
   .newsletter-popup .newsletter-form label,
   .newsletter-popup .newsletter-form .sr-only {
     position: absolute;
@@ -107,6 +124,7 @@
     white-space: nowrap;
   }
 
+  /* email input */
   .newsletter-popup .newsletter-form input {
     flex: 1;
     min-width: 0;
@@ -121,10 +139,12 @@
     font-weight: 300;
   }
 
+  /* placeholder tekst */
   .newsletter-popup .newsletter-form input::placeholder {
     color: var(--citat);
   }
 
+  /* tilmeld knap */
   .newsletter-popup .newsletter-form button {
     flex: 0 0 5rem;
     height: 2.55rem;
@@ -140,17 +160,20 @@
       border-color 0.2s ease;
   }
 
+  /* hover på tilmeld knap */
   .newsletter-popup .newsletter-form button:hover {
     background: var(--white);
     border-color: var(--citat);
     color: var(--citat);
   }
 
+  /* note tekst */
   .newsletter-popup .newsletter-note {
     margin: 0;
     color: var(--citat);
   }
 
+  /* link i note tekst */
   .newsletter-popup .newsletter-note a {
     font: inherit;
     color: inherit;
@@ -158,14 +181,17 @@
     text-underline-offset: 0.08em;
   }
 
+  /* hover på note link */
   .newsletter-popup .newsletter-note a:hover {
     opacity: 0.85;
   }
 
+  /* popup billede */
   .newsletter-popup-image {
     min-height: 18rem;
   }
 
+  /* billede styling */
   .newsletter-popup-image img {
     width: 100%;
     height: 100%;
@@ -174,6 +200,7 @@
     display: block;
   }
 
+  /* luk knap */
   .newsletter-popup-close {
     position: absolute;
     top: 0.55rem;
@@ -190,6 +217,7 @@
     transition: color 0.2s ease;
   }
 
+  /* hover på luk knap */
   .newsletter-popup-close:hover {
     color: var(--citat);
   }
@@ -212,6 +240,7 @@
   }
   /* Tak skærm */
 
+  /* desktop popup */
   @media (min-width: 700px) {
     .newsletter-popup {
       padding: 3rem;
@@ -285,26 +314,33 @@
 </style>
 
 <script>
+  /* gemmer popup elementer i variabler */
   const popup = document.getElementById("newsletterPopup");
   const closeButton = document.querySelector(".newsletter-popup-close");
   const form = document.getElementById("newsletterForm");
   const signup = document.getElementById("newsletterSignup");
   const success = document.getElementById("newsletterSuccess");
 
+  /* tjekker om popup allerede er vist */
   const popupHasBeenSeen = localStorage.getItem("newsletterPopupSeen");
+
+  /* forsinkelse før popup vises */
   const popupDelay = 2200;
 
+  /* viser popup hvis den ikke er set før */
   if (popupHasBeenSeen !== "true") {
     setTimeout(() => {
       popup?.classList.remove("is-hidden");
     }, popupDelay);
   }
 
+  /* lukker popup og gemmer at den er set */
   closeButton?.addEventListener("click", () => {
     popup?.classList.add("is-hidden");
     localStorage.setItem("newsletterPopupSeen", "true");
   });
 
+  /* viser tak skærm ved tilmelding */
   form?.addEventListener("submit", (event) => {
     event.preventDefault();
 

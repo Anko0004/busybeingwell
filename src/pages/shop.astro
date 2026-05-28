@@ -18,14 +18,17 @@ const products = await res.json();
 ---
 
 <Layout navVariant="light" pageColor="orange" footerVariant="orange">
+  <!-- shop hero -->
   <section class="shop-hero">
     <H2 title="Shop" />
   </section>
 
+  <!-- shop grid -->
   <section class="shop-grid">
     {products.map((product) => <ShopCard data={product} />)}
   </section>
 
+  <!-- billede række -->
   <section class="image-row">
     <img src="/dittehoodie.webp" alt="Ditte med hoodie" />
     <img src="/cap2.webp" alt="Cap på deltager" />
@@ -33,10 +36,12 @@ const products = await res.json();
 </Layout>
 
 <style>
+  /* shop hero overskrift */
   .shop-hero :global(h2) {
     color: var(--white);
   }
 
+  /* shop grid */
   .shop-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -44,17 +49,20 @@ const products = await res.json();
     margin-bottom: 2rem;
   }
 
+  /* billede række */
   .image-row {
     margin-left: -1.5rem;
     margin-right: -1.5rem;
   }
 
+  /* billeder i billede række */
   .image-row img {
     width: 100%;
     height: auto;
     display: block;
   }
 
+  /* desktop layout */
   @media (min-width: 900px) {
     .shop-hero {
       margin-bottom: 2rem;

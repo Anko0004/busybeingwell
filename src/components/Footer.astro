@@ -2,18 +2,22 @@
 const { variant = "default" } = Astro.props;
 ---
 
+<!-- footer -->
 <footer class={`footer ${variant === "orange" ? "footer-orange" : ""}`}>
+  <!-- footer indhold wrapper -->
   <div class="footer-inner">
     <!-- Logo -->
     <a class="footer-logo" href="/">busy being well</a>
 
     <!-- Footer indhold -->
     <div class="footer-grid">
+      <!-- om os -->
       <div class="footer-box about">
         <h3>OM OS</h3>
         <p>Busy Being Well er et roligt univers med podcasts, refleksioner og inspiration til mere nærvær, velvære og balance i hverdagen</p>
       </div>
 
+      <!-- sociale links -->
       <div class="footer-box follow">
         <h3>FØLG MED</h3>
         <a href="https://www.instagram.com/busybeingwelll/" target="_blank" rel="noopener noreferrer">Instagram</a>
@@ -21,6 +25,7 @@ const { variant = "default" } = Astro.props;
         <a href="https://open.spotify.com/show/5r1ec3iXWGTemUGaLslGfo" target="_blank" rel="noopener noreferrer">Spotify</a>
       </div>
 
+      <!-- kontakt -->
       <div class="footer-box contact">
         <h3>KONTAKT</h3>
         <p>Busy Being Well</p>
@@ -33,26 +38,31 @@ const { variant = "default" } = Astro.props;
         <h3>TILMELD DIG VORES NYHEDSBREV</h3>
         <p class="newsletter-text">Modtag nye episoder, udvalgte fortællinger og inspiration direkte i din indbakke</p>
 
+        <!-- nyhedsbrev formular -->
         <form class="newsletter-form" id="footerNewsletterForm">
           <label for="email" class="sr-only">E-mail</label>
           <input id="email" type="email" placeholder="Skriv din e-mail her" />
           <button type="submit">Tilmeld</button>
         </form>
 
+        <!-- nyhedsbrev note -->
         <p class="newsletter-note">Ved tilmelding accepterer du vores privatlivspolitik</p>
       </div>
     </div>
 
     <!-- Nederste linje -->
     <div class="footer-bottom">
+      <!-- copyright -->
       <p>© 2026 Busy Being Well</p>
 
+      <!-- juridiske links -->
       <div class="footer-legal">
         <a href="/privatlivspolitik">Privatlivspolitik</a>
         <span>·</span>
         <a href="/cookiepolitik">Cookiepolitik</a>
       </div>
 
+      <!-- credits -->
       <p class="credits">Website udviklet af <span>Sofie Utke & Anna Pri</span></p>
     </div>
   </div>
@@ -70,6 +80,7 @@ const { variant = "default" } = Astro.props;
     background-color: var(--burned_orange);
   }
 
+  /* tekstfarver i orange footer */
   .footer-orange .footer-logo,
   .footer-orange .footer-box h3,
   .footer-orange .footer-box p,
@@ -82,15 +93,18 @@ const { variant = "default" } = Astro.props;
     color: var(--lysere_cream);
   }
 
+  /* border i orange footer */
   .footer-orange .newsletter-form input,
   .footer-orange .newsletter-form button {
     border-color: var(--lysere_cream);
   }
 
+  /* placeholder i orange footer */
   .footer-orange .newsletter-form input::placeholder {
     color: var(--lysere_cream);
   }
 
+  /* hover på knap i orange footer */
   .footer-orange .newsletter-form button:hover {
     background-color: var(--lysere_cream);
     color: var(--burned_orange);
@@ -110,6 +124,7 @@ const { variant = "default" } = Astro.props;
     margin-right: 1rem;
   }
 
+  /* footer logo */
   .footer-logo {
     order: 1;
     display: block;
@@ -122,6 +137,7 @@ const { variant = "default" } = Astro.props;
     text-decoration: none;
   }
 
+  /* footer grid */
   .footer-grid {
     order: 2;
     display: grid;
@@ -140,6 +156,7 @@ const { variant = "default" } = Astro.props;
     line-height: 1.1rem;
   }
 
+  /* footer tekst og links */
   .footer-box p,
   .footer-box a {
     display: block;
@@ -168,6 +185,7 @@ const { variant = "default" } = Astro.props;
     grid-column: 1 / -1;
   }
 
+  /* kontakt email */
   .footer-box .contact-email {
     font-weight: 500;
   }
@@ -180,6 +198,7 @@ const { variant = "default" } = Astro.props;
     margin-top: 1rem;
   }
 
+  /* nyhedsbrev input */
   .newsletter-form input {
     width: 100%;
     height: 2rem;
@@ -192,10 +211,12 @@ const { variant = "default" } = Astro.props;
     font-size: 0.75rem;
   }
 
+  /* placeholder tekst */
   .newsletter-form input::placeholder {
     color: var(--citat);
   }
 
+  /* nyhedsbrev knap */
   .newsletter-form button {
     height: 2rem;
     border: 1px solid var(--footer);
@@ -209,15 +230,18 @@ const { variant = "default" } = Astro.props;
     margin-bottom: 0.2rem;
   }
 
+  /* hover på nyhedsbrev knap */
   .newsletter-form button:hover {
     background-color: var(--footer);
     color: var(--black);
   }
 
+  /* nyhedsbrev tekst */
   .newsletter-text {
     max-width: 26rem;
   }
 
+  /* nyhedsbrev note */
   .footer-box .newsletter-note {
     font-size: 0.7rem;
   }
@@ -244,11 +268,13 @@ const { variant = "default" } = Astro.props;
     align-items: end;
   }
 
+  /* copyright placering */
   .footer-bottom > p:first-child {
     grid-column: 1;
     grid-row: 1;
   }
 
+  /* nederste footer tekst */
   .footer-bottom p,
   .footer-bottom a,
   .footer-bottom span {
@@ -261,6 +287,7 @@ const { variant = "default" } = Astro.props;
     text-decoration: none;
   }
 
+  /* juridiske links */
   .footer-legal {
     grid-column: 1;
     grid-row: 2;
@@ -268,11 +295,13 @@ const { variant = "default" } = Astro.props;
     gap: 0.85rem;
   }
 
+  /* hover på juridiske links */
   .footer-legal a:hover {
     text-decoration: underline;
     opacity: 0.85;
   }
 
+  /* credits */
   .credits {
     grid-column: 2;
     grid-row: 1 / 3;
@@ -282,6 +311,7 @@ const { variant = "default" } = Astro.props;
     max-width: 7rem;
   }
 
+  /* navn i credits */
   .credits span {
     font-weight: 400;
   }
@@ -386,6 +416,7 @@ const { variant = "default" } = Astro.props;
   footerNewsletterForm?.addEventListener("submit", (event) => {
     event.preventDefault();
 
+    /* rydder input og viser Sendt */
     if (footerNewsletterInput) {
       footerNewsletterInput.value = "";
       footerNewsletterInput.placeholder = "Sendt";
@@ -393,6 +424,7 @@ const { variant = "default" } = Astro.props;
       footerNewsletterInput.style.borderRight = "1px solid var(--footer)";
     }
 
+    /* skjuler tilmeld knap */
     if (footerNewsletterButton) {
       footerNewsletterButton.style.display = "none";
     }

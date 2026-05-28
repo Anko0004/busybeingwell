@@ -26,14 +26,17 @@ const totalPages = Math.ceil(totalItems / perPage);
 ---
 
 <Layout>
+  <!-- podcast intro -->
   <section class="podcasts-intro">
     <h2>Podcasts</h2>
     <p>Busy Being Well er et podcastunivers med fokus på velvære, trivsel og det moderne hverdagsliv. Gennem personlige fortællinger, ærlige refleksioner og samtaler med inspirerende mennesker udforskes alt fra sundhed og motivation til balance og de udfordringer, mange kan spejle sig i. Målet er ikke perfektion, men at skabe et autentisk rum med plads til inspiration, genkendelse og nye perspektiver.</p>
   </section>
 
+  <!-- podcast grid -->
   <section class="podcast-grid">
     {
       data.map((episode, index) => (
+        <!-- podcast grid item -->
         <div class="podcast-grid-item">
           <PodcastCard data={episode} index={index} priority={index < 3} />
         </div>
@@ -41,6 +44,7 @@ const totalPages = Math.ceil(totalItems / perPage);
     }
   </section>
 
+  <!-- pagination -->
   {
     totalPages > 1 && (
       <nav class="pagination" aria-label="Podcast sider">
@@ -58,20 +62,24 @@ const totalPages = Math.ceil(totalItems / perPage);
 </Layout>
 
 <style>
+  /* podcast intro */
   .podcasts-intro {
     margin-bottom: 3rem;
   }
 
+  /* podcast intro tekst */
   .podcasts-intro p {
     max-width: 34rem;
   }
 
+  /* podcast grid */
   .podcast-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 3rem 1rem;
   }
 
+  /* desktop layout */
   @media (min-width: 900px) {
     .podcast-grid {
       grid-template-columns: repeat(4, 1fr);
@@ -93,6 +101,7 @@ const totalPages = Math.ceil(totalItems / perPage);
     }
   }
 
+  /* pagination */
   .pagination {
     display: flex;
     justify-content: center;
@@ -101,6 +110,7 @@ const totalPages = Math.ceil(totalItems / perPage);
     margin-bottom: 4rem;
   }
 
+  /* pagination links */
   .pagination a {
     font-family: "Unica", sans-serif;
     color: var(--black);
@@ -109,6 +119,7 @@ const totalPages = Math.ceil(totalItems / perPage);
     border-bottom: 1px solid transparent;
   }
 
+  /* hover og aktiv pagination */
   .pagination a:hover,
   .pagination a.active {
     border-bottom-color: var(--black);

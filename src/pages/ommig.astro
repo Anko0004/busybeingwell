@@ -3,11 +3,14 @@ import Layout from "../layouts/Layout.astro";
 ---
 
 <Layout>
+  <!-- om mig section -->
   <section class="section ommig">
+    <!-- om mig billede -->
     <div class="image">
       <img src="/cilia_ommig1.webp" alt="Cilia laver mad" />
     </div>
 
+    <!-- første tekstblok -->
     <div class="text1">
       <div class="overskrifter">
         <h2 class="ommig">Mød Cilia Trappaud</h2>
@@ -17,45 +20,55 @@ import Layout from "../layouts/Layout.astro";
       <p>Mit navn er Cilia Trappaud, og jeg er født og opvokset i København. Som 25-årig flyttede jeg til Los Angeles for at følge mine største dansedrømme — tilpas naivt, skræmmende og spændende. De sidste otte år har jeg arbejdet som professionel danser på topplan og haft mulighed for at arbejde med artister som Beyoncé, Rihanna, Bad Bunny, Usher og Billie Eilish. Dansen har lært mig meget om disciplin, pres, passion og vigtigheden af at passe på både kroppen og sindet. Sideløbende har jeg siden starten af mine 20’ere kæmpet med akne, som jeg ikke kunne komme af med, selvom jeg prøvede al slags medicin.</p>
     </div>
 
+    <!-- anden tekstblok -->
     <div class="text2">
       <p>Det blev en stor del af min personlige rejse og åbnede mine øjne for, hvor vigtigt det er at lytte til sin krop og passe på sig selv — både fysisk og mentalt. I dag er min hud fri for akne som følge af ændrede vaner og prioriteter, og den erfaring har kun gjort min interesse for sundhed, velvære og livsstil endnu større. I dag kalder jeg mig danser, TV-vært og skaber af Busy Being Well. Dansedrømmene føles udlevet, og når folk spørger mig, hvad jeg drømmer om nu, er svaret egentlig meget simpelt: at have det godt, være glad, udvikle mig — og skabe noget, der kan gøre det samme for andre mennesker.</p>
     </div>
   </section>
 
+  <!-- billede række -->
   <section class="image-row">
     <img src="/cilia_ommig2.webp" alt="Cilia sidder på gulvet" />
     <img src="/cilia_ommig3.webp" alt="Cilia strækker ryggen" />
   </section>
 
+  <!-- hvorfor BBW section -->
   <section class="why-bbw">
+    <!-- hvorfor BBW overskrift -->
     <div class="why-heading">
       <h2>Hvorfor har du startet<br />Busy Being Well?</h2>
     </div>
 
+    <!-- hvorfor BBW citat -->
     <div class="why-quote">
       <h2>“Jeg har skabt det univers, jeg selv savnede — et sted med plads til inspiration, ærlige samtaler og følelsen af, at det hele ikke behøver være perfekt. Et univers hvor vi kan spejle os i hinanden, være nysgerrige på os selv og tale mere ærligt om både velvære, balance og de perioder, hvor livet kan føles svært"</h2>
     </div>
 
+    <!-- hvorfor BBW tekst -->
     <div class="why-text">
       <p>Jeg har gennem mange år haft en stor interesse for sundhed, velvære og det at skabe gode rammer for både krop og sind. Som professionel danser har det været vigtigt for mig at passe på mig selv og give min krop de bedste forudsætninger, men jeg har samtidig også oplevet perioder, hvor tingene føltes svære, frustrerende og ude af balance. Det gjorde mig nysgerrig på, hvordan vi som mennesker egentlig kan have det godt — ikke kun fysisk, men også mentalt og følelsesmæssigt.</p>
 
       <p>Podcastformatet blev fra start den mest naturlige måde for mig at formidle Busy Being Well på. For mig handler det om at skabe et rum med oprigtige samtaler, hvor mennesker kan dele erfaringer, perspektiver og historier uden at det virker poleret eller performativt. Jeg ønskede at skabe et univers, der er jordnært og ærligt — med plads til både inspiration, refleksion og erkendelsen af, at velvære ser forskelligt ud for alle.</p>
     </div>
 
+    <!-- hvorfor BBW video -->
     <div class="why-image">
-      <img src="/cilia_ommig4.webp" alt="Cilia danser foran et spejl" />
+      <video src="/cilia_danser.mp4" autoplay muted loop playsinline></video>
     </div>
   </section>
 </Layout>
 
 <style>
+  /* billede */
   .image img {
     width: 100%;
     height: auto;
   }
 
+  /* kvadratiske billeder */
   .image img,
-  .why-image img {
+  .why-image img,
+  .why-image video {
     width: 100%;
     aspect-ratio: 1 / 1;
     height: auto;
@@ -69,6 +82,7 @@ import Layout from "../layouts/Layout.astro";
     flex-direction: column;
   }
 
+  /* første tekstblok */
   .text1 {
     order: 1;
     padding-top: 1rem;
@@ -77,10 +91,12 @@ import Layout from "../layouts/Layout.astro";
     padding-left: 0;
   }
 
+  /* om mig overskrift */
   .text1 .ommig {
     margin-bottom: 0;
   }
 
+  /* anden tekstblok */
   .text2 {
     order: 3;
     padding-top: 1.5rem;
@@ -89,10 +105,12 @@ import Layout from "../layouts/Layout.astro";
     padding-left: 0;
   }
 
+  /* om mig tekst */
   .ommig p {
     padding-bottom: 0;
   }
 
+  /* om mig billede */
   .ommig .image {
     order: 2;
     width: auto;
@@ -100,6 +118,7 @@ import Layout from "../layouts/Layout.astro";
     margin-right: -1.5rem;
   }
 
+  /* afstand mellem tekstafsnit */
   .why-text p + p {
     margin-top: 1rem;
   }
@@ -110,11 +129,13 @@ import Layout from "../layouts/Layout.astro";
     margin-right: -1.5rem;
   }
 
+  /* billede-række billeder */
   .image-row img {
     height: auto;
     display: block;
   }
 
+  /* desktop om mig og billede-række */
   @media (min-width: 900px) {
     .section.ommig {
       display: grid;
@@ -151,6 +172,7 @@ import Layout from "../layouts/Layout.astro";
       margin-top: 0;
       align-self: end;
     }
+
     /* billede-række - desktop */
     .image-row {
       display: grid;
@@ -173,6 +195,7 @@ import Layout from "../layouts/Layout.astro";
     margin-bottom: 4rem;
   }
 
+  /* hvorfor BBW overskrift */
   .why-heading {
     margin-bottom: 2rem;
   }
@@ -181,10 +204,12 @@ import Layout from "../layouts/Layout.astro";
     margin: 0;
   }
 
+  /* hvorfor BBW citat */
   .why-quote {
     margin-bottom: 3rem;
   }
 
+  /* citat tekst */
   .why-quote h2 {
     color: var(--citat);
     font-size: 1.45rem;
@@ -192,19 +217,27 @@ import Layout from "../layouts/Layout.astro";
     margin: 0;
   }
 
+  /* hvorfor BBW tekst */
   .why-text {
     margin-bottom: 2rem;
   }
 
+  /* hvorfor BBW billede */
   .why-image {
     margin-left: -1.5rem;
     margin-right: -1.5rem;
   }
 
-  .why-image img {
+  /* BBW billede styling */
+  .why-image img,
+  .why-image video {
     display: block;
     width: 100%;
     height: auto;
+  }
+
+  .why-image video {
+    filter: grayscale(100%);
   }
 
   /* hvorfor BBW - desktop */
@@ -252,7 +285,8 @@ import Layout from "../layouts/Layout.astro";
       margin-right: -2rem;
     }
 
-    .why-image img {
+    .why-image img,
+    .why-image video {
       display: block;
       width: 100%;
       height: auto;
