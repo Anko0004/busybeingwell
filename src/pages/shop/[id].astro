@@ -37,29 +37,42 @@ const descriptionPoints = descriptionLines.filter((line) => line.startsWith("–
 ---
 
 <Layout navVariant="light" pageColor="orange" footerVariant="orange">
+  <!-- produkt detaljeside -->
   <section class="product-page">
+    <!-- tilbage pil -->
     <a href="/shop" class="back-button" aria-label="Tilbage"></a>
 
+    <!-- produkt layout -->
     <div class="product-layout">
+      <!-- produkt billede område -->
       <div class="product-image-wrap">
+        <!-- forrige billede pil -->
         <button class="image-arrow image-arrow-left" type="button" aria-label="Forrige billede"></button>
+
+        <!-- produkt billede -->
         <img id="product-image" src={product.image_url} data-image-one={product.image_url} data-image-two={product.image2_url} alt={`Billede af ${product.name}`} />
+
+        <!-- næste billede pil -->
         <button class="image-arrow image-arrow-right" type="button" aria-label="Næste billede"></button>
       </div>
 
+      <!-- produkt information -->
       <div class="product-info">
+        <!-- øverste produkt info -->
         <div class="product-top">
           <div>
             <h2>{product.name}</h2>
             <p class="product-category">{product.category}</p>
           </div>
 
+          <!-- køb område -->
           <div class="product-buy">
             <p class="product-price">KR. {product.price}</p>
             <a href="#" class="add-to-cart site-hover">Tilføj til kurv</a>
           </div>
         </div>
 
+        <!-- produkt beskrivelse -->
         <div class="product-description">
           <h3>Om produktet</h3>
 
@@ -81,6 +94,7 @@ const descriptionPoints = descriptionLines.filter((line) => line.startsWith("–
 </Layout>
 
 <style>
+  /* produkt detaljeside */
   .product-page {
     color: var(--white);
     padding-bottom: 5rem;
@@ -93,6 +107,7 @@ const descriptionPoints = descriptionLines.filter((line) => line.startsWith("–
     height: 1.5rem;
   }
 
+  /* pil form */
   .back-button::before,
   .image-arrow::before {
     content: "";
@@ -104,11 +119,13 @@ const descriptionPoints = descriptionLines.filter((line) => line.startsWith("–
     border-radius: 0.12rem;
   }
 
+  /* venstre pil */
   .back-button::before,
   .image-arrow-left::before {
     transform: rotate(45deg);
   }
 
+  /* højre pil */
   .image-arrow-right::before {
     transform: rotate(225deg);
   }
@@ -121,17 +138,20 @@ const descriptionPoints = descriptionLines.filter((line) => line.startsWith("–
   }
   /* hover på pil*/
 
+  /* produkt layout */
   .product-layout {
     display: flex;
     flex-direction: column;
   }
 
+  /* produkt billede område */
   .product-image-wrap {
     position: relative;
     margin-left: -1.5rem;
     margin-right: -1.5rem;
   }
 
+  /* produkt billede */
   .product-image-wrap img {
     display: block;
     width: 100%;
@@ -139,6 +159,7 @@ const descriptionPoints = descriptionLines.filter((line) => line.startsWith("–
     object-fit: contain;
   }
 
+  /* billede pile */
   .image-arrow {
     position: absolute;
     top: 50%;
@@ -150,18 +171,22 @@ const descriptionPoints = descriptionLines.filter((line) => line.startsWith("–
     cursor: pointer;
   }
 
+  /* venstre billede pil */
   .image-arrow-left {
     left: 1rem;
   }
 
+  /* højre billede pil */
   .image-arrow-right {
     right: 1rem;
   }
 
+  /* produkt information */
   .product-info {
     padding-top: 1rem;
   }
 
+  /* øverste produkt info */
   .product-top {
     display: flex;
     justify-content: space-between;
@@ -169,16 +194,19 @@ const descriptionPoints = descriptionLines.filter((line) => line.startsWith("–
     margin-bottom: 3rem;
   }
 
+  /* produkt titel */
   .product-info h2 {
     color: var(--white);
     font-size: 1.2rem;
   }
 
+  /* produkt kategori */
   .product-category {
     margin: 0.5rem 0 0;
     opacity: 70%;
   }
 
+  /* prik før kategori */
   .product-category::before {
     content: "";
     display: inline-block;
@@ -189,15 +217,18 @@ const descriptionPoints = descriptionLines.filter((line) => line.startsWith("–
     background: var(--white);
   }
 
+  /* køb område */
   .product-buy {
     flex: 0 0 auto;
     text-align: right;
   }
 
+  /* produkt pris */
   .product-price {
     white-space: nowrap;
   }
 
+  /* køb link */
   .product-buy a {
     color: var(--white);
     text-transform: uppercase;
@@ -205,6 +236,7 @@ const descriptionPoints = descriptionLines.filter((line) => line.startsWith("–
     white-space: nowrap;
   }
 
+  /* produkt tekst */
   .product-description h3,
   .product-description p,
   .product-description li,
@@ -215,24 +247,28 @@ const descriptionPoints = descriptionLines.filter((line) => line.startsWith("–
     color: var(--white);
   }
 
+  /* produkt beskrivelse overskrift */
   .product-description h3 {
     margin: 0 0 0.25rem;
     font-size: 0.9rem;
     line-height: 1.2rem;
   }
 
+  /* produkt beskrivelse tekst */
   .product-description p {
     margin: 0;
     font-size: 0.9rem;
     line-height: 1.35rem;
   }
 
+  /* produkt beskrivelse liste */
   .product-description ul {
     margin: 1rem 0 0;
     padding: 0;
     list-style: none;
   }
 
+  /* produkt beskrivelse listepunkt */
   .product-description li {
     margin: 0;
     font-family: "Unica", sans-serif;
@@ -241,10 +277,12 @@ const descriptionPoints = descriptionLines.filter((line) => line.startsWith("–
     line-height: 1.35rem;
   }
 
+  /* bindestreg før listepunkt */
   .product-description li::before {
     content: "– ";
   }
 
+  /* tablet billede placering */
   @media (min-width: 600px) {
     .product-image-wrap {
       margin-left: -2rem;
@@ -253,6 +291,7 @@ const descriptionPoints = descriptionLines.filter((line) => line.startsWith("–
     }
   }
 
+  /* desktop layout */
   @media (min-width: 900px) {
     .product-page {
       min-height: 70svh;
@@ -313,6 +352,7 @@ const descriptionPoints = descriptionLines.filter((line) => line.startsWith("–
     }
   }
 
+  /* hover på tilføj til kurv */
   .product-buy a.add-to-cart {
     transition: color 0.2s ease;
   }
@@ -323,21 +363,27 @@ const descriptionPoints = descriptionLines.filter((line) => line.startsWith("–
 </style>
 
 <script>
+  /* gemmer produkt billede og pile i variabler */
   const productImage = document.querySelector("#product-image");
   const leftArrow = document.querySelector(".image-arrow-left");
   const rightArrow = document.querySelector(".image-arrow-right");
 
+  /* tjekker at billede og pile findes */
   if (productImage && leftArrow && rightArrow) {
     const images = [productImage.dataset.imageOne, productImage.dataset.imageTwo].filter(Boolean);
 
     let currentImage = 0;
 
+    /* skifter mellem produkt billeder */
     function changeImage(direction) {
       currentImage = (currentImage + direction + images.length) % images.length;
       productImage.src = images[currentImage];
     }
 
+    /* klik på venstre pil */
     leftArrow.addEventListener("click", () => changeImage(-1));
+
+    /* klik på højre pil */
     rightArrow.addEventListener("click", () => changeImage(1));
   }
 </script>
